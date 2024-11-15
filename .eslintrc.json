@@ -1,0 +1,34 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript", "plugin:prettier/recommended"],
+  "rules": {
+    "linebreak-style": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/no-array-index-key": "off",
+    "arrow-parens": ["error"],
+    "import/no-unresolved": [
+      2,
+      {
+        "ignore": ["common-util", "components", "data", "styles", "lib"]
+      }
+    ],
+    "no-console": ["warn", { "allow": ["error"] }],
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto",
+      "semi": true,
+      "singleQuote": true
+    }],
+    "import/prefer-default-export": "off",
+    "react/forbid-prop-types": "off",
+    "react/destructuring-assignment": "off",
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": ["arrow-function", "function-declaration"],
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }],
+    "no-untyped-mock-factory": "off"
+  }
+}

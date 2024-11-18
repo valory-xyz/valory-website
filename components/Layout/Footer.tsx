@@ -1,6 +1,5 @@
 import Link from "next/link";
-
-const hoverClass: string = 'flex hover:text-neutral-700 cursor-pointer duration-200';
+import { hoverClass, headerLinks } from "styles/globals";
 
 export const Footer = () => (
   <footer className="footer bg-black">

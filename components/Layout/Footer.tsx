@@ -1,56 +1,61 @@
-const hoverClass: string = 'hover:text-neutral-700 cursor-pointer duration-200';
+import Link from "next/link";
+
+const hoverClass: string = 'flex hover:text-neutral-700 cursor-pointer duration-200';
 
 export const Footer = () => (
-  <footer className="footer grid grid-cols-3 grid-rows-3 gap-0 bg-black text-white p-10">
-    <div className="row-start-2">
-      <p className="text-5xl">Valory</p>
+  <footer className="footer bg-black">
+    <div className="grid grid-cols-3 grid-rows-3 max-sm:grid-cols-1 gap-x-8 text-white p-10 max-w-screen-2xl xl:w-[1400px] mx-auto">
+    <div className="md:row-start-2">
+      <span className="text-5xl">Valory</span>
     </div>
-    <div className="col-start-2 flex flex-cols gap-8">
-      <a className={hoverClass}>Mission Statement</a>
-      <a className={hoverClass}>Get involved</a>
+
+    <div className="md:col-start-2 flex lg:flex-row flex-col gap-x-8">
+      <Link className={hoverClass} href="#">Mission Statement</Link>
+      <Link className={hoverClass} href="#">Get involved</Link>
+
       <details className="dropdown">
         <summary className={hoverClass}>More</summary>
-        <ul className="dropdown-content p-4 bg-white bg-opacity-20 rounded-md space-y-2 mt-2">
+        <ul className="dropdown-content p-4 bg-white rounded-md space-y-2 mt-2">
           <li>
-            <a className={hoverClass} href="#">
+            <Link className={`${hoverClass} text-black`} href="#">
               Products
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={hoverClass} href="#">
+            <Link className={`${hoverClass} text-black`} href="#">
               News
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={hoverClass} href="#">
+            <Link className={`${hoverClass} text-black`} href="#">
               Newsletter
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={hoverClass} href="#">
+            <a className={`${hoverClass} text-black`} href="#">
               Research
             </a>
           </li>
           <li>
-            <a className={hoverClass} href="#">
+            <Link className={`${hoverClass} text-black`} href="#">
               Team
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={hoverClass} href="#">
+            <Link className={`${hoverClass} text-black`} href="#">
               Investors
-            </a>
+            </Link>
           </li>
           <li>
-            <a className={hoverClass} href="#">
+            <a className={`${hoverClass} text-black`} href="#">
               Careers
             </a>
           </li>
         </ul>
       </details>
     </div>
-    <div className="col-start-2 flex flex-cols gap-8">
-      <p>
+    <div className="md:col-start-2 flex flex-cols gap-8">
+      <span>
         Valory AG
         <br />
         Gubelstrasse 12
@@ -58,27 +63,28 @@ export const Footer = () => (
         6300 Zug
         <br />
         Switzerland
-      </p>
+      </span>
     </div>
-    <div className="col-start-3 flex flex-cols gap-8">
+    <div className="md:col-start-3 md:row-start-1 flex flex-cols gap-8">
       <span>X icon</span>
       <span>LinkedIn icon</span>
     </div>
-    <div className="col-start-3 gap-4">
-      <p>© 2021-2024 Valory AG</p>
-      <p>
-        <a className="link" href="#">
+    <div className="md:col-start-3 gap-4">
+      <span>© 2021-2024 Valory AG</span>
+      <div>
+        <Link className="link" href="#">
           Privacy Policy
-        </a>{' '}
+        </Link>{' '}
         ·{' '}
-        <a className="link" href="#">
+        <Link className="link" href="#">
           Terms
-        </a>{' '}
+        </Link>{' '}
         ·{' '}
         <a className="link" href="#">
           Press Kit
         </a>
-      </p>
+      </div>
+    </div>
     </div>
   </footer>
 );

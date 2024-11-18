@@ -1,11 +1,14 @@
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { hoverClass } from 'styles/globals';
+import headerLinks from 'data/headerLinks.json';
 import { useState } from 'react';
-import { hoverClass, headerLinks } from 'styles/globals';
 
 export const Header = () => {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const toggleMobileMenu = () => {
-    setShowMobileMenu(!showMobileMenu);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const toggleDrawer = () => {
+    setIsDrawerOpen((prev) => !prev);
   };
 
   return (
@@ -14,7 +17,12 @@ export const Header = () => {
         <div className="flex h-24 items-center justify-between">
           <div className="md:flex md:items-center md:gap-12 mr-6 xl:mr-12 p-4 max-xl:p-2">
             <Link className="block" href="/">
-              Valory logo
+              <Image
+                src="/header-logo.svg"
+                alt="Valory"
+                width={100}
+                height={40}
+              />
             </Link>
           </div>
 
@@ -25,13 +33,11 @@ export const Header = () => {
                   <li key={index} className={hoverClass}>
                     {link.isExternal ? (
                       <a className={hoverClass} href={link.url} target="_blank">
-                        {' '}
-                        {link.label}{' '}
+                        {link.label}
                       </a>
                     ) : (
                       <Link className={hoverClass} href={link.url}>
-                        {' '}
-                        {link.label}{' '}
+                        {link.label}
                       </Link>
                     )}
                   </li>
@@ -40,64 +46,75 @@ export const Header = () => {
             </nav>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="sm:flex sm:gap-4">
-              <div className="hidden lg:flex ml-6 xl:ml-12 p-4">
-                <Link
-                  className="border-black border py-3 px-12 text-sm max-xl:px-6 max-xl:py-1 font-medium transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent"
-                  href="#"
+          <div className="drawer drawer-end w-fit block lg:hidden max-sm:order-last z-10">
+            <input
+              id="my-drawer-4"
+              type="checkbox"
+              className="drawer-toggle"
+              checked={isDrawerOpen}
+              onChange={toggleDrawer}
+            />
+            <div className="drawer-content">
+              <label htmlFor="my-drawer-4" className="drawer-button">
+                <Menu />
+              </label>
+            </div>
+            <div className="drawer-side">
+              <label
+                htmlFor="my-drawer-4"
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              />
+              <div className="my-auto w-full pr-6 bg-black min-h-full w-full md:w-80 p-4 content-center">
+                <X
+                  onClick={toggleDrawer}
+                  className="fixed top-4 right-4 text-valory-green cursor-pointer"
+                  size={32}
+                />
+                <Image
+                  src="/logo.svg"
+                  alt="Valory logo"
+                  width={70}
+                  height={70}
+                  className="mx-auto mb-4"
+                />
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm w-full text-white place-items-end pr-8 gap-2"
                 >
-                  Get involved
-                </Link>
+                  {headerLinks.map((link, index) => (
+                    <li key={index}>
+                      {link.isExternal ? (
+                        <a
+                          className={`text-lg ${hoverClass}`}
+                          href={link.url}
+                          target="_blank"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link
+                          className={`text-lg ${hoverClass}`}
+                          href={link.url}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+          </div>
 
-            <div className="dropdown dropdown-end block lg:hidden">
-              <button
-                className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
-                onClick={toggleMobileMenu}
+          <div className="sm:flex sm:gap-4">
+            <div className="hidden md:flex ml-6 xl:ml-12 p-4">
+              <Link
+                className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-medium transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent"
+                href="#"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="size-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              </button>
-              {showMobileMenu && (
-                <div className="dropdown">
-                  <ul
-                    tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-md z-[1] mt-3 w-52 p-2 shadow"
-                  >
-                    {headerLinks.map((link, index) => (
-                      <li key={index}>
-                        {link.isExternal ? (
-                          <a
-                            className={hoverClass}
-                            href={link.url}
-                            target="_blank"
-                          >
-                            {link.label}
-                          </a>
-                        ) : (
-                          <Link className={hoverClass} href={link.url}>
-                            {link.label}
-                          </Link>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                Get involved
+              </Link>
             </div>
           </div>
         </div>

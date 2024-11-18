@@ -1,62 +1,70 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { hoverClass } from 'styles/globals';
+import headerLinks from 'data/headerLinks.json';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer = () => (
   <footer className="footer bg-black">
-    <div className="grid grid-cols-3 grid-rows-3 max-sm:grid-cols-1 gap-x-8 text-white p-10 max-w-screen-2xl xl:w-[1400px] mx-auto">
-      <div className="md:row-start-2">
+    <div className="grid grid-cols-3 grid-rows-2 max-sm:grid-cols-1 gap-x-8 text-white p-10 max-w-screen-2xl xl:w-[1400px] mx-auto">
+      <div className="md:row-span-2 flex-flex-row">
+        <Image
+          src="/logo.svg"
+          alt="logo"
+          width={70}
+          height={70}
+          className="mb-2"
+        />
         <span className="text-5xl">Valory</span>
       </div>
 
       <div className="md:col-start-2 flex lg:flex-row flex-col gap-x-8">
-        <Link className={hoverClass} href="#">
+        <Link className={hoverClass} href="#mission-statement">
           Mission Statement
         </Link>
-        <Link className={hoverClass} href="#">
+        <Link className={hoverClass} href="#get-involved">
           Get involved
         </Link>
 
-        <details className="dropdown">
-          <summary className={hoverClass}>More</summary>
-          <ul className="dropdown-content p-4 bg-white rounded-md space-y-2 mt-2">
-            <li>
-              <Link className={`${hoverClass} text-black`} href="#">
-                Products
-              </Link>
-            </li>
-            <li>
-              <Link className={`${hoverClass} text-black`} href="#">
-                News
-              </Link>
-            </li>
-            <li>
-              <Link className={`${hoverClass} text-black`} href="#">
-                Newsletter
-              </Link>
-            </li>
-            <li>
-              <a className={`${hoverClass} text-black`} href="#">
-                Research
-              </a>
-            </li>
-            <li>
-              <Link className={`${hoverClass} text-black`} href="#">
-                Team
-              </Link>
-            </li>
-            <li>
-              <Link className={`${hoverClass} text-black`} href="#">
-                Investors
-              </Link>
-            </li>
-            <li>
-              <a className={`${hoverClass} text-black`} href="#">
-                Careers
-              </a>
-            </li>
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className={`flex ${hoverClass}`}>
+            More
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content bg-base-100 rounded-md mt-3 space-y-1 p-3 shadow"
+          >
+            {headerLinks.slice(2).map((link, index) => (
+              <li key={index}>
+                {link.isExternal ? (
+                  <a
+                    href={link.url}
+                    className={`${hoverClass} text-black`}
+                    target="_blank"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.url} className={`${hoverClass} text-black`}>
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            ))}
           </ul>
-        </details>
+        </div>
       </div>
+
+      <div className="md:col-start-3 md:row-start-1 flex flex-cols gap-8">
+        <a href="#" className={hoverClass}>
+          X icon
+        </a>
+        <a href="#" className={hoverClass}>
+          LinkedIn icon
+        </a>
+      </div>
+
       <div className="md:col-start-2 flex flex-cols gap-8">
         <span>
           Valory AG
@@ -68,22 +76,23 @@ export const Footer = () => (
           Switzerland
         </span>
       </div>
-      <div className="md:col-start-3 md:row-start-1 flex flex-cols gap-8">
-        <span>X icon</span>
-        <span>LinkedIn icon</span>
-      </div>
+
       <div className="md:col-start-3 gap-4">
-        <span>© 2021-2024 Valory AG</span>
+        {`© 2021-${CURRENT_YEAR} Valory AG`}
         <div>
-          <Link className="link" href="#">
+          <Link className={`link ${hoverClass}`} href="/privacy">
             Privacy Policy
           </Link>{' '}
           ·{' '}
-          <Link className="link" href="#">
+          <Link className={`link ${hoverClass}`} href="/terms">
             Terms
           </Link>{' '}
           ·{' '}
-          <a className="link" href="#">
+          <a
+            className={`link ${hoverClass}`}
+            href="https://github.com/valory-xyz/press-kit-valory"
+            target="_blank"
+          >
             Press Kit
           </a>
         </div>

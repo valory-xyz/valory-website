@@ -25,11 +25,14 @@ export const Header = () => {
           </Link>
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:block w-full">
           <nav aria-label="Global">
-            <ul className="flex items-center gap-6 xl:gap-12 text-sm">
+            <ul className="flex items-center gap-6 xl:gap-12 text-sm justify-center">
               {headerLinks.map((link, index) => (
-                <li key={index} className={`${hoverClass} w-min`}>
+                <li
+                  key={index}
+                  className={`${hoverClass} w-min whitespace-nowrap`}
+                >
                   {link.isExternal ? (
                     <a className={hoverClass} href={link.url} target="_blank">
                       {link.label}
@@ -111,7 +114,7 @@ export const Header = () => {
         <div className="sm:flex sm:gap-4">
           <div className="hidden md:flex xl:ml-12 xl:p-2">
             <Link
-              className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-bold font-poppins transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent"
+              className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-bold font-poppins transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent whitespace-nowrap"
               href="#"
             >
               Get involved

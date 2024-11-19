@@ -10,13 +10,13 @@ export const Footer = () => (
     <div className="grid grid-cols-3 grid-rows-2 max-sm:grid-cols-1 gap-x-8 text-white p-10 max-w-screen-2xl xl:w-[1400px] mx-auto">
       <div className="md:row-span-2 flex-flex-row">
         <Image
-          src="/logo.svg"
+          src="/images/logo.svg"
           alt="logo"
           width={70}
           height={70}
           className="mb-2"
         />
-        <span className="text-5xl">Valory</span>
+        <span className="text-5xl font-machina">Valory</span>
       </div>
 
       <div className="md:col-start-2 flex lg:flex-row flex-col gap-x-8">
@@ -57,11 +57,31 @@ export const Footer = () => (
       </div>
 
       <div className="md:col-start-3 md:row-start-1 flex flex-cols gap-8">
-        <a href="#" className={hoverClass}>
-          X icon
+        <a
+          href="https://x.com/valoryag"
+          className=""
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/images/footer/x.svg"
+            alt="Valory X"
+            width={20}
+            height={20}
+          />
         </a>
-        <a href="#" className={hoverClass}>
-          LinkedIn icon
+        <a
+          href="https://www.linkedin.com/company/valoryag/"
+          className=""
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src="/images/footer/linkedin.svg"
+            alt="Valory LinkedIn"
+            width={20}
+            height={20}
+          />
         </a>
       </div>
 

@@ -18,7 +18,7 @@ export const Header = () => {
           <div className="md:flex md:items-center md:gap-12 mr-6 xl:mr-12 p-4 max-xl:p-2">
             <Link className="block" href="/">
               <Image
-                src="/header-logo.svg"
+                src="/images/header-logo.svg"
                 alt="Valory"
                 width={100}
                 height={40}
@@ -65,19 +65,13 @@ export const Header = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               />
-              <div className="my-auto w-full pr-6 bg-black min-h-full w-full md:w-80 p-4 content-center">
+              <div className="my-auto w-full pr-6 bg-black min-h-full w-full md:w-1/2 p-4 content-center">
                 <X
                   onClick={toggleDrawer}
                   className="fixed top-4 right-4 text-valory-green cursor-pointer"
                   size={32}
                 />
-                <Image
-                  src="/logo.svg"
-                  alt="Valory logo"
-                  width={70}
-                  height={70}
-                  className="mx-auto mb-4"
-                />
+
                 <ul
                   tabIndex={0}
                   className="menu menu-sm w-full text-white place-items-end pr-8 gap-2"
@@ -86,7 +80,7 @@ export const Header = () => {
                     <li key={index}>
                       {link.isExternal ? (
                         <a
-                          className={`text-lg ${hoverClass}`}
+                          className={`text-lg tracking-wide ${hoverClass}`}
                           href={link.url}
                           target="_blank"
                         >
@@ -94,7 +88,7 @@ export const Header = () => {
                         </a>
                       ) : (
                         <Link
-                          className={`text-lg ${hoverClass}`}
+                          className={`text-lg tracking-wide ${hoverClass}`}
                           href={link.url}
                         >
                           {link.label}
@@ -103,6 +97,14 @@ export const Header = () => {
                     </li>
                   ))}
                 </ul>
+
+                <Image
+                  src="/images/logo.svg"
+                  alt="Valory logo"
+                  width={100}
+                  height={100}
+                  className="mx-auto mb-4"
+                />
               </div>
             </div>
           </div>
@@ -110,7 +112,7 @@ export const Header = () => {
           <div className="sm:flex sm:gap-4">
             <div className="hidden md:flex ml-6 xl:ml-12 p-4">
               <Link
-                className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-medium transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent"
+                className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-bold font-poppins transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent"
                 href="#"
               >
                 Get involved

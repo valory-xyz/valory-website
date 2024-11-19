@@ -15,8 +15,9 @@ export default {
         'valory-green': '#00f422',
       },
       fontFamily: {
-        machina: ['Neue Machina 5', 'sans-serif'],
-        // Machina font currently not working?
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        machina: ["'Neue Machina'", 'sans-serif'],
+        poppins: ["'Poppins Extralight'", 'san-serif'],
       },
     },
   },

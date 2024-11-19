@@ -24,13 +24,20 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif, machina;
+  font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 @font-face {
-  font-family: 'Neue Machina 5';
-  src: url('/fonts/neue-machina-5.woff2')format('woff2');
+  font-family: 'Neue Machina';
+  src: url('/fonts/neue-machina.woff2')format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'Poppins Extralight';
+  src: url('/fonts/poppins-extralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
 }

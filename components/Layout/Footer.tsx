@@ -7,8 +7,8 @@ const CURRENT_YEAR = new Date().getFullYear();
 
 export const Footer = () => (
   <footer className="footer bg-black">
-    <div className="grid grid-cols-3 grid-rows-2 max-sm:grid-cols-1 gap-x-8 text-white p-10 max-w-screen-2xl xl:w-[1400px] mx-auto">
-      <div className="md:row-span-2 flex-flex-row">
+    <div className="grid grid-cols-3 grid-rows-2 max-sm:grid-cols-1 gap-x-8 text-white my-10 max-w-screen-2xl xl:w-[1400px] mx-auto">
+      <div className="md:row-span-2 flex-flex-row ">
         <Image
           src="/images/logo.svg"
           alt="logo"

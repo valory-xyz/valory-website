@@ -1,0 +1,48 @@
+[
+    {
+      "label": "Mission Statement",
+      "url": "#mission-statement",
+      "isExternal": false
+    },
+    {
+      "label": "Get involved",
+      "url": "#get-involved",
+      "isExternal": false
+    },
+    {
+      "label": "Products",
+      "url": "#products",
+      "isExternal": false
+    },
+    {
+      "label": "News",
+      "url": "#news",
+      "isExternal": false
+    },
+    {
+      "label": "Newsletter",
+      "url": "#newsletter",
+      "isExternal": false
+    },
+    {
+      "label": "Research",
+      "url": "#research",
+      "isExternal": false
+    },
+    {
+      "label": "Team",
+      "url": "#team",
+      "isExternal": false
+    },
+    {
+      "label": "Investors",
+      "url": "#investors",
+      "isExternal": false
+    },
+    {
+      "label": "Careers",
+      "url": "https://wellfound.com/company/valory-3",
+      "isExternal": true
+    }
+  ]
+  

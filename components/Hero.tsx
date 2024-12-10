@@ -1,7 +1,7 @@
 import { Button } from './Button';
 
 export const Hero = () => (
-  <section className="flex bg-[url('/images/hero-bg.jpg')] bg-center min-h-[500px] h-[calc(100vh-90px)] bg-cover place-items-center">
+  <section className="flex bg-[url('/images/hero-bg.jpg')] bg-center bg-fixed min-h-[500px] h-[calc(100vh-90px)] bg-cover place-items-center">
     <div className="flex flex-col gap-8 mx-auto text-center max-w-[600px]">
       <h1 className="text-7xl font-machina leading-snug">
         Architecting Autonomy

@@ -12,7 +12,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-stone-200">
+    <header className="bg-stone-200 fixed w-full">
       <div className="max-w-screen-2xl xl:w-[1400px] flex h-24 items-center justify-between max-xl:max-w-[970px] mx-auto max-lg:mx-8">
         <div className="md:flex md:items-center md:gap-12 xl:mr-12 xl:p-2">
           <Link className="block" href="/">

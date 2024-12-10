@@ -21,6 +21,23 @@
   }
 }
 
+h1, h2 {
+  font-family: 'Neue Machina';
+  line-height: 1.375;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

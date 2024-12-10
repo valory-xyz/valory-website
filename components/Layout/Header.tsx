@@ -115,7 +115,7 @@ export const Header = () => {
           <div className="hidden md:flex xl:ml-12 xl:p-2">
             <Link
               className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-bold font-poppins transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent whitespace-nowrap"
-              href="#"
+              href="#get-involved"
             >
               Get involved
             </Link>

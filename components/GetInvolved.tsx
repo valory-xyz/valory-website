@@ -9,9 +9,11 @@ export const GetInvolved = () => (
     id="get-involved"
     className="flex bg-[radial-gradient(circle_at_50%,#014212,black)] text-center text-white"
   >
-    <div className="flex flex-col gap-4 max-w-[900px] mx-auto my-16 place-items-center">
+    <div className="flex flex-col gap-4 max-w-[900px] mx-auto my-16 place-items-center max-sm:mx-8">
       <div className={TEXT_MEDIUM_CLASS}>GET INVOLVED</div>
-      <h3>Benefit from autonomous AI agent economies, incentivized by Olas</h3>
+      <h3 className="max-sm:text-2xl">
+        Benefit from autonomous AI agent economies, incentivized by Olas
+      </h3>
       <div className="flex flex-col gap-6 py-4">
         <div className={hoverClass}>
           Bring synthetic users to your protocol, chain or app
@@ -22,7 +24,7 @@ export const GetInvolved = () => (
       </div>
       <Button
         text="Get funding now"
-        defaultClass="text-valory-green border-valory-green text-lg xl:px-10 xl:py-2 mt-2"
+        defaultClass="text-valory-green bg-valory-green/5 border-valory-green text-lg lg:px-8 lg:py-2 mt-2"
         hoverClass="bg-valory-green hover:text-black"
         href="mailto:sales@valory.xyz?subject=Get%20funding%20now"
         isExternal={true}

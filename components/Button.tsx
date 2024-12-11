@@ -15,7 +15,7 @@ export const Button = ({
   isExternal: boolean;
 }) => {
   const buttonClass =
-    'mx-auto px-2 py-3 xl:py-5 xl:px-20 border whitespace-nowrap transition duration-300 ease-in-out hover:';
+    'mx-auto px-2 py-3 border whitespace-nowrap transition duration-300 ease-in-out hover:';
 
   if (isExternal) {
     return (

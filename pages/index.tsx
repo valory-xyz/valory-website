@@ -1,3 +1,4 @@
+import { GetInvolved } from 'components/GetInvolved';
 import { Hero } from 'components/Hero';
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
@@ -9,6 +10,7 @@ export default function Home() {
       <Meta />
       <Hero />
       <MissionStatement />
+      <GetInvolved />
     </Layout>
   );
 }

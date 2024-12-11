@@ -21,7 +21,7 @@
   }
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: 'Neue Machina';
   line-height: 1.375;
 }
@@ -35,7 +35,7 @@ h2 {
 }
 
 h3 {
-  font-size: 24px;
+  font-size: 48px;
 }
 
 body {

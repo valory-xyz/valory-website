@@ -24,7 +24,7 @@ export const GetInvolved = () => (
         text="Get funding now"
         defaultClass="text-valory-green border-valory-green text-lg xl:px-10 xl:py-2 mt-2"
         hoverClass="bg-valory-green hover:text-black"
-        href=""
+        href="mailto:sales@valory.xyz?subject=Get%20funding%20now"
         isExternal={true}
       />
     </div>

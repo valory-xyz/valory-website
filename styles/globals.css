@@ -9,6 +9,10 @@
 @import "@fontsource/inter/700.css";
 @import "@fontsource/inter/800.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

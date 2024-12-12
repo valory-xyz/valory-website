@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { SiteLink } from './SiteLink';
 
 export const Hero = () => (
   <section className="flex bg-[url('/images/hero-bg.jpg')] bg-center bg-fixed min-h-[500px] h-[100vh] bg-cover place-items-center">
@@ -7,11 +7,12 @@ export const Hero = () => (
       <span className="text-xl md:text-2xl max-w-[400px] mx-auto">
         Creating open-source frameworks for co-owned AI
       </span>
-      <Button
+      <SiteLink
         text="Get involved"
         href="#get-involved"
-        defaultClass="bg-black text-valory-green text-xl max-w-[280px] px-20 py-5 mt-16"
-        hoverClass="bg-valory-green hover:text-black"
+        customClass="max-w-[280px] px-20 py-5 mt-16"
+        isExternal={false}
+        type="primary"
       />
     </div>
   </section>

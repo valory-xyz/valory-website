@@ -1,5 +1,5 @@
 export const MissionStatement = () => (
-  <section className="bg-neutral-100">
+  <section id="mission-statement" className="bg-neutral-100">
     <div className="flex flex-col divide-y divide-black gap-6 px-8 lg:px-20 py-24">
       <h2 className="lg:w-[320px] text-end max-sm:text-3xl">
         Mission statement

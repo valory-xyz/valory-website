@@ -1,5 +1,5 @@
 import { TEXT_MEDIUM_CLASS } from 'styles/globals';
-import { Button } from './Button';
+import { SiteLink } from './SiteLink';
 
 const hoverClass =
   'mx-auto rounded-full border border-white/20 px-5 py-3 text-sm font-medium bg-white/10 w-fit transition duration-300 ease-in-out hover:bg-transparent hover:border-transparent';
@@ -22,11 +22,11 @@ export const GetInvolved = () => (
           Generate synthetic data to improve agent architectures & AI models
         </div>
       </div>
-      <Button
+      <SiteLink
         text="Get funding now"
-        defaultClass="text-valory-green bg-valory-green/5 border-valory-green text-lg lg:px-8 lg:py-2 mt-2"
-        hoverClass="bg-valory-green hover:text-black"
+        customClass="text-valory-green bg-valory-green/5 border-valory-green text-lg lg:px-8 lg:py-2 mt-2"
         href="mailto:sales@valory.xyz?subject=Get%20funding%20now"
+        type="primary"
         isExternal={true}
       />
     </div>

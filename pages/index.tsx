@@ -4,6 +4,7 @@ import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 import { MissionStatement } from 'components/MissionStatement';
 import { Products } from 'components/Products';
+import { Team } from 'components/Team';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <MissionStatement />
       <GetInvolved />
       <Products />
+      <Team />
     </Layout>
   );
 }

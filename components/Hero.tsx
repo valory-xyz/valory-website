@@ -10,7 +10,7 @@ export const Hero = () => (
       <SiteLink
         text="Get involved"
         href="#get-involved"
-        customClass="max-w-[280px] px-20 py-5 mt-16"
+        customClass="max-w-[280px] px-20 py-5 mt-16 mx-auto"
         isExternal={false}
         type="primary"
       />

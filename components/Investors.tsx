@@ -10,7 +10,7 @@ const investors = [
 ];
 
 export const Investors = () => (
-  <section className="max-w-screen-xl mx-auto my-24">
+  <section id="investors" className="max-w-screen-xl mx-auto my-24">
     <h1 className="mb-8 md:mb-16 text-center">Investors</h1>
     <div className="grid md:grid-cols-3 gap-4 max-md:mx-12">
       {investors.map((logo, index) => (

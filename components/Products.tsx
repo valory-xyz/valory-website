@@ -19,7 +19,10 @@ const products = [
 ];
 
 export const Products = () => (
-  <section className="bg-[radial-gradient(circle_at_75%_100%,green,20%,black)]">
+  <section
+    id="products"
+    className="bg-[radial-gradient(circle_at_75%_100%,green,20%,black)]"
+  >
     <div className="flex flex-col place-items-center bg-[url('/images/products-bg.png')]">
       <div className={`${TEXT_MEDIUM_CLASS} mt-16 mb-8`}>PRODUCTS</div>
       <div className="flex flex-col max-sm:gap-16 md:flex-row justify-evenly w-full mb-16 max-w-screen-2xl max-sm:px-8">

@@ -31,7 +31,9 @@ export const Products = () => (
             key={product.title}
             className="flex flex-col max-sm:mx-auto gap-8 md:max-w-[210px] xl:max-w-[380px]"
           >
-            <h3 className="text-valory-green">{product.title}</h3>
+            <h3 className="text-valory-green max-sm:text-3xl">
+              {product.title}
+            </h3>
             <p className="text-lg text-white leading-7">{product.desc}</p>
             {product.href ? (
               <SiteLink

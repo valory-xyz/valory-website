@@ -1,5 +1,6 @@
 import { GetInvolved } from 'components/GetInvolved';
 import { Hero } from 'components/Hero';
+import { Investors } from 'components/Investors';
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 import { MissionStatement } from 'components/MissionStatement';
@@ -15,6 +16,7 @@ export default function Home() {
       <GetInvolved />
       <Products />
       <Team />
+      <Investors />
     </Layout>
   );
 }

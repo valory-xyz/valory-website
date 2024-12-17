@@ -25,7 +25,7 @@ html {
   }
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3 {
   font-family: 'Neue Machina';
   line-height: 1.375;
 }
@@ -40,10 +40,6 @@ h2 {
 
 h3 {
   font-size: 48px;
-}
-
-h4 {
-  font-size: 40px;
 }
 
 body {
@@ -63,6 +59,14 @@ body {
 @font-face {
   font-family: 'Poppins Extralight';
   src: url('/fonts/Poppins-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Light';
+  src: url('/fonts/Helvetica-W01-Light.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
   font-display: swap;

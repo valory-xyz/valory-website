@@ -5,6 +5,7 @@ import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 import { MissionStatement } from 'components/MissionStatement';
 import { Products } from 'components/Products';
+import { Research } from 'components/Research';
 import { Team } from 'components/Team';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <MissionStatement />
       <GetInvolved />
       <Products />
+      <Research />
       <Team />
       <Investors />
     </Layout>

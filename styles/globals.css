@@ -9,6 +9,10 @@
 @import "@fontsource/inter/700.css";
 @import "@fontsource/inter/800.css";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -19,6 +23,23 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+h1, h2, h3 {
+  font-family: 'Neue Machina';
+  line-height: 1.375;
+}
+
+h1 {
+  font-size: 72px;
+}
+
+h2 {
+  font-size: 60px;
+}
+
+h3 {
+  font-size: 48px;
 }
 
 body {

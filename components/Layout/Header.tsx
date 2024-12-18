@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { hoverClass } from 'styles/globals';
 import headerLinks from 'data/headerLinks.json';
 import { useState } from 'react';
+import { SiteLink } from 'components/SiteLink';
 
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -12,7 +13,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-stone-200">
+    <header className="bg-stone-200 fixed w-full">
       <div className="max-w-screen-2xl xl:w-[1400px] flex h-24 items-center justify-between max-xl:max-w-[970px] mx-auto max-lg:mx-8">
         <div className="md:flex md:items-center md:gap-12 xl:mr-12 xl:p-2">
           <Link className="block" href="/">
@@ -113,12 +114,13 @@ export const Header = () => {
 
         <div className="sm:flex sm:gap-4">
           <div className="hidden md:flex xl:ml-12 xl:p-2">
-            <Link
-              className="border-black border text-sm px-2 py-3 xl:py-3 xl:px-12 font-bold font-poppins transition duration-300 ease-in-out hover:bg-valory-green hover:border-transparent whitespace-nowrap"
-              href="#"
-            >
-              Get involved
-            </Link>
+            <SiteLink
+              text="Get involved"
+              customClass="xl:py-3 xl:px-12 font-poppins"
+              href="#get-involved"
+              isExternal={false}
+              type="secondary"
+            />
           </div>
         </div>
       </div>

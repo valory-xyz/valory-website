@@ -18,6 +18,7 @@ export const Research = () => (
               width={400}
               height={557}
               className="object-fill aspect-[400/557]"
+              quality={100}
             />
             <p className="text-xl font-machina">{paper.title}</p>
             <p className="text-sm">{paper.authors}</p>

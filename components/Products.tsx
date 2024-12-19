@@ -1,31 +1,12 @@
 import { TEXT_MEDIUM_CLASS } from 'styles/globals';
 import { SiteLink } from './SiteLink';
-
-const products = [
-  {
-    title: 'Propel',
-    desc: 'The fastest way to get a decentralized autonomous agent to market. \n A subscription service blending human and software services, to suit any organization size.',
-  },
-  {
-    title: 'Olas Protocol',
-    desc: 'The permissionless blockchain protocol for registering, running and securing open-source, decentralized and ownable autonomous agents.',
-    href: 'https://olas.network/protocol',
-  },
-  {
-    title: 'Olas Stack',
-    desc: 'Open-source framework for developing decentralized and ownable autonomous agents.',
-    href: 'https://olas.network/stack',
-  },
-];
+import products from 'data/products.json';
 
 export const Products = () => (
-  <section
-    id="products"
-    className="bg-[radial-gradient(circle_at_75%_100%,green,20%,black)]"
-  >
+  <section id="products" className="bg-custom-gradient">
     <div className="flex flex-col place-items-center bg-[url('/images/products-bg.png')]">
       <div className={`${TEXT_MEDIUM_CLASS} mt-16 mb-8`}>PRODUCTS</div>
-      <div className="flex flex-col max-sm:gap-16 md:flex-row justify-evenly w-full mb-16 max-w-screen-2xl max-sm:px-8">
+      <div className="flex flex-col max-sm:gap-16 md:flex-row justify-evenly w-full mb-16 max-w-screen-2xl max-md:px-8">
         {products.map((product) => (
           <div
             key={product.title}

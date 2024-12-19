@@ -1,8 +1,12 @@
 import { GetInvolved } from 'components/GetInvolved';
 import { Hero } from 'components/Hero';
+import { Investors } from 'components/Investors';
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 import { MissionStatement } from 'components/MissionStatement';
+import { Products } from 'components/Products';
+import { Research } from 'components/Research';
+import { Team } from 'components/Team';
 
 export default function Home() {
   return (
@@ -11,6 +15,10 @@ export default function Home() {
       <Hero />
       <MissionStatement />
       <GetInvolved />
+      <Products />
+      <Research />
+      <Team />
+      <Investors />
     </Layout>
   );
 }

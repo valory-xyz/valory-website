@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { investors } from 'data/investors';
+import investors from 'data/investors.json';
 
 export const Investors = () => (
   <section id="investors" className="max-w-screen-xl mx-auto my-24">

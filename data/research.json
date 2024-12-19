@@ -1,0 +1,87 @@
+[
+    {
+        "title": "Peer-to-peer Autonomous Agent Communication Network",
+        "imageSrc": "p2p-network.jpg",
+        "authors": "Lokman Rahmani, David Minarsch, Jonathan Ward",
+        "desc": "Reliable and secure communication between heterogeneously resourced autonomous agents controlled by competing stakeholders in a decentralized environment is a challenge. Agents require a means to find each other and communicate without reliance on a centralized party and participation in the system must be permissionless.",
+        "linkUrl": "https://www.ifaamas.org/Proceedings/aamas2021/pdfs/p1037.pdf"
+    },
+    {
+        "title": "Trading Agent Competition with Autonomous Economic Agents",
+        "imageSrc": "trading-agent-competition.jpg",
+        "authors": "David Minarsch, Seyed Ali Hosseini, Marco Favorito, and Jonathan Ward",
+        "desc": "We provide a case study for the Autonomous Economic Agent (AEA) framework; a toolkit for the development and deployment of autonomous agents with a focus on economic activities. The use case is the trading agent competition (TAC). It is a competition between autonomous agents with customizable strategies and market parameters.",
+        "linkUrl": "https://www.scitepress.org/Papers/2021/104318/104318.pdf"
+    },
+    {
+        "title": "Autonomous Economic Agents as a Second Layer Technology for Blockchains",
+        "imageSrc": "aa-for-blockchains.jpg",
+        "authors": "David Minarsch, Seyed Ali Hosseini, Marco Favorito, and Jonathan Ward",
+        "desc": "The user experience of interacting with distributed ledger technologies (DLT) is fraught with excessive complexity, high risk and unintuitive processes. Moreover, smart contracts deployed in these systems are restricted to being reactive.",
+        "linkUrl": "https://ieeexplore.ieee.org/abstract/document/9150195"
+    },
+    {
+        "title": "Fully Distributed Verifiable Random Functions and their Application to Decentralised Random Beacons",
+        "imageSrc": "fully-distributed-random-func.jpg",
+        "authors": "David Galindo, Jia Liu, Mihai Ordean and Jin-Mann Wong",
+        "desc": "We provide a systematic analysis of two multiparty protocols, namely Distributed Verifiable Random Functions (DVRFs) and Decentralised Random Beacons (DRBs), including their syntax and definition of robustness and privacy properties.",
+        "linkUrl": "https://eprint.iacr.org/2020/096.pdf"
+    },
+    {
+        "title": "Robust Subgroup Multi-Signatures for Consensus",
+        "imageSrc": "robust-subgroup-multi-sign.jpg",
+        "authors": "David Galindo and Jia Liu",
+        "desc": "We introduce a new multi-signature variant called robust subgroup multi-signatures, whereby any eligible subgroup of signers from the global set can produce a multi-signature on behalf of the group, even in the presence of a byzantine adversary. We propose several constructions that improve multi-signature computation time.",
+        "linkUrl": "https://eprint.iacr.org/2020/1478.pdf"
+    },
+    {
+        "title": "An Offline Delegatable Cryptocurrency System",
+        "imageSrc": "offline-crypto-system.jpg",
+        "authors": "Rujia Li, Qin Wang, Xinrui Zhang, Qi Wang, David Galindo and Yang Xiang",
+        "desc": "We propose DelegaCoin, an offline delegatable cryptocurrency system that uses trusted execution environments (TEEs) as decentralized \"virtual agents\" to prevent malicious delegation. In DelegaCoin, an owner can delegate his coins through offline-transactions without interacting with the blockchain network.",
+        "linkUrl": "https://ieeexplore.ieee.org/document/9461112"
+    },
+    {
+        "title": "A Practical Framework for General Dialogue-based Bilateral Interactions",
+        "imageSrc": "practical-framework.jpg",
+        "authors": "Seyed Ali Hosseini, David Minarsch, Marco Favorito",
+        "desc": "For autonomous agents and services to cooperate and interact in multiagent environments they require well-defined protocols. A multitude of protocol languages for multi-agent systems have been proposed in the past, but they have mostly remained theoretical or have limited prototypical implementations.",
+        "linkUrl": "https://link.springer.com/chapter/10.1007/978-3-030-97457-2_18"
+    },
+    {
+        "title": "Symbolic modelling of remote attestation protocols for device and app integrity on Android",
+        "imageSrc": "symbolic-modelling-on-android.jpg",
+        "authors": "Abdulla Aldoseri, Tom Chothia, José Moreira, David F. Oswald",
+        "linkUrl": "https://dl.acm.org/doi/10.1145/3579856.3582812"
+    },
+    {
+        "title": "Automatic verification of transparency protocols",
+        "imageSrc": "automatic-verification.jpg",
+        "authors": "Vincent Cheval, José Moreira, Mark Ryan",
+        "linkUrl": "https://ieeexplore.ieee.org/document/10190509"
+    },
+    {
+        "title": "Protocols for a Two-Tiered Trusted Computing Base",
+        "imageSrc": "protocols-for-2-tiered.jpg",
+        "authors": "José Moreira, Mark Ryan, Flavio D. Garcia",
+        "linkUrl": "https://link.springer.com/chapter/10.1007/978-3-031-17143-7_12"
+    },
+    {
+        "title": "Transparent Registration-Based Encryption through Blockchain",
+        "imageSrc": "transparent-reg-based-encryption.jpg",
+        "authors": "Qin Wang, Rujia Li, Qi Wang, David Galindo, Shiping Chen, Yang Xiang",
+        "linkUrl": "https://dl.acm.org/doi/10.1145/3568315"
+    },
+    {
+        "title": "SoK: TEE-Assisted Confidential Smart Contract",
+        "imageSrc": "SoK.jpg",
+        "authors": "Rujia Li, Qin Wang, Qi Wang, David Galindo, Mark Ryan",
+        "linkUrl": "https://petsymposium.org/popets/2022/popets-2022-0093.php"
+    },
+    {
+        "title": "Robust Subgroup Multi-Signatures for Consensus",
+        "imageSrc": "robust-subgroup-multi-sign(1).jpg",
+        "authors": "David Galindo, Jia Liu",
+        "linkUrl": "https://link.springer.com/chapter/10.1007/978-3-030-95312-6_22"
+    }
+]

@@ -19,6 +19,7 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         machina: ["'Neue Machina'", 'sans-serif'],
         poppins: ["'Poppins Extralight'", 'san-serif'],
+        helvetica: ["'Helvetica Light'", 'sans-serif'],
       },
     },
   },

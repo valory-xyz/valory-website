@@ -1,13 +1,13 @@
 [
     {
         "name": "David Minarsch",
-        "imageSrc": "david m.jpg",
+        "imageSrc": "david-m.jpg",
         "position": "Co-founder, CEO",
         "desc": "David led the team which built the first framework for developing MAS in the DLT space. He has founding experience via Entrepreneur First and a PhD in Applied Game Theory from the University of Cambridge."
     },
     {
         "name": "David Galindo",
-        "imageSrc": "david g.jpg",
+        "imageSrc": "david-g.jpg",
         "position": "Co-founder, CTO",
         "desc": "David is a renowned scientist in the field of cryptography. He has served as an Associate Professor of Computer Security at University of Birmingham and holds the world record for number of votes in a live digital voting ballot."
     },
@@ -24,7 +24,7 @@
     {
         "name": "Adamantios Zaras",
         "imageSrc": "adamantion.jpg",
-        "position": "Python Engineer – Coordinator"
+        "position": "Python Engineer - Coordinator"
     },
     {
         "name": "Adriano",
@@ -37,7 +37,7 @@
     },
     {
         "name": "Alex Kuperman",
-        "imageSrc": "Alex_Kuperman 2.jpg",
+        "imageSrc": "Alex-Kuperman-2.jpg",
         "link": "mailto:aleksandr.kuperman@valory.xyz",
         "position": "Senior Solidity Engineer"
     },
@@ -57,16 +57,16 @@
     },
     {
         "name": "Carol",
-        "position": "Product Manager – Dev Academy"
+        "position": "Product Manager - Dev Academy"
     },
     {
         "name": "David Vilela Freire",
-        "imageSrc": "david v.jpg",
+        "imageSrc": "david-v.jpg",
         "position": "Senior Python Engineer"
     },
     {
         "name": "Gaurav Lochab",
-        "imageSrc": "Gaurav (1).png",
+        "imageSrc": "Gaurav.png",
         "position": "Python Engineer"
     },
     {
@@ -137,7 +137,7 @@
     },
     {
         "name": "Tanya Priemova",
-        "imageSrc": "Tanya (1).jpg",
+        "imageSrc": "Tanya.jpg",
         "position": "Senior Frontend Engineer"
     },
     {
@@ -147,7 +147,7 @@
     },
     {
         "name": "Vibhuti Nageshwar",
-        "imageSrc": "Vibhuti (1).jpg",
+        "imageSrc": "Vibhuti.jpg",
         "position": "Marketer"
     },
     {

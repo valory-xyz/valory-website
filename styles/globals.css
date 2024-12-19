@@ -48,6 +48,14 @@ body {
   font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
+.bg-custom-gradient {
+  background: radial-gradient(circle at 75.76171875% 100%, rgba(0, 244, 34, 0.49) 0%, 20%, rgba(0, 244, 34, 0) 40%),
+              radial-gradient(circle at 29.781901041666664% 100%, rgba(0, 0, 0, 0.99) 0%, 25%, rgba(0, 0, 0, 0) 50%),
+              radial-gradient(circle at 6.165364583333333% 12.617187499999998%, #000000 0%, 42%, rgba(0, 0, 0, 0) 70%),
+              radial-gradient(circle at 93.6865234375% 11.42578125%, #000000 0%, 42%, rgba(0, 0, 0, 0) 70%),
+              radial-gradient(circle at 48.9013671875% 49.521484375%, #FFFFFF 0%, 100%, rgba(255, 255, 255, 0) 100%);
+}
+
 @font-face {
   font-family: 'Neue Machina';
   src: url('/fonts/neue-machina.woff2')format('woff2');

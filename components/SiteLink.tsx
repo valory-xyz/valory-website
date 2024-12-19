@@ -6,8 +6,8 @@ const primaryClass =
 const secondaryClass =
   'border-black text-sm font-bold hover:bg-valory-green hover:border-transparent';
 
-// const productClass =
-//   '';
+const productClass =
+  'bg-white hover:bg-black hover:text-white hover:border-black';
 
 export const SiteLink = ({
   text,
@@ -23,7 +23,6 @@ export const SiteLink = ({
   type: string;
 }) => {
   const fullClassName = `
-        mx-auto 
         px-2 
         py-3 
         border 
@@ -34,6 +33,7 @@ export const SiteLink = ({
         cursor-pointer
         ${type === 'primary' && primaryClass}
         ${type === 'secondary' && secondaryClass}
+        ${type === 'product' && productClass}
     `;
 
   if (isExternal) {

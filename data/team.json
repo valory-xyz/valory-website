@@ -1,0 +1,163 @@
+[
+    {
+        "name": "David Minarsch",
+        "imageSrc": "david-m.jpg",
+        "position": "Co-founder, CEO",
+        "desc": "David led the team which built the first framework for developing MAS in the DLT space. He has founding experience via Entrepreneur First and a PhD in Applied Game Theory from the University of Cambridge."
+    },
+    {
+        "name": "David Galindo",
+        "imageSrc": "david-g.jpg",
+        "position": "Co-founder, CTO",
+        "desc": "David is a renowned scientist in the field of cryptography. He has served as an Associate Professor of Computer Security at University of Birmingham and holds the world record for number of votes in a live digital voting ballot."
+    },
+    {
+        "name": "Oaksprout the Tan",
+        "imageSrc": "oak.jpg",
+        "position": "Co-founder, CPO",
+        "desc": "Oaksprout has made significant contributions to a number of cryptonetwork communities by developing well-used ecosystem tools, education sites and community building efforts."
+    },
+    {
+        "name": "A. Rosa Castillo",
+        "position": "Senior Crypto Engineer"
+    },
+    {
+        "name": "Adamantios Zaras",
+        "imageSrc": "adamantion.jpg",
+        "position": "Python Engineer - Coordinator"
+    },
+    {
+        "name": "Adriano",
+        "imageSrc": "adriano.jpg",
+        "position": "Delivery Lead"
+    },
+    {
+        "name": "AL",
+        "position": "Senior Crypto Engineer"
+    },
+    {
+        "name": "Alex Kuperman",
+        "imageSrc": "Alex-Kuperman-2.jpg",
+        "link": "mailto:aleksandr.kuperman@valory.xyz",
+        "position": "Senior Solidity Engineer"
+    },
+    {
+        "name": "Anna",
+        "imageSrc": "Anna.jpg",
+        "position": "Junior Software Engineer"
+    },
+    {
+        "name": "Ardian",
+        "imageSrc": "Ardian.png",
+        "position": "Software Engineer"
+    },
+    {
+        "name": "Artem",
+        "position": "Senior Systems Engineer"
+    },
+    {
+        "name": "Carol",
+        "position": "Product Manager - Dev Academy"
+    },
+    {
+        "name": "David Vilela Freire",
+        "imageSrc": "david-v.jpg",
+        "position": "Senior Python Engineer"
+    },
+    {
+        "name": "Gaurav Lochab",
+        "imageSrc": "Gaurav.png",
+        "position": "Python Engineer"
+    },
+    {
+        "name": "Gemma",
+        "imageSrc": "Gemma.jpeg",
+        "position": "Head of Operations"
+    },
+    {
+        "name": "Haneefa",
+        "imageSrc": "Haneefa.jpg",
+        "position": "Executive Assistant"
+    },
+    {
+        "name": "Iason Rovis",
+        "imageSrc": "Iason.jpg",
+        "position": "Product Manager - Apps"
+    },
+    {
+        "name": "José Moreira-Sánchez",
+        "position": "Senior Cryptography Engineer"
+    },
+    {
+        "name": "Joshua Miller",
+        "imageSrc": "Josh.jpg",
+        "position": "Senior Frontend Engineer"
+    },
+    {
+        "name": "Julinda Stefa",
+        "imageSrc": "Juli.png",
+        "position": "Senior Technical Product Manager"
+    },
+    {
+        "name": "Keshav Mishra",
+        "position": "Machine Learning Engineer"
+    },
+    {
+        "name": "Mariapia Moscatiello",
+        "imageSrc": "Pia.jpg",
+        "position": "Research Scientist Coordinator"
+    },
+    {
+        "name": "Mohan Das",
+        "position": "Frontend Engineer"
+    },
+    {
+        "name": "Ojuswi Rastogi",
+        "imageSrc": "Ojuswi.jpg",
+        "position": "Python Engineer"
+    },
+    {
+        "name": "Precious Joveres",
+        "position": "Junior Frontend Engineer"
+    },
+    {
+        "name": "Ralph Pahlmeyer",
+        "imageSrc": "Ralph.jpg",
+        "position": "Head of Business Development"
+    },
+    {
+        "name": "Roman Semenchenko",
+        "imageSrc": "Roman.jpg",
+        "position": "Product Designer"
+    },
+    {
+        "name": "Silvère Gangloff",
+        "imageSrc": "Silvere.jpg",
+        "position": "Research Scientist"
+    },
+    {
+        "name": "Tanya Priemova",
+        "imageSrc": "Tanya.jpg",
+        "position": "Senior Frontend Engineer"
+    },
+    {
+        "name": "Thomas Maybrier",
+        "imageSrc": "thomas.jpg",
+        "position": "Producer - Digital Media"
+    },
+    {
+        "name": "Vibhuti Nageshwar",
+        "imageSrc": "Vibhuti.jpg",
+        "position": "Marketer"
+    },
+    {
+        "name": "Victor Notaro",
+        "imageSrc": "Victor.jpg",
+        "position": "Accounting & Operations Associate"
+    },
+    {
+        "name": "Yuri Turchenkov",
+        "imageSrc": "Yuri.png",
+        "position": "Senior Python Engineer"
+    }
+]

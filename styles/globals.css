@@ -79,3 +79,11 @@ body {
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: 'Avenir LT';
+  src: url('/fonts/avenir-light-webfont.woff2')format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

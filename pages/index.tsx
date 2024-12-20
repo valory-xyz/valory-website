@@ -1,12 +1,13 @@
-import { GetInvolved } from 'components/GetInvolved';
-import { Hero } from 'components/Hero';
-import { Investors } from 'components/Investors';
+import { GetInvolved } from 'components/HomePage/GetInvolved';
+import { Hero } from 'components/HomePage/Hero';
+import { Investors } from 'components/HomePage/Investors';
+import { LatestNews } from 'components/HomePage/LatestNews';
+import { MissionStatement } from 'components/HomePage/MissionStatement';
+import { Products } from 'components/HomePage/Products';
+import { Research } from 'components/HomePage/Research';
+import { Team } from 'components/HomePage/Team';
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
-import { MissionStatement } from 'components/MissionStatement';
-import { Products } from 'components/Products';
-import { Research } from 'components/Research';
-import { Team } from 'components/Team';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <MissionStatement />
       <GetInvolved />
       <Products />
+      <LatestNews />
       <Research />
       <Team />
       <Investors />

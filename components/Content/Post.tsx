@@ -1,30 +1,56 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import ReactPlayer from 'react-player';
 
-export const Post = (article) => {
+interface Article {
+  fileName: string;
+  youtubeId?: string;
+  title: string;
+  date: string;
+  readTime: number;
+  description: string;
+}
+
+export const Post = ({ article }: { article: Article }) => {
+  const [imgSrc, setImgSrc] = useState(`/images/news/${article.fileName}.jpg`);
+
+  const handleImageError = () => {
+    setImgSrc(`/images/news/${article.fileName}.png`);
+  };
+
   return (
-    <Link href="#">
-      <article className="overflow-hidden shadow transition hover:shadow-lg">
-        <img
-          alt="Valory"
-          src={article.imageUrl}
-          className="h-56 w-full object-cover"
-        />
+    <Link href={`/post/${article.fileName}`}>
+      <article className="overflow-hidden shadow transition hover:shadow-lg h-full">
+        <div className="w-full h-[170px] overflow-hidden">
+          {article.youtubeId ? (
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${article.youtubeId}`}
+              width="100%"
+              height="100%"
+              light={`https://img.youtube.com/vi/${article.youtubeId}/hqdefault.jpg`}
+            />
+          ) : (
+            <Image
+              alt={`Valory - ${article.title}`}
+              src={imgSrc}
+              width={296}
+              height={222}
+              className="object-cover w-full h-full"
+              onError={handleImageError}
+            />
+          )}
+        </div>
 
         <div className="bg-white p-4 sm:p-6">
-          {/* <time datetime="2022-10-10" class="block text-xs text-gray-500"> 10th Oct 2022 </time> */}
+          <span className="text-xs font-avenir">
+            {article.date} • {article.readTime} min read
+          </span>
 
-          <a href="#">
-            <h3 className="mt-0.5 text-lg text-gray-900">
-              How to position your furniture for positivity
-            </h3>
-          </a>
+          <h3 className="mt-0.5 text-lg text-gray-900">{article.title}</h3>
 
           <p className="mt-2 line-clamp-3 text-sm/relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-            dolores, possimus pariatur animi temporibus nesciunt praesentium
-            dolore sed nulla ipsum eveniet corporis quidem, mollitia itaque
-            minus soluta, voluptates neque explicabo tempora nisi culpa eius
-            atque dignissimos. Molestias explicabo corporis voluptatem?
+            {article.description}
           </p>
         </div>
       </article>

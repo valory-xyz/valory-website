@@ -11,10 +11,21 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.1.0",
+    "@mikecousins/react-pdf": "^7.1.0",
+    "@opendocsg/pdf2md": "^0.2.1",
+    "@react-pdf/renderer": "^4.1.5",
+    "fs": "^0.0.1-security",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
+    "path": "^0.12.7",
+    "pdf2md": "^1.0.2",
+    "pdfjs-dist": "^4.9.155",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-pdf": "^9.2.0",
+    "react-pdf-viewer": "^0.1.0",
+    "react-player": "^2.16.0",
+    "react-youtube": "^10.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

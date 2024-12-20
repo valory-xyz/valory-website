@@ -20,6 +20,7 @@ export default {
         machina: ["'Neue Machina'", 'sans-serif'],
         poppins: ["'Poppins Extralight'", 'san-serif'],
         helvetica: ["'Helvetica Light'", 'sans-serif'],
+        avenir: ["'Avenir LT'", 'sans-serif'],
       },
     },
   },

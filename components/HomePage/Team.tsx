@@ -22,7 +22,7 @@ export const Team = () => (
                 src={
                   member.imageSrc
                     ? `/images/team/${member.imageSrc}`
-                    : `/images/team/no photo.jpg`
+                    : `/images/team/no-photo.jpg`
                 }
                 alt="Valory"
                 width={380}

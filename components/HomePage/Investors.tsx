@@ -1,13 +1,5 @@
 import Image from 'next/image';
-
-const investors = [
-  'true ventures logo.png',
-  'signature ventures logo.png',
-  'semantic logo.png',
-  'prime block logo.png',
-  'proof logo.png',
-  'atka logo.png',
-];
+import investors from 'data/investors.json';
 
 export const Investors = () => (
   <section id="investors" className="max-w-screen-xl mx-auto my-24">

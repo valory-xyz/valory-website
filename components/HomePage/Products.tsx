@@ -1,22 +1,6 @@
 import { TEXT_MEDIUM_CLASS } from 'styles/globals';
 import { SiteLink } from '../SiteLink';
-
-const products = [
-  {
-    title: 'Propel',
-    desc: 'The fastest way to get a decentralized autonomous agent to market. \n A subscription service blending human and software services, to suit any organization size.',
-  },
-  {
-    title: 'Olas Protocol',
-    desc: 'The permissionless blockchain protocol for registering, running and securing open-source, decentralized and ownable autonomous agents.',
-    href: 'https://olas.network/protocol',
-  },
-  {
-    title: 'Olas Stack',
-    desc: 'Open-source framework for developing decentralized and ownable autonomous agents.',
-    href: 'https://olas.network/stack',
-  },
-];
+import products from 'data/products.json';
 
 export const Products = () => (
   <section

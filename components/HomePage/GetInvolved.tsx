@@ -1,5 +1,5 @@
 import { TEXT_MEDIUM_CLASS } from 'styles/globals';
-import { SiteLink } from './SiteLink';
+import { SiteLink } from '../SiteLink';
 
 const hoverClass =
   'mx-auto rounded-full border border-white/20 px-5 py-3 text-sm font-medium bg-white/10 w-fit transition duration-300 ease-in-out hover:bg-transparent hover:border-transparent';
@@ -11,7 +11,7 @@ export const GetInvolved = () => (
   >
     <div className="flex flex-col gap-4 max-w-[900px] mx-auto my-16 place-items-center max-sm:mx-8">
       <div className={TEXT_MEDIUM_CLASS}>GET INVOLVED</div>
-      <h3 className="max-sm:text-2xl">
+      <h3 className="max-sm:text-2xl max-lg:text-3xl">
         Benefit from autonomous AI agent economies, incentivized by Olas
       </h3>
       <div className="flex flex-col gap-6 py-4">

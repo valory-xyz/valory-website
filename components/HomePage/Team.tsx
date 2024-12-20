@@ -4,13 +4,21 @@ import Image from 'next/image';
 export const Team = () => (
   <section id="team" className="bg-[#cddecc]">
     <div className="max-w-screen-2xl mx-auto">
-      <h1 className="pt-10 text-center max-sm:text-5xl">Team</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 overflow-auto flex-wrap gap-x-8 xl:gap-x-16 px-12">
-        {team.map((member) => {
+      <h1 className="pt-10 text-center max-md:text-4xl max-lg:text-5xl">
+        Team
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-3 overflow-auto flex-wrap gap-x-8 xl:gap-x-16 px-12">
+        {team.map((member, index) => {
+          let finalClass = '';
+
+          if (team.length % 2 !== 0 && index == team.length - 1) {
+            finalClass = 'md:row-span-1';
+          }
+
           return (
             <div
               key={member.name}
-              className="flex flex-col max-w-[280px] md:max-w-[300px] xl:max-w-[380px] my-8 mx-auto"
+              className={`flex flex-col max-w-[280px] md:max-w-[300px] xl:max-w-[380px] my-8 mx-auto ${finalClass}`}
             >
               <Image
                 src={
@@ -22,7 +30,6 @@ export const Team = () => (
                 width={380}
                 height={530}
                 className="mb-4"
-                quality={90}
               />
               <p className="text-2xl font-machina">{member.name}</p>
               <p className={member.desc ? 'mb-4' : ''}>{member.position}</p>

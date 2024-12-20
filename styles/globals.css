@@ -18,13 +18,6 @@ html {
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 h1, h2, h3 {
   font-family: 'Neue Machina';
   line-height: 1.375;
@@ -76,6 +69,14 @@ body {
   font-family: 'Helvetica Light';
   src: url('/fonts/Helvetica-W01-Light.woff2') format('woff2');
   font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir LT';
+  src: url('/fonts/avenir-light-webfont.woff2')format('woff2');
+  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }

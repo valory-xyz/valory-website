@@ -16,9 +16,11 @@ const normalizeDate = (dateString: string): Date => {
 export const News = ({
   limit,
   isMainPage = false,
+  showDescriptions = true,
 }: {
   limit?: number;
   isMainPage?: boolean;
+  showDescriptions?: boolean;
 }) => {
   const sortedPosts = posts.sort((a, b) => {
     const dateA = normalizeDate(a.date);
@@ -28,12 +30,18 @@ export const News = ({
   });
 
   return (
-    <section className="h-full max-w-screen-2xl px-8 xl:mx-auto">
+    <section className={`h-full max-w-screen-2xl px-8 xl:mx-auto`}>
       {isMainPage && <p className="text-lg my-6 max-sm:ml-4">All Posts</p>}
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div
+        className={`grid gap-8 md:grid-cols-2 ${limit == 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}
+      >
         {(limit ? sortedPosts.slice(0, limit) : sortedPosts).map(
           (article, index) => (
-            <Post key={index} article={article} />
+            <Post
+              key={index}
+              article={article}
+              showDescription={showDescriptions}
+            />
           ),
         )}
       </div>

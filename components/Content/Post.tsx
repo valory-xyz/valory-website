@@ -12,7 +12,13 @@ interface Article {
   description: string;
 }
 
-export const Post = ({ article }: { article: Article }) => {
+export const Post = ({
+  article,
+  showDescription,
+}: {
+  article: Article;
+  showDescription?: boolean;
+}) => {
   const [imgSrc, setImgSrc] = useState(`/images/news/${article.fileName}.jpg`);
 
   const handleImageError = () => {
@@ -49,9 +55,11 @@ export const Post = ({ article }: { article: Article }) => {
 
           <h3 className="mt-0.5 text-lg text-gray-900">{article.title}</h3>
 
-          <p className="mt-2 line-clamp-3 text-sm/relaxed">
-            {article.description}
-          </p>
+          {showDescription && (
+            <p className="mt-2 line-clamp-3 text-sm/relaxed">
+              {article.description}
+            </p>
+          )}
         </div>
       </article>
     </Link>

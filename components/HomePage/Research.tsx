@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { SiteLink } from '../SiteLink';
 
 export const Research = () => (
-  <section id="research" className="bg-neutral-200">
+  <section id="research" className="anchor bg-neutral-200">
     <div className="py-8 px-8 md:px-20 max-w-screen-2xl mx-auto">
-      <h1 className="max-sm:text-5xl mb-8">Research</h1>
+      <h1 className="max-sm:text-5xl mb-8 animate-slide-in-left">Research</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {research.map((paper) => (
           <div

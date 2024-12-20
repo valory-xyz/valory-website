@@ -22,6 +22,32 @@ export default {
         helvetica: ["'Helvetica Light'", 'sans-serif'],
         avenir: ["'Avenir LT'", 'sans-serif'],
       },
+      animation: {
+        'slide-in-right': 'slideInRight 1.5s ease-out',
+        'slide-in-left': 'slideInLeft 1.5s ease-out',
+      },
+      keyframes: {
+        slideInRight: {
+          '0%': {
+            transform: 'translateX(50%)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
+        slideInLeft: {
+          '0%': {
+            transform: 'translateX(-50%)',
+            opacity: '0',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+            opacity: '1',
+          },
+        },
+      },
     },
   },
   plugins: [daisyui],

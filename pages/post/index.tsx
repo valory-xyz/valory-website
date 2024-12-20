@@ -7,7 +7,7 @@ const NewsPage = () => (
     <Meta />
     <section className="mb-12">
       <div className="bg-neutral-200 flex h-[60vh] -w-full place-content-center">
-        <h1 className="my-auto text-[90px]">News</h1>
+        <h1 className="my-auto text-[90px] animate-slide-in-right">News</h1>
       </div>
 
       <News isMainPage={true} />

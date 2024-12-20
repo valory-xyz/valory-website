@@ -5,7 +5,7 @@ import products from 'data/products.json';
 export const Products = () => (
   <section
     id="products"
-    className="bg-[radial-gradient(circle_at_75%_100%,green,20%,black)]"
+    className="anchor bg-[radial-gradient(circle_at_75%_100%,green,20%,black)]"
   >
     <div className="flex flex-col place-items-center bg-[url('/images/products-bg.png')]">
       <div className={`${TEXT_MEDIUM_CLASS} mt-16 mb-8`}>PRODUCTS</div>

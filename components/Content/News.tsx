@@ -22,7 +22,12 @@ export const News = ({
   isMainPage?: boolean;
   showDescriptions?: boolean;
 }) => {
-  const sortedPosts = posts.sort((a, b) => {
+  const sortedPosts = posts
+  .map((post) => ({
+    ...post,
+    readTime: parseInt(post.readTime, 10),
+  }))
+  .sort((a, b) => {
     const dateA = normalizeDate(a.date);
     const dateB = normalizeDate(b.date);
 

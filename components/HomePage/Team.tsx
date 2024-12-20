@@ -4,7 +4,9 @@ import Image from 'next/image';
 export const Team = () => (
   <section id="team" className="bg-[#cddecc]">
     <div className="max-w-screen-2xl mx-auto">
-      <h1 className="pt-10 text-center max-sm:text-5xl">Team</h1>
+      <h1 className="pt-10 text-center max-md:text-4xl max-lg:text-5xl">
+        Team
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 overflow-auto flex-wrap gap-x-8 xl:gap-x-16 px-12">
         {team.map((member, index) => {
           let finalClass = '';

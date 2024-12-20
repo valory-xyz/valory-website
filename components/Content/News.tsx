@@ -23,16 +23,16 @@ export const News = ({
   showDescriptions?: boolean;
 }) => {
   const sortedPosts = posts
-  .map((post) => ({
-    ...post,
-    readTime: parseInt(post.readTime, 10),
-  }))
-  .sort((a, b) => {
-    const dateA = normalizeDate(a.date);
-    const dateB = normalizeDate(b.date);
+    .map((post) => ({
+      ...post,
+      readTime: parseInt(post.readTime, 10),
+    }))
+    .sort((a, b) => {
+      const dateA = normalizeDate(a.date);
+      const dateB = normalizeDate(b.date);
 
-    return dateB.getTime() - dateA.getTime();
-  });
+      return dateB.getTime() - dateA.getTime();
+    });
 
   return (
     <section className={`h-full max-w-screen-2xl px-8 xl:mx-auto`}>

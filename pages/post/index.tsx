@@ -4,7 +4,11 @@ import { News } from 'components/Content/News';
 
 const NewsPage = () => (
   <Layout>
-    <Meta />
+    <Meta
+      pageTitle="Valory News"
+      pageDesc="Read up on the latest articles and news, keep up to date with Valory!"
+      pageUrl="post"
+    />
     <section className="mb-12">
       <div className="bg-neutral-200 flex h-[60vh] -w-full place-content-center">
         <h1 className="my-auto text-[90px]">News</h1>

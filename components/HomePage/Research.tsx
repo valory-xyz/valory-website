@@ -24,7 +24,7 @@ export const Research = () => (
             {paper.desc && <p className="text-sm">{paper.desc}</p>}
             <SiteLink
               text="Read Paper"
-              customClass="px-14 font-bold w-fit"
+              customClass="px-14 font-bold w-fit text-sm"
               href={paper.linkUrl}
               isExternal={true}
               type="secondary"

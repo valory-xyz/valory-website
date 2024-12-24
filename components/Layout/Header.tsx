@@ -116,7 +116,7 @@ export const Header = () => {
           <div className="hidden md:flex xl:ml-12 xl:p-2">
             <SiteLink
               text="Get involved"
-              customClass="xl:py-3 xl:px-12 font-poppins"
+              customClass="xl:py-3 xl:px-12 font-poppins text-sm"
               href="#get-involved"
               isExternal={false}
               type="secondary"

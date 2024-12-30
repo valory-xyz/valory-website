@@ -33,18 +33,17 @@ export const Header = () => {
                 <li
                   key={index}
                   className={`${hoverClass} w-min whitespace-nowrap`}
+                  onClick={toggleDrawer}
                 >
-                  <button onClick={toggleDrawer}>
-                    {link.isExternal ? (
-                      <a className={hoverClass} href={link.url} target="_blank">
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link className={hoverClass} href={link.url}>
-                        {link.label}
-                      </Link>
-                    )}
-                  </button>
+                  {link.isExternal ? (
+                    <a className={hoverClass} href={link.url} target="_blank">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link className={hoverClass} href={link.url}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -82,7 +81,7 @@ export const Header = () => {
                 className="menu menu-sm w-full text-white place-items-end pr-8 gap-2"
               >
                 {headerLinks.map((link, index) => (
-                  <li key={index}>
+                  <li key={index} onClick={toggleDrawer}>
                     {link.isExternal ? (
                       <a
                         className={`text-lg tracking-wide ${hoverClass}`}

@@ -7,7 +7,7 @@ interface Article {
   fileName: string;
   youtubeId?: string;
   title: string;
-  Date: string;
+  date: string;
   readTime: number;
   description: string;
 }
@@ -50,7 +50,7 @@ export const Post = ({
 
         <div className="bg-white p-4 sm:p-6">
           <span className="text-xs font-avenir">
-            {article.Date} • {article.readTime} min read
+            {article.date} • {article.readTime} min read
           </span>
 
           <h3 className="mt-0.5 text-lg text-gray-900">{article.title}</h3>

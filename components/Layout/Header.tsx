@@ -34,15 +34,17 @@ export const Header = () => {
                   key={index}
                   className={`${hoverClass} w-min whitespace-nowrap`}
                 >
-                  {link.isExternal ? (
-                    <a className={hoverClass} href={link.url} target="_blank">
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link className={hoverClass} href={link.url}>
-                      {link.label}
-                    </Link>
-                  )}
+                  <button onClick={toggleDrawer}>
+                    {link.isExternal ? (
+                      <a className={hoverClass} href={link.url} target="_blank">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link className={hoverClass} href={link.url}>
+                        {link.label}
+                      </Link>
+                    )}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -116,7 +118,7 @@ export const Header = () => {
           <div className="hidden md:flex xl:ml-12 xl:p-2">
             <SiteLink
               text="Get involved"
-              customClass="xl:py-3 xl:px-12 font-poppins text-sm"
+              customClass="xl:py-3 xl:px-12 font-medium text-sm"
               href="#get-involved"
               isExternal={false}
               type="secondary"

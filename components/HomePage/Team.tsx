@@ -26,7 +26,7 @@ export const Team = () => (
                     ? `/images/team/${member.imageSrc}`
                     : `/images/team/no-photo.jpg`
                 }
-                alt="Valory"
+                alt={`Valory - ${member.name}`}
                 width={380}
                 height={530}
                 className="mb-4"

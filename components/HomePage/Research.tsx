@@ -10,7 +10,7 @@ export const Research = () => (
         {research.map((paper) => (
           <div
             key={paper.title}
-            className="flex flex-col gap-4 mx-auto font-helvetica"
+            className="flex flex-col gap-4 mx-auto font-helvetica text-sm"
           >
             <Image
               src={`/images/research/${paper.imageSrc}`}
@@ -20,11 +20,11 @@ export const Research = () => (
               className="object-fill aspect-[400/557] max-lg:mx-auto"
             />
             <p className="text-xl font-machina">{paper.title}</p>
-            <p className="text-sm">{paper.authors}</p>
-            {paper.desc && <p className="text-sm">{paper.desc}</p>}
+            <p>{paper.authors}</p>
+            <p className="line-clamp-5 lg:line-clamp-3">{paper.desc}</p>
             <SiteLink
               text="Read Paper"
-              customClass="px-14 font-bold w-fit text-sm"
+              customClass="px-14 font-bold w-fit"
               href={paper.linkUrl}
               isExternal={true}
               type="secondary"

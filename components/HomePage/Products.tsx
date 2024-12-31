@@ -13,7 +13,7 @@ export const Products = () => (
         {products.map((product) => (
           <div
             key={product.title}
-            className="flex flex-col max-sm:mx-auto gap-8 md:max-w-[210px] lg:max-w-[300px] xl:max-w-[380px]"
+            className="flex flex-col max-sm:mx-auto gap-8 md:max-w-[210px] lg:max-w-[300px] xl:max-w-[380px] max-md:mb-8"
           >
             <h3 className="text-valory-green max-lg:text-3xl">
               {product.title}

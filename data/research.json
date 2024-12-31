@@ -52,36 +52,42 @@
         "title": "Symbolic modelling of remote attestation protocols for device and app integrity on Android",
         "imageSrc": "symbolic-modelling-on-android.jpg",
         "authors": "Abdulla Aldoseri, Tom Chothia, José Moreira, David F. Oswald",
+        "desc": "Ensuring the integrity of a remote app or device is one of the most challenging concerns for the Android ecosystem. Software-based solutions provide limited protection and can usually be circumvented by repacking the mobile app or rooting the device.",
         "linkUrl": "https://dl.acm.org/doi/10.1145/3579856.3582812"
     },
     {
         "title": "Automatic verification of transparency protocols",
         "imageSrc": "automatic-verification.jpg",
         "authors": "Vincent Cheval, José Moreira, Mark Ryan",
+        "desc": "Transparency protocols are protocols whose actions can be publicly monitored by observers (such observers may include regulators, rights advocacy groups, or the general public). The observed actions are typically usages of private keys such as decryptions, and signings.",
         "linkUrl": "https://ieeexplore.ieee.org/document/10190509"
     },
     {
         "title": "Protocols for a Two-Tiered Trusted Computing Base",
         "imageSrc": "protocols-for-2-tiered.jpg",
         "authors": "José Moreira, Mark Ryan, Flavio D. Garcia",
+        "desc": "A trusted computing base (TCB) is the minimum set of hardware and software components which are inherently trusted by a platform, and upon which more complex secure services can be built. The TCB is secure by definition, and it is typically implemented through hardened hardware components, which ensure that their secret data cannot be compromised.",
         "linkUrl": "https://link.springer.com/chapter/10.1007/978-3-031-17143-7_12"
     },
     {
         "title": "Transparent Registration-Based Encryption through Blockchain",
         "imageSrc": "transparent-reg-based-encryption.jpg",
         "authors": "Qin Wang, Rujia Li, Qi Wang, David Galindo, Shiping Chen, Yang Xiang",
+        "desc": "Garg et al. (TCC 2018) defined the notion of registration-based encryption (RBE) where the private key generator (PKG) is decoupled from key management and replaced by a key curator (KC). KC does not possess any cryptographic secrets and only plays the role of aggregating the public keys of all the registered users and updating the public parameters whenever a new user joins the system, which solves the key escrow issue.",
         "linkUrl": "https://dl.acm.org/doi/10.1145/3568315"
     },
     {
         "title": "SoK: TEE-Assisted Confidential Smart Contract",
         "imageSrc": "SoK.jpg",
         "authors": "Rujia Li, Qin Wang, Qi Wang, David Galindo, Mark Ryan",
+        "desc": "The blockchain-based smart contract lacks privacy, since the contract state and instruction code are exposed to the public. Combining smart-contract execution with Trusted Execution Environments provides an efficient solution, called TEE-assisted smart contracts (TCSC), for protecting the confidentiality of contract states.",
         "linkUrl": "https://petsymposium.org/popets/2022/popets-2022-0093.php"
     },
     {
         "title": "Robust Subgroup Multi-Signatures for Consensus",
         "imageSrc": "robust-subgroup-multi-sign(1).jpg",
         "authors": "David Galindo, Jia Liu",
+        "desc": "Multi-signatures are used to attest that a given collection of n parties, indexed by their respective public keys, have all signed a given message. A recent popular application of multi-signatures is to be found in consensus protocols to attest that a qualified subset of a global set of n validators have reached agreement.",
         "linkUrl": "https://link.springer.com/chapter/10.1007/978-3-030-95312-6_22"
     }
 ]

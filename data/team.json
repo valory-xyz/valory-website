@@ -52,11 +52,6 @@
         "position": "Senior Software Engineer"
     },
     {
-        "name": "Naiane",
-        "imageSrc": "naiane.jpg",
-        "position": "Senior Software Engineer"
-    },
-    {
         "name": "Artem",
         "position": "Senior Systems Engineer"
     },
@@ -115,6 +110,11 @@
     {
         "name": "Mohan Das",
         "position": "Senior Frontend Engineer"
+    },
+    {
+        "name": "Naiane",
+        "imageSrc": "naiane.jpg",
+        "position": "Senior Software Engineer"
     },
     {
         "name": "Ojuswi Rastogi",

@@ -1,5 +1,60 @@
 import { SiteLink } from 'components/SiteLink';
 import Image from 'next/image';
+import academyMetrics from 'data/academyMetrics.json';
+import { GetStaticProps } from 'next';
+
+const academyTotals = academyMetrics.reduce(
+  (acc, val) => {
+    acc.participants += val.participants;
+    acc.graduates += val.graduates;
+    acc.placed += val.placed;
+    acc.hired += val.hired;
+    return acc;
+  },
+  {
+    participants: 0,
+    graduates: 0,
+    placed: 0,
+    hired: 0,
+  },
+);
+
+const AcademyTable = () => {
+  return (
+    <div className="mb-8 overflow-x-auto">
+      <table className="table-auto mx-auto divide-y divide-white/25 text-sm text-center">
+        <tr className="whitespace-nowrap border-b-2 border-white/25">
+          <th>Cohort</th>
+          <th>Total Participants</th>
+          <th>Graduates</th>
+          <th>Placed with Projects</th>
+          <th>Hired by Valory</th>
+        </tr>
+        {academyMetrics.map((val, index) => (
+          <tr key={index}>
+            <td className="font-bold">{index + 1}</td>
+            <td>{val.participants}</td>
+            <td>{val.graduates}</td>
+            <td>{val.placed == 0 ? '-' : val.placed}</td>
+            <td>{val.hired}</td>
+          </tr>
+        ))}
+        <tr className="font-bold border-t-2 border-white/25">
+          <td>Total</td>
+          <td>{academyTotals.participants}</td>
+          <td>{academyTotals.graduates}</td>
+          <td>{academyTotals.placed}</td>
+          <td>{academyTotals.hired}</td>
+        </tr>
+      </table>
+
+      <p className="caption-bottom text-xs text-left mt-8">
+        * Official project placements began with Cohort 7, marking a significant
+        milestone in connecting developers with real-world opportunities.
+      </p>
+    </div>
+  );
+};
 
 export const IntensiveProgram = () => (
   <section
@@ -52,6 +107,15 @@ export const IntensiveProgram = () => (
         <li>Experienced Python developer.</li>
         <li>Able to commit full-time for 4 weeks.</li>
       </ul>
+      <span className="font-bold text-[#ffffff99]">
+        A Track Record of Success
+      </span>
+      <p>
+        Since its inception, the Academy has consistently delivered impactful
+        results. Here&apos;s a snapshot of our accomplishments:
+      </p>
+      <p>Key Metrics by Cohort</p>
+      <AcademyTable />
       <SiteLink
         text="Show your interest"
         href="https://forms.gle/GnPABVfd9t7URFyZ6"
@@ -61,3 +125,12 @@ export const IntensiveProgram = () => (
     </div>
   </section>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  // The data is already imported above, so no additional fetching is necessary
+  return {
+    props: {
+      academyMetrics, // Pass the imported data as a prop
+    },
+  };
+};

@@ -46,6 +46,16 @@ body {
   font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
+td, th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+tr, th {
+  padding-right: 16px;
+  padding-left: 16px;
+}
+
 .bg-custom-gradient {
   background: radial-gradient(circle at 75.76171875% 100%, rgba(0, 244, 34, 0.49) 0%, 20%, rgba(0, 244, 34, 0) 40%),
               radial-gradient(circle at 29.781901041666664% 100%, rgba(0, 0, 0, 0.99) 0%, 25%, rgba(0, 0, 0, 0) 50%),

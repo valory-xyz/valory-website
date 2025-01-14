@@ -1,7 +1,6 @@
 import { SiteLink } from 'components/SiteLink';
 import Image from 'next/image';
 import academyMetrics from 'data/academyMetrics.json';
-import { GetStaticProps } from 'next';
 
 const academyTotals = academyMetrics.reduce(
   (acc, val) => {
@@ -30,13 +29,13 @@ const AcademyTable = () => {
           <th>Placed with Projects</th>
           <th>Hired by Valory</th>
         </tr>
-        {academyMetrics.map((val, index) => (
+        {academyMetrics.map((metric, index) => (
           <tr key={index}>
             <td className="font-bold">{index + 1}</td>
-            <td>{val.participants}</td>
-            <td>{val.graduates}</td>
-            <td>{val.placed == 0 ? '-' : val.placed}</td>
-            <td>{val.hired}</td>
+            <td>{metric.participants}</td>
+            <td>{metric.graduates}</td>
+            <td>{metric.placed == 0 ? '-' : metric.placed}</td>
+            <td>{metric.hired}</td>
           </tr>
         ))}
         <tr className="font-bold border-t-2 border-white/25">
@@ -114,7 +113,6 @@ export const IntensiveProgram = () => (
         Since its inception, the Academy has consistently delivered impactful
         results. Here&apos;s a snapshot of our accomplishments:
       </p>
-      <p>Key Metrics by Cohort</p>
       <AcademyTable />
       <SiteLink
         text="Show your interest"
@@ -125,12 +123,3 @@ export const IntensiveProgram = () => (
     </div>
   </section>
 );
-
-export const getStaticProps: GetStaticProps = async () => {
-  // The data is already imported above, so no additional fetching is necessary
-  return {
-    props: {
-      academyMetrics, // Pass the imported data as a prop
-    },
-  };
-};

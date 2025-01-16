@@ -18,7 +18,7 @@ export const markdownComponents = {
           width={560}
           height={315}
           allowFullScreen
-          className="mx-auto"
+          className="mx-auto max-sm:w-fit"
         />
       );
     }

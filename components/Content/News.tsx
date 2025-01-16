@@ -1,20 +1,19 @@
+import { getPosts } from 'components/common-util/api';
+import React, { useState, useEffect } from 'react';
 import { Post } from './Post';
-import posts from 'data/posts.json';
+import { Spinner } from 'components/Spinner';
 
-const normalizeDate = (dateString: string): Date => {
-  const today = new Date();
-  const hasYear = dateString.includes(',');
-
-  if (!hasYear) {
-    const currentYear = today.getFullYear();
-    return new Date(`${dateString}, ${currentYear}`);
-  }
-
-  return new Date(dateString);
-};
+export interface Article {
+  filename: string;
+  date: string;
+  readtime: number;
+  title: string;
+  description: string;
+  content: string;
+}
 
 export const News = ({
-  limit,
+  limit = 100,
   isMainPage = false,
   showDescriptions = true,
 }: {
@@ -22,26 +21,31 @@ export const News = ({
   isMainPage?: boolean;
   showDescriptions?: boolean;
 }) => {
-  const sortedPosts = posts
-    .map((post) => ({
-      ...post,
-      readTime: parseInt(post.readTime, 10),
-    }))
-    .sort((a, b) => {
-      const dateA = normalizeDate(a.date);
-      const dateB = normalizeDate(b.date);
+  const [posts, setPosts] = useState<Article[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-      return dateB.getTime() - dateA.getTime();
-    });
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const data = await getPosts({ limit });
+      setPosts(data);
+      setLoading(false);
+    };
+
+    fetchPosts();
+  }, [limit]);
+
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <section className={`h-full max-w-screen-2xl px-8 xl:mx-auto`}>
       {isMainPage && <p className="text-lg my-6 max-sm:ml-4">All Posts</p>}
       <div
-        className={`grid gap-8 md:grid-cols-2 ${limit == 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}
+        className={`grid gap-8 md:grid-cols-2 ${limit === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}
       >
-        {(limit ? sortedPosts.slice(0, limit) : sortedPosts).map(
-          (article, index) => (
+        {(limit ? posts.slice(0, limit) : posts).map(
+          (article: Article, index: number) => (
             <Post
               key={index}
               article={article}

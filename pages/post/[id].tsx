@@ -1,49 +1,52 @@
-import { Layout } from 'components/Layout';
-import { Meta } from 'components/Meta';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import React from 'react';
-import { News } from 'components/Content/News';
-import Link from 'next/link';
-import { PdfContent } from 'components/pdfContent';
+import React, { useEffect, useState } from 'react';
 
-import posts from 'data/posts.json';
-
-const getTags = ({ id }: { id: string | string[] | undefined }) => {
-  for (const item of posts) {
-    if (item.fileName === id) {
-      return {
-        title: item.title,
-        desc: item.description,
-        route: item.fileName,
-      };
-    }
-  }
-  return { title: '', desc: '' };
-};
+import { Layout } from 'components/Layout';
+import { Meta } from 'components/Meta';
+import { getPost } from 'components/common-util/api';
+import { Article, News } from 'components/Content/News';
+import { Spinner } from 'components/Spinner';
+import { formatDate } from 'components/Content/Post';
+import Markdown from 'components/common-util/Markdown';
 
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [post, setPost] = useState<Article>();
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const metadata = getTags({ id: id });
+  useEffect(() => {
+    const fetchPost = async () => {
+      if (!id) return;
+      const data = await getPost({ id });
+      setPost(data);
+      setLoading(false);
+    };
 
-  if (!id) {
-    return <div>Loading...</div>;
-  }
+    fetchPost();
+  }, [id]);
+
+  if (!post || loading) return <Spinner />;
 
   return (
     <Layout>
       <Meta
-        pageTitle={metadata?.title}
-        pageDesc={metadata?.desc}
-        pageUrl={`post/${metadata?.route}`}
+        pageTitle={post.title}
+        pageDesc={post.description}
+        pageUrl={`post/${post.filename}`}
       />
-      <section className="max-w-screen-lg mx-auto">
-        <div className="pt-32 pb-12 sm:px-8 lg:px-20 flex justify-center w-full">
-          <PdfContent id={`news-posts/${id}`} showSocials={true} />
-        </div>
-        <div className="sm:mx-20 place-content-center mb-8">
+      <section className="pt-32 max-w-screen-lg mx-auto">
+        <article className="md:py-12 sm:px-8 lg:px-20 md:border mb-12">
+          <div className="max-sm:px-8 max-sm:border-b flex flex-col justify-center w-full">
+            <div className="mb-4">
+              {formatDate(post.date)} • {post.readtime} min read
+            </div>
+            <Markdown>{post.content}</Markdown>
+          </div>
+        </article>
+        <div className="place-content-center mb-8">
           <div className="px-8 mb-4 flex justify-between">
             <span>Recent Posts</span>
             <Link href="/post">See all</Link>

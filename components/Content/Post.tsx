@@ -1,16 +1,29 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import ReactPlayer from 'react-player';
 
 interface Article {
-  fileName: string;
-  youtubeId?: string;
+  filename: string;
   title: string;
   date: string;
-  readTime: number;
+  readtime: number;
   description: string;
 }
+
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  const currentYear = new Date().getFullYear();
+
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: '2-digit',
+  };
+
+  const newDate = new Intl.DateTimeFormat('en-US', options).format(date);
+
+  return date.getFullYear() === currentYear ? newDate.slice(0, -5) : newDate;
+};
 
 export const Post = ({
   article,
@@ -19,38 +32,30 @@ export const Post = ({
   article: Article;
   showDescription?: boolean;
 }) => {
-  const [imgSrc, setImgSrc] = useState(`/images/news/${article.fileName}.jpg`);
+  const [imgSrc, setImgSrc] = useState(`/images/news/${article.filename}.jpg`);
 
   const handleImageError = () => {
-    setImgSrc(`/images/news/${article.fileName}.png`);
+    setImgSrc(`/images/news/${article.filename}.png`);
   };
 
   return (
-    <Link href={`/post/${article.fileName}`}>
+    <Link href={`/post/${article.filename}`}>
       <article className="overflow-hidden shadow transition hover:shadow-lg h-full">
         <div className="w-full h-[170px] overflow-hidden">
-          {article.youtubeId ? (
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${article.youtubeId}`}
-              width="100%"
-              height="100%"
-              light={`https://img.youtube.com/vi/${article.youtubeId}/hqdefault.jpg`}
-            />
-          ) : (
-            <Image
-              alt={`Valory - ${article.title}`}
-              src={imgSrc}
-              width={296}
-              height={222}
-              className="object-cover w-full h-full"
-              onError={handleImageError}
-            />
-          )}
+          <Image
+            alt={`Valory - ${article.title}`}
+            src={imgSrc}
+            width={296}
+            height={222}
+            className="object-cover w-full h-full"
+            onError={handleImageError}
+          />
+          {/* )} */}
         </div>
 
         <div className="bg-white p-4 sm:p-6">
           <span className="text-xs font-avenir">
-            {article.date} • {article.readTime} min read
+            {formatDate(article.date)} • {article.readtime} min read
           </span>
 
           <h3 className="mt-0.5 text-lg text-gray-900">{article.title}</h3>

@@ -3,14 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { Post } from './Post';
 import { Spinner } from 'components/Spinner';
 
-export interface Article {
+export type Article = {
   filename: string;
   date: string;
   readtime: number;
   title: string;
   description: string;
   content: string;
-}
+};
 
 export const News = ({
   limit = 100,
@@ -25,13 +25,17 @@ export const News = ({
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const data = await getPosts({ limit });
-      setPosts(data);
-      setLoading(false);
-    };
+    try {
+      const fetchPosts = async () => {
+        const data = await getPosts({ limit });
+        setPosts(data);
+        setLoading(false);
+      };
 
-    fetchPosts();
+      fetchPosts();
+    } catch (error) {
+      console.error(error);
+    }
   }, [limit]);
 
   if (loading) {

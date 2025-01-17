@@ -7,10 +7,10 @@ export const labelClass =
 
 export const markdownComponents = {
   a: ({ ...props }) => {
-    const href = String(props.href);
+    const url = String(props.children);
 
-    if (href.includes('youtube.com')) {
-      const youtubeId = href.split('v=')[1]?.split('&')[0];
+    if (url.includes('youtube.com')) {
+      const youtubeId = url.split('v=')[1]?.split('&')[0];
       const embedUrl = `https://www.youtube.com/embed/${youtubeId}`;
       return (
         <iframe
@@ -23,8 +23,8 @@ export const markdownComponents = {
       );
     }
 
-    if (href.includes('x.com')) {
-      const tweetId = href.split('status/')[1]?.split('?')[0];
+    if (url.includes('x.com')) {
+      const tweetId = url.split('status/')[1]?.split('?')[0];
       return <TwitterTweetEmbed tweetId={tweetId} />;
     }
 
@@ -50,7 +50,11 @@ export const markdownComponents = {
   img: ({ ...props }) => {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img {...props} className="mx-auto max-w-full" alt="Valory" />
+      <img
+        {...props}
+        className="mx-auto max-w-full"
+        alt={`Valory - ${props.alt}`}
+      />
     );
   },
   h1: ({ ...props }) => <h1 className="text-3xl font-bold mb-4" {...props} />,

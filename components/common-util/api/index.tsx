@@ -8,7 +8,6 @@ const apiCall = async ({ params }: { params: Record<string, unknown> }) => {
 
   try {
     const url = `${URL}/posts${params ? '?' : ''}${stringifyParams}`;
-    // const url = `${URL}/posts`;
 
     const response = await fetch(url, {
       method: 'GET',
@@ -37,11 +36,7 @@ export const getPosts = async ({ limit }: { limit: number }) => {
   return data;
 };
 
-export const getPost = async ({
-  id,
-}: {
-  id: string | string[] | undefined;
-}) => {
+export const getPost = async ({ id }: { id?: string }) => {
   const params = {
     populate: '*',
     filters: {
@@ -50,6 +45,5 @@ export const getPost = async ({
   };
 
   const json = await apiCall({ params });
-  const data = json && json.data ? json.data : [];
-  return data[0];
+  return json?.data?.[0] ?? null;
 };

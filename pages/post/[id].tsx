@@ -9,7 +9,7 @@ import { getPost } from 'components/common-util/api';
 import { Article, News } from 'components/Content/News';
 import { Spinner } from 'components/Spinner';
 import { formatDate } from 'components/Content/Post';
-import Markdown from 'components/common-util/Markdown';
+import { Markdown } from 'components/common-util/Markdown';
 
 const Post = () => {
   const router = useRouter();
@@ -18,14 +18,20 @@ const Post = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchPost = async () => {
-      if (!id) return;
-      const data = await getPost({ id });
-      setPost(data);
-      setLoading(false);
-    };
+    if (!id) return;
+    if (typeof id === 'string') {
+      const fetchPost = async () => {
+        try {
+          const data = await getPost({ id });
+          setPost(data);
+          setLoading(false);
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
-    fetchPost();
+      fetchPost();
+    }
   }, [id]);
 
   if (!post || loading) return <Spinner />;

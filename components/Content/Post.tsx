@@ -1,14 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-
-interface Article {
-  filename: string;
-  title: string;
-  date: string;
-  readtime: number;
-  description: string;
-}
+import { Article } from './News';
 
 export const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -50,7 +43,6 @@ export const Post = ({
             className="object-cover w-full h-full"
             onError={handleImageError}
           />
-          {/* )} */}
         </div>
 
         <div className="bg-white p-4 sm:p-6">

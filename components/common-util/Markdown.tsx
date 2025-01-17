@@ -3,7 +3,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { markdownComponents } from 'styles/globals';
 
-const Markdown = ({
+export const Markdown = ({
   className,
   children,
 }: {
@@ -22,5 +22,3 @@ const Markdown = ({
     {children}
   </ReactMarkdown>
 );
-
-export default Markdown;

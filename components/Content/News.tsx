@@ -10,6 +10,14 @@ export type Article = {
   title: string;
   description: string;
   content: string;
+  images: {
+    formats: {
+      large: { url: string };
+      medium: { url: string };
+      thumbnail: { url: string };
+    };
+    alt: string;
+  }[];
 };
 
 export const News = ({

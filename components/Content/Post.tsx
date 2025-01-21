@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo } from 'react';
 import { Article } from './News';
 
 export const formatDate = (dateString: string) => {
@@ -25,11 +25,15 @@ export const Post = ({
   article: Article;
   showDescription?: boolean;
 }) => {
-  const [imgSrc, setImgSrc] = useState(`/images/news/${article.filename}.jpg`);
+  const image = useMemo(() => {
+    const imageData = article?.images?.[0];
 
-  const handleImageError = () => {
-    setImgSrc(`/images/news/${article.filename}.png`);
-  };
+    if (imageData) {
+      return `${process.env.NEXT_PUBLIC_API_URL}${imageData.formats.large.url}`;
+    }
+
+    return `/images/news/default.jpg`;
+  }, [article]);
 
   return (
     <Link href={`/post/${article.filename}`}>
@@ -37,11 +41,10 @@ export const Post = ({
         <div className="w-full h-[170px] overflow-hidden">
           <Image
             alt={`Valory - ${article.title}`}
-            src={imgSrc}
+            src={image}
             width={296}
             height={222}
             className="object-cover w-full h-full"
-            onError={handleImageError}
           />
         </div>
 

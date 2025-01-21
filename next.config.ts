@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  images: {
+    domains: ['valory-cms-backend.staging.autonolas.tech'],
+  },
   async headers() {
     return [
       {

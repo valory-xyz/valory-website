@@ -30,18 +30,10 @@ export const markdownComponents = {
 
     return <a className="text-purple-800 hover:text-blue-800" {...props} />;
   },
-  p: ({ ...props }) => (
-    <>
-      <p className="inline" {...props} />
-      <br />
-    </>
-  ),
+  p: ({ ...props }) => <span className="mb-4" {...props} />,
   strong: ({ ...props }) => <strong {...props}></strong>,
   ul: ({ ...props }) => (
-    <>
-      <ul className="list-disc list-inside ml-4 inline-block" {...props} />
-      <br />
-    </>
+    <ul className="list-disc list-inside ml-4 mb-4 inline-block" {...props} />
   ),
   ol: ({ ...props }) => (
     <ol className="list-decimal list-inside inline-block" {...props} />

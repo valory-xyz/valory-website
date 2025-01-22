@@ -1,4 +1,4 @@
-import { getPosts } from 'components/common-util/api';
+import { getPosts } from 'components/api';
 import React, { useState, useEffect } from 'react';
 import { Post } from './Post';
 import { Spinner } from 'components/Spinner';

@@ -2,21 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo } from 'react';
 import { Article } from './News';
-
-export const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  const currentYear = new Date().getFullYear();
-
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'short',
-    day: '2-digit',
-  };
-
-  const newDate = new Intl.DateTimeFormat('en-US', options).format(date);
-
-  return date.getFullYear() === currentYear ? newDate.slice(0, -5) : newDate;
-};
+import { formatDate } from 'utils/formatDate';
 
 export const Post = ({
   article,
@@ -28,11 +14,9 @@ export const Post = ({
   const image = useMemo(() => {
     const imageData = article?.images?.[0];
 
-    if (imageData) {
-      return `${process.env.NEXT_PUBLIC_API_URL}${imageData.formats.large.url}`;
-    }
-
-    return `/images/news/default.jpg`;
+    return imageData
+      ? `${process.env.NEXT_PUBLIC_API_URL}${imageData.formats.large.url}`
+      : `/images/news/default.jpg`;
   }, [article]);
 
   return (

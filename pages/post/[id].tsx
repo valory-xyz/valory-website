@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react';
 
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
-import { getPost } from 'components/common-util/api';
+import { getPost } from 'components/api';
 import { Article, News } from 'components/Content/News';
 import { Spinner } from 'components/Spinner';
-import { formatDate } from 'components/Content/Post';
-import { Markdown } from 'components/common-util/Markdown';
+import { formatDate } from 'utils/formatDate';
+import { Markdown } from 'components/Markdown';
 
 const Post = () => {
   const router = useRouter();
@@ -18,20 +18,19 @@ const Post = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (!id) return;
-    if (typeof id === 'string') {
-      const fetchPost = async () => {
-        try {
-          const data = await getPost({ id });
-          setPost(data);
-          setLoading(false);
-        } catch (error) {
-          console.error(error);
-        }
-      };
+    if (!id || typeof id !== 'string') return;
 
-      fetchPost();
-    }
+    const fetchPost = async () => {
+      try {
+        const data = await getPost({ id });
+        setPost(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPost();
   }, [id]);
 
   if (!post || loading) return <Spinner />;

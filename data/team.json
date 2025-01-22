@@ -19,12 +19,12 @@
     },
     {
         "name": "A. Rosa Castillo",
-        "position": "Senior Crypto Engineer"
+        "position": "Senior ML Engineer"
     },
     {
         "name": "Adamantios Zaras",
         "imageSrc": "adamantion.jpg",
-        "position": "Senior Python Engineer - Coordinator"
+        "position": "Senior Python Engineer"
     },
     {
         "name": "Adriano",
@@ -64,6 +64,11 @@
         "imageSrc": "david-v.jpg",
         "position": "Senior Python Engineer"
     },
+    {
+        "name": "Divya Nautiyal",
+        "imageSrc": "Divya.jpg",
+        "position": "Python Engineer"
+    },    
     {
         "name": "Gaurav Lochab",
         "imageSrc": "Gaurav.png",

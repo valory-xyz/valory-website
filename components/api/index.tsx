@@ -32,7 +32,7 @@ export const getPosts = async ({ limit }: { limit: number }) => {
   };
 
   const json = await apiCall({ params });
-  const data = json && json.data ? json.data : [];
+  const data = json?.data || [];
   return data;
 };
 

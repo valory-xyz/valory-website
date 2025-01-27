@@ -2,23 +2,7 @@ import { getPosts } from 'components/api';
 import React, { useState, useEffect } from 'react';
 import { Post } from './Post';
 import { Spinner } from 'components/Spinner';
-
-export type Article = {
-  filename: string;
-  date: string;
-  readtime: number;
-  title: string;
-  description: string;
-  content: string;
-  images: {
-    formats: {
-      large: { url: string };
-      medium: { url: string };
-      thumbnail: { url: string };
-    };
-    alt: string;
-  }[];
-};
+import { Article } from 'components/Article';
 
 export const News = ({
   limit = 100,
@@ -33,17 +17,17 @@ export const News = ({
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    try {
-      const fetchPosts = async () => {
+    const fetchPosts = async () => {
+      try {
         const data = await getPosts({ limit });
         setPosts(data);
         setLoading(false);
-      };
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-      fetchPosts();
-    } catch (error) {
-      console.error(error);
-    }
+    fetchPosts();
   }, [limit]);
 
   if (loading) {

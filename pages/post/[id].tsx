@@ -6,10 +6,11 @@ import React, { useEffect, useState } from 'react';
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 import { getPost } from 'components/api';
-import { Article, News } from 'components/Content/News';
+import { News } from 'components/Content/News';
 import { Spinner } from 'components/Spinner';
 import { formatDate } from 'utils/formatDate';
 import { Markdown } from 'components/Markdown';
+import { Article } from 'components/Article';
 
 const Post = () => {
   const router = useRouter();

@@ -1,8 +1,10 @@
-import { getPosts } from 'components/api';
 import React, { useState, useEffect } from 'react';
-import { Post } from './Post';
+
+import { getPosts } from 'utils/api';
 import { Spinner } from 'components/Spinner';
-import { Article } from 'components/Article';
+import { Article } from 'types/Article';
+
+import { Post } from './Post';
 
 export const News = ({
   limit = 100,
@@ -40,15 +42,13 @@ export const News = ({
       <div
         className={`grid gap-8 md:grid-cols-2 ${limit === 3 ? 'lg:grid-cols-3' : 'lg:grid-cols-4'}`}
       >
-        {(limit ? posts.slice(0, limit) : posts).map(
-          (article: Article, index: number) => (
-            <Post
-              key={index}
-              article={article}
-              showDescription={showDescriptions}
-            />
-          ),
-        )}
+        {(limit ? posts.slice(0, limit) : posts).map((article, index) => (
+          <Post
+            key={index}
+            article={article}
+            showDescription={showDescriptions}
+          />
+        ))}
       </div>
     </section>
   );

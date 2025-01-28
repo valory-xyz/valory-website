@@ -3,14 +3,14 @@ import { useRouter } from 'next/router';
 
 import React, { useEffect, useState } from 'react';
 
-import { Layout } from 'components/Layout';
-import { Meta } from 'components/Meta';
-import { getPost } from 'components/api';
+import { getPost } from 'utils/api';
+import { formatDate } from 'utils/formatDate';
 import { News } from 'components/Content/News';
 import { Spinner } from 'components/Spinner';
-import { formatDate } from 'utils/formatDate';
+import { Layout } from 'components/Layout';
+import { Meta } from 'components/Meta';
 import { Markdown } from 'components/Markdown';
-import { Article } from 'components/Article';
+import { Article } from 'types/Article';
 
 const Post = () => {
   const router = useRouter();
@@ -34,7 +34,10 @@ const Post = () => {
     fetchPost();
   }, [id]);
 
-  if (!post || loading) return <Spinner />;
+  if (loading) return <Spinner />;
+
+  if (!post)
+    return <div className="mx-auto text-center">Post does not exist</div>;
 
   return (
     <Layout>

@@ -23,7 +23,7 @@ export const markdownComponents = {
       );
     }
 
-    if (url.includes('x.com')) {
+    if (url.includes('x.com' || 'twitter.com')) {
       const tweetId = url.split('status/')[1]?.split('?')[0];
       return <TwitterTweetEmbed tweetId={tweetId} />;
     }

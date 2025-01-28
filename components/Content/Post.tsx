@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { Article } from 'components/Article';
+
 import { formatDate } from 'utils/formatDate';
+import { Article } from 'types/Article';
 
 export const Post = ({
   article,

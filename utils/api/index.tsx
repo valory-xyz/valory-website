@@ -36,7 +36,7 @@ export const getPosts = async ({ limit }: { limit: number }) => {
   return data;
 };
 
-export const getPost = async ({ id }: { id?: string }) => {
+export const getPost = async ({ id }: { id: string }) => {
   const params = {
     populate: '*',
     filters: {

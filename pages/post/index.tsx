@@ -14,7 +14,7 @@ const NewsPage = () => (
         <h1 className="my-auto text-[90px]">News</h1>
       </div>
 
-      <News isMainPage={true} />
+      <News limit={100} isMainPage={true} />
     </section>
   </Layout>
 );

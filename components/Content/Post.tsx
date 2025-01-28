@@ -1,16 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import ReactPlayer from 'react-player';
+import { useMemo } from 'react';
 
-interface Article {
-  fileName: string;
-  youtubeId?: string;
-  title: string;
-  date: string;
-  readTime: number;
-  description: string;
-}
+import { formatDate } from 'utils/formatDate';
+import { Article } from 'types/Article';
 
 export const Post = ({
   article,
@@ -19,38 +12,30 @@ export const Post = ({
   article: Article;
   showDescription?: boolean;
 }) => {
-  const [imgSrc, setImgSrc] = useState(`/images/news/${article.fileName}.jpg`);
+  const image = useMemo(() => {
+    const imageData = article?.images?.[0].formats?.large?.url;
 
-  const handleImageError = () => {
-    setImgSrc(`/images/news/${article.fileName}.png`);
-  };
+    return imageData
+      ? `${process.env.NEXT_PUBLIC_API_URL}${imageData}`
+      : `/images/default.jpg`;
+  }, [article]);
 
   return (
-    <Link href={`/post/${article.fileName}`}>
+    <Link href={`/post/${article.filename}`}>
       <article className="overflow-hidden shadow transition hover:shadow-lg h-full">
         <div className="w-full h-[170px] overflow-hidden">
-          {article.youtubeId ? (
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${article.youtubeId}`}
-              width="100%"
-              height="100%"
-              light={`https://img.youtube.com/vi/${article.youtubeId}/hqdefault.jpg`}
-            />
-          ) : (
-            <Image
-              alt={`Valory - ${article.title}`}
-              src={imgSrc}
-              width={296}
-              height={222}
-              className="object-cover w-full h-full"
-              onError={handleImageError}
-            />
-          )}
+          <Image
+            alt={`Valory - ${article.title}`}
+            src={image}
+            width={296}
+            height={222}
+            className="object-cover w-full h-full"
+          />
         </div>
 
         <div className="bg-white p-4 sm:p-6">
           <span className="text-xs font-avenir">
-            {article.date} • {article.readTime} min read
+            {formatDate(article.date)} • {article.readtime} min read
           </span>
 
           <h3 className="mt-0.5 text-lg text-gray-900">{article.title}</h3>

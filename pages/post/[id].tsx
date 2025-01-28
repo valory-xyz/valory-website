@@ -1,49 +1,61 @@
-import { Layout } from 'components/Layout';
-import { Meta } from 'components/Meta';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { getPost } from 'utils/api';
+import { formatDate } from 'utils/formatDate';
 import { News } from 'components/Content/News';
-import Link from 'next/link';
-import { PdfContent } from 'components/pdfContent';
-
-import posts from 'data/posts.json';
-
-const getTags = ({ id }: { id: string | string[] | undefined }) => {
-  for (const item of posts) {
-    if (item.fileName === id) {
-      return {
-        title: item.title,
-        desc: item.description,
-        route: item.fileName,
-      };
-    }
-  }
-  return { title: '', desc: '' };
-};
+import { Spinner } from 'components/Spinner';
+import { Layout } from 'components/Layout';
+import { Meta } from 'components/Meta';
+import { Markdown } from 'components/Markdown';
+import { Article } from 'types/Article';
 
 const Post = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [post, setPost] = useState<Article>();
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const metadata = getTags({ id: id });
+  useEffect(() => {
+    if (!id || typeof id !== 'string') return;
 
-  if (!id) {
-    return <div>Loading...</div>;
-  }
+    const fetchPost = async () => {
+      try {
+        const data = await getPost({ id });
+        setPost(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPost();
+  }, [id]);
+
+  if (loading) return <Spinner />;
+
+  if (!post)
+    return <div className="mx-auto text-center">Post does not exist</div>;
 
   return (
     <Layout>
       <Meta
-        pageTitle={metadata?.title}
-        pageDesc={metadata?.desc}
-        pageUrl={`post/${metadata?.route}`}
+        pageTitle={post.title}
+        pageDesc={post.description}
+        pageUrl={`post/${post.filename}`}
       />
-      <section className="max-w-screen-lg mx-auto">
-        <div className="pt-32 pb-12 sm:px-8 lg:px-20 flex justify-center w-full">
-          <PdfContent id={`news-posts/${id}`} showSocials={true} />
-        </div>
-        <div className="sm:mx-20 place-content-center mb-8">
+      <section className="pt-32 max-w-screen-lg mx-auto">
+        <article className="md:py-12 sm:px-8 lg:px-20 md:border mb-12">
+          <div className="max-sm:px-8 max-sm:border-b flex flex-col justify-center w-full">
+            <div className="mb-4">
+              {formatDate(post.date)} • {post.readtime} min read
+            </div>
+            <Markdown>{post.content}</Markdown>
+          </div>
+        </article>
+        <div className="place-content-center mb-8">
           <div className="px-8 mb-4 flex justify-between">
             <span>Recent Posts</span>
             <Link href="/post">See all</Link>

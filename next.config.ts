@@ -45,6 +45,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/academy',
+        destination: 'https://olas.network/academy',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

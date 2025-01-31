@@ -13,10 +13,13 @@ export const Post = ({
   showDescription?: boolean;
 }) => {
   const image = useMemo(() => {
-    const imageData = article?.images?.[0].formats?.large?.url;
+    const imageData = article?.images?.[0].formats;
+
+    const largeUrl = imageData?.large?.url;
+    const backupUrl = imageData?.thumbnail?.url;
 
     return imageData
-      ? `${process.env.NEXT_PUBLIC_API_URL}${imageData}`
+      ? `${process.env.NEXT_PUBLIC_API_URL}${largeUrl || backupUrl}`
       : `/images/default.jpg`;
   }, [article]);
 

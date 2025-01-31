@@ -28,7 +28,7 @@ export const Products = () => (
                 type="product"
               />
             ) : (
-              <div className="text-white bg-neutral-600 opacity-60 px-2 py-3 whitespace-nowrap italic cursor-default w-fit">
+              <div className="text-neutral-300 bg-neutral-600 px-2 py-3 whitespace-nowrap italic cursor-default w-fit">
                 Coming soon...
               </div>
             )}

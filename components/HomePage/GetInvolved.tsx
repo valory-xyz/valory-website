@@ -16,12 +16,13 @@ export const GetInvolved = () => (
           Bring synthetic users to your protocol, chain or app
         </div>
         <div className={labelClass}>
-          Generate synthetic data to improve agent architectures & AI models
+          Olas Accelerator is giving up to $1,000,000 (plus OLAS <br />
+          developer rewards) to builders of the best AI Agents on Olas.
         </div>
       </div>
       <SiteLink
         text="Get funding now"
-        href="mailto:sales@valory.xyz?subject=Get%20funding%20now"
+        href="https://olas.network/accelerator"
         type="dark"
         isExternal={true}
       />

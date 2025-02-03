@@ -1,7 +1,9 @@
 [
     {
-      "title": "Propel",
-      "desc": "The fastest way to get a decentralized autonomous agent to market. \n A subscription service blending human and software services, to suit any organization size."
+      "title": "Pearl",
+      "desc": "The “agent app store”, a simple desktop app enabling anyone to actually own their own AI agents, in use cases from social influencers to DeFAI.",
+      "href": "https://olas.network/operate",
+      "btnText": "Try it today"
     },
     {
       "title": "Olas Protocol",

@@ -21,7 +21,7 @@ export const Products = () => (
             <p className="text-lg text-white leading-7">{product.desc}</p>
             {product.href ? (
               <SiteLink
-                text="Learn more"
+                text={product.btnText ? product.btnText : 'Learn more'}
                 customClass="w-fit"
                 href={product.href}
                 isExternal={true}

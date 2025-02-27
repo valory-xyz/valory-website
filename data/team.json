@@ -63,7 +63,7 @@
         "name": "Divya Nautiyal",
         "imageSrc": "Divya.jpg",
         "position": "Python Engineer"
-    },    
+    },
     {
         "name": "Gaurav Lochab",
         "imageSrc": "Gaurav.png",
@@ -101,6 +101,10 @@
         "name": "Mariapia Moscatiello",
         "imageSrc": "Pia.jpg",
         "position": "Research Scientist Coordinator"
+    },
+    {
+        "name": "Michael",
+        "position": "Product Manager - DeFi"
     },
     {
         "name": "Mohan Das",

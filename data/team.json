@@ -27,11 +27,6 @@
         "position": "Senior Python Engineer"
     },
     {
-        "name": "Adriano",
-        "imageSrc": "adriano.jpg",
-        "position": "Delivery Lead"
-    },
-    {
         "name": "AL",
         "position": "Senior Crypto Engineer"
     },
@@ -98,6 +93,11 @@
         "position": "Machine Learning Engineer"
     },
     {
+        "name": "Kim",
+        "imageSrc": "Kim.png",
+        "position": "Executive & Personal Assistant"
+    },
+    {
         "name": "Mariapia Moscatiello",
         "imageSrc": "Pia.jpg",
         "position": "Research Scientist Coordinator"
@@ -109,11 +109,6 @@
     {
         "name": "Mohan Das",
         "position": "Senior Frontend Engineer"
-    },
-    {
-        "name": "Naiane",
-        "imageSrc": "naiane.jpg",
-        "position": "Senior Software Engineer"
     },
     {
         "name": "Ojuswi Rastogi",

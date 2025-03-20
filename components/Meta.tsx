@@ -35,7 +35,7 @@ export const Meta = ({
       <meta property="og:image" content={SITE_DEFAULT_IMAGE_URL} />
 
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={SITE_URL} />
+      <meta property="twitter:url" content={url} />
       <meta property="twitter:title" content={title} />
       <meta
         property="twitter:description"

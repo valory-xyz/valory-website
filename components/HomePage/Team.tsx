@@ -12,9 +12,9 @@ export const Team = () => {
   return (
     <section id="team" className="bg-[#cddecc]">
       <div className="max-w-screen-2xl mx-auto">
-        <h1 className="pt-10 text-center max-md:text-4xl max-lg:text-5xl">
+        <h2 className="big-heading pt-10 text-center max-md:text-4xl max-lg:text-5xl">
           Team
-        </h1>
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 overflow-auto flex-wrap gap-x-8 xl:gap-x-16 px-12">
           {sortedTeam.map((member, index) => {
             let finalClass = '';

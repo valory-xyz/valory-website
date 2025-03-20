@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\""
@@ -14,6 +15,7 @@
     "@mikecousins/react-pdf": "^7.1.0",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
+    "next-sitemap": "^4.2.3",
     "path": "^0.12.7",
     "pdfjs-dist": "^4.9.155",
     "qs": "^6.14.0",

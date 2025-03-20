@@ -10,6 +10,7 @@ const PrivacyPage = () => (
       pageUrl="privacy"
     />
     <section className="max-w-screen-lg mx-auto mb-10 pt-32">
+      <h2 className="big-heading mb-4 text-xl">Privacy Policy </h2>
       <PdfContent id="privacy" />
     </section>
   </Layout>

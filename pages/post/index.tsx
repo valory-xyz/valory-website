@@ -11,7 +11,7 @@ const NewsPage = () => (
     />
     <section className="mb-12">
       <div className="bg-neutral-200 flex h-[60vh] -w-full place-content-center">
-        <h1 className="my-auto text-[90px]">News</h1>
+        <h2 className="big-heading my-auto text-[90px]">News</h2>
       </div>
 
       <News limit={100} isMainPage={true} />

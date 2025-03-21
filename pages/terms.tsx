@@ -10,6 +10,7 @@ const TermsPage = () => (
       pageUrl="terms"
     />
     <section className="max-w-screen-lg mx-auto mb-10 pt-32">
+      <h2 className="big-heading mb-4 text-xl">Terms and Conditions </h2>
       <PdfContent id="terms" />
     </section>
   </Layout>

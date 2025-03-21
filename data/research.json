@@ -18,7 +18,7 @@
         "imageSrc": "aa-for-blockchains.jpg",
         "authors": "David Minarsch, Seyed Ali Hosseini, Marco Favorito, and Jonathan Ward",
         "desc": "The user experience of interacting with distributed ledger technologies (DLT) is fraught with excessive complexity, high risk and unintuitive processes. Moreover, smart contracts deployed in these systems are restricted to being reactive.",
-        "linkUrl": "https://ieeexplore.ieee.org/abstract/document/9150195"
+        "linkUrl": "https://ieeexplore.ieee.org/document/9150195"
     },
     {
         "title": "Fully Distributed Verifiable Random Functions and their Application to Decentralised Random Beacons",
@@ -60,7 +60,7 @@
         "imageSrc": "automatic-verification.jpg",
         "authors": "Vincent Cheval, José Moreira, Mark Ryan",
         "desc": "Transparency protocols are protocols whose actions can be publicly monitored by observers (such observers may include regulators, rights advocacy groups, or the general public). The observed actions are typically usages of private keys such as decryptions, and signings.",
-        "linkUrl": "https://ieeexplore.ieee.org/document/10190509"
+        "linkUrl": "https://ieeexplore.ieee.org/abstract/document/10190509"
     },
     {
         "title": "Protocols for a Two-Tiered Trusted Computing Base",

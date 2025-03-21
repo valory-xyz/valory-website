@@ -12,7 +12,7 @@ import { Meta } from 'components/Meta';
 export default function Home() {
   return (
     <Layout>
-      <Meta />
+      <Meta pageTitle="Valory" />
       <Hero />
       <MissionStatement />
       <GetInvolved />

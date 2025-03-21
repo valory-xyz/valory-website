@@ -1,18 +1,18 @@
 [
-    {
-      "title": "Pearl",
-      "desc": "The “agent app store”, a simple desktop app enabling anyone to actually own their own AI agents, in use cases from social influencers to DeFAI.",
-      "href": "https://olas.network/operate",
-      "btnText": "Try it today"
-    },
-    {
-      "title": "Olas Protocol",
-      "desc": "The permissionless blockchain protocol for registering, running and securing open-source, decentralized and ownable autonomous agents.",
-      "href": "https://olas.network/protocol"
-    },
-    {
-      "title": "Olas Stack",
-      "desc": "Open-source framework for developing decentralized and ownable autonomous agents.",
-      "href": "https://olas.network/stack"
-    }
-  ]
+  {
+    "title": "Pearl",
+    "desc": "The “agent app store”, a simple desktop app enabling anyone to actually own their own AI agents, in use cases from social influencers to DeFAI.",
+    "href": "https://olas.network/operate",
+    "btnText": "Try it today"
+  },
+  {
+    "title": "Olas Protocol",
+    "desc": "The permissionless blockchain protocol for registering, running and securing open-source, decentralized and ownable autonomous agents.",
+    "href": "https://olas.network/protocol"
+  },
+  {
+    "title": "Olas Stack",
+    "desc": "Open-source framework for developing decentralized and ownable autonomous agents.",
+    "href": "https://olas.network/stack"
+  }
+]

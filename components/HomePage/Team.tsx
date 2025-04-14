@@ -11,36 +11,32 @@ export const Team = () => {
 
   return (
     <section id="team" className="bg-[#cddecc]">
-      <div className="max-w-screen-2xl mx-auto">
-        <h2 className="big-heading pt-10 text-center max-md:text-4xl max-lg:text-5xl">
+      <div className="py-8 px-8 md:px-20 max-w-screen-2xl mx-auto">
+        <h1 className="max-md:text-4xl max-lg:text-5xl text-center mb-8">
           Team
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 overflow-auto flex-wrap gap-x-8 xl:gap-x-16 px-12">
-          {sortedTeam.map((member, index) => {
-            let finalClass = '';
-
-            if (team.length % 2 !== 0 && index == team.length - 1) {
-              finalClass = 'md:row-span-1';
-            }
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {sortedTeam.map((member) => {
+            const imageSrc = member.imageSrc
+              ? `/images/team/${member.imageSrc}`
+              : '/images/team/no-photo.jpg';
 
             return (
               <div
                 key={member.name}
-                className={`flex flex-col max-w-[280px] md:max-w-[300px] xl:max-w-[380px] my-8 mx-auto ${finalClass}`}
+                className="flex flex-col gap-4 mx-auto font-helvetica text-sm w-full max-w-[280px] md:max-w-[300px] xl:max-w-[380px]"
               >
                 <Image
-                  src={
-                    member.imageSrc
-                      ? `/images/team/${member.imageSrc}`
-                      : `/images/team/no-photo.jpg`
-                  }
+                  src={imageSrc}
                   alt={`Valory - ${member.name}`}
                   width={380}
                   height={530}
-                  className="mb-4"
+                  className="object-fill aspect-[38/53] w-full"
                 />
-                <p className="text-2xl font-machina">{member.name}</p>
-                <p className={member.desc ? 'mb-4' : ''}>{member.position}</p>
+                <div>
+                  <p className="text-2xl font-machina">{member.name}</p>
+                  <p>{member.position}</p>
+                </div>
                 <p>{member.desc}</p>
               </div>
             );

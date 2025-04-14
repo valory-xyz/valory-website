@@ -23,8 +23,8 @@ export const Header = () => {
         onChange={toggleDrawer}
       />
 
-      <div className="drawer-content flex flex-col z-0">
-        <header className="bg-stone-200 fixed top-0 left-0 w-full z-50">
+      <div className="drawer-content flex flex-col">
+        <header className="bg-stone-200 fixed top-0 left-0 w-full">
           <div className="max-w-screen-2xl xl:w-[1400px] flex h-24 items-center justify-between max-xl:max-w-[970px] mx-auto max-lg:mx-8">
             <div className="md:flex md:items-center md:gap-12 xl:mr-12 xl:p-2">
               <Link className="block" href="/">
@@ -92,7 +92,7 @@ export const Header = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         />
-        <ul className="menu bg-black text-white min-h-full w-80 p-4 absolute z-100">
+        <ul className="menu bg-black text-white min-h-full w-80 p-4 absolute z-40">
           <X
             className="mb-12 ml-auto text-valory-green"
             onClick={toggleDrawer}

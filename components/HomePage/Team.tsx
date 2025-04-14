@@ -24,7 +24,7 @@ export const Team = () => {
             return (
               <div
                 key={member.name}
-                className="flex flex-col gap-4 mx-auto font-helvetica text-sm  max-w-[280px] md:max-w-[300px] xl:max-w-[380px]"
+                className="flex flex-col gap-4 mx-auto font-helvetica text-sm w-full max-w-[280px] md:max-w-[300px] xl:max-w-[380px]"
               >
                 <Image
                   src={imageSrc}

@@ -76,12 +76,12 @@
     {
         "name": "Haneefa",
         "imageSrc": "Haneefa.jpg",
-        "position": "Executive Assistant"
+        "position": "Operations Associate"
     },
     {
         "name": "Iason Rovis",
         "imageSrc": "Iason.jpg",
-        "position": "Product Manager - Apps"
+        "position": "Senior Product Manager - Apps"
     },
     {
         "name": "José Moreira-Sánchez",
@@ -90,11 +90,11 @@
     {
         "name": "Julinda Stefa",
         "imageSrc": "Juli.png",
-        "position": "Senior Technical Product Manager"
+        "position": "Product and Delivery Lead"
     },
     {
         "name": "Keshav Mishra",
-        "position": "Machine Learning Engineer"
+        "position": "Senior Machine Learning Engineer"
     },
     {
         "name": "Kim",
@@ -117,7 +117,7 @@
     {
         "name": "Ojuswi Rastogi",
         "imageSrc": "Ojuswi.jpg",
-        "position": "Python Engineer"
+        "position": "Senior Python Engineer"
     },
     {
         "name": "Precious Joveres",
@@ -141,7 +141,7 @@
     {
         "name": "Tanya Priemova",
         "imageSrc": "Tanya.jpg",
-        "position": "Senior Frontend Engineer"
+        "position": "Lead Frontend Engineer"
     },
     {
         "name": "Thomas Maybrier",

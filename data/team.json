@@ -50,10 +50,6 @@
         "position": "Lead Systems Engineer"
     },
     {
-        "name": "Carol",
-        "position": "Product Manager - Dev Academy"
-    },
-    {
         "name": "David Vilela Freire",
         "imageSrc": "david-v.jpg",
         "position": "Senior Python Engineer"
@@ -132,11 +128,6 @@
         "name": "Roman Semenchenko",
         "imageSrc": "Roman.jpg",
         "position": "Product Designer"
-    },
-    {
-        "name": "Silvère Gangloff",
-        "imageSrc": "Silvere.jpg",
-        "position": "Research Scientist"
     },
     {
         "name": "Tanya Priemova",

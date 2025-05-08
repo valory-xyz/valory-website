@@ -12,10 +12,10 @@
         "desc": "David is a renowned scientist in the field of cryptography. He has served as an Associate Professor of Computer Security at University of Birmingham and holds the world record for number of votes in a live digital voting ballot."
     },
     {
-        "name": "Oaksprout the Tan",
-        "imageSrc": "oak.jpg",
-        "position": "Co-founder",
-        "desc": "Oaksprout has made significant contributions to a number of cryptonetwork communities by developing well-used ecosystem tools, education sites and community building efforts."
+        "name": "Gemma",
+        "imageSrc": "Gemma.jpeg",
+        "position": "COO",
+        "desc": "Gemma is a serial entrepreneur, selected for Jumpstart’s top 1% of UK early-careerists. She has been founding and consulting for innovative businesses and charities since 2015."
     },
     {
         "name": "A. Rosa Castillo",
@@ -63,11 +63,6 @@
         "name": "Gaurav Lochab",
         "imageSrc": "Gaurav.png",
         "position": "Python Engineer"
-    },
-    {
-        "name": "Gemma",
-        "imageSrc": "Gemma.jpeg",
-        "position": "Head of Operations"
     },
     {
         "name": "Haneefa",

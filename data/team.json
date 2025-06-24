@@ -38,7 +38,7 @@
     },
     {
         "name": "Aram",
-        "imageSrc": "Aram.jpg",
+        "imageSrc": "Aram.png",
         "position": "Community Marketer"
     },
     {
@@ -50,14 +50,27 @@
         "position": "Lead Systems Engineer"
     },
     {
+        "name": "Ashish",
+        "position": "Senior Security Engineer"
+    },
+    {
         "name": "David Vilela Freire",
         "imageSrc": "david-v.jpg",
         "position": "Senior Python Engineer"
     },
     {
-        "name": "Divya Nautiyal",
-        "imageSrc": "Divya.jpg",
+        "name": "Dhairya",
         "position": "Python Engineer"
+    },
+    {
+        "name": "Divya Nautiyal",
+        "imageSrc": "Divya.png",
+        "position": "Python Engineer"
+    },
+    {
+        "name": "Dumitru",
+        "imageSrc": "Dumitru.png",
+        "position": "Senior QA Engineer"
     },
     {
         "name": "Gaurav Lochab",
@@ -123,6 +136,11 @@
         "name": "Roman Semenchenko",
         "imageSrc": "Roman.jpg",
         "position": "Product Designer"
+    },
+    {
+        "name": "Skas",
+        "imageSrc": "skas.png",
+        "position": "Senior Software Engineer"
     },
     {
         "name": "Tanya Priemova",

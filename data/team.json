@@ -88,6 +88,11 @@
         "position": "Senior Product Manager - Apps"
     },
     {
+        "name": "Jenslee Dsouza",
+        "imageSrc": "Jenslee.png",
+        "position": "Python Engineer"
+    },
+    {
         "name": "José Moreira-Sánchez",
         "position": "Senior Cryptography Engineer"
     },
@@ -126,6 +131,11 @@
     {
         "name": "Precious Joveres",
         "position": "Junior Frontend Engineer"
+    },
+    {
+        "name": "Rajat",
+        "imageSrc": "Rajat.png",
+        "position": "Senior Frontend Engineer"
     },
     {
         "name": "Ralph Pahlmeyer",

@@ -54,6 +54,12 @@
         "position": "Senior Security Engineer"
     },
     {
+        "name": "Axat",
+        "imageSrc": "Axat.jpg",
+        "position": "Python Engineer"
+        
+    },
+    {
         "name": "David Vilela Freire",
         "imageSrc": "david-v.jpg",
         "position": "Senior Python Engineer"
@@ -132,11 +138,6 @@
         "name": "Rajat",
         "imageSrc": "Rajat.png",
         "position": "Senior Frontend Engineer"
-    },
-    {
-        "name": "Ralph Pahlmeyer",
-        "imageSrc": "Ralph.jpg",
-        "position": "Head of Business Development"
     },
     {
         "name": "Roman Semenchenko",

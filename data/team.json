@@ -57,7 +57,11 @@
         "name": "Axat",
         "imageSrc": "Axat.jpg",
         "position": "Python Engineer"
-        
+    },
+    {
+        "name": "Benny Johansson",
+        "imageSrc": "benny.jpg",
+        "position": "VP of Engineering"
     },
     {
         "name": "David Vilela Freire",

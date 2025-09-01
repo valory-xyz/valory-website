@@ -18,10 +18,6 @@
         "desc": "Gemma is a serial entrepreneur, selected for Jumpstart’s top 1% of UK early-careerists. She has been founding and consulting for innovative businesses and charities since 2015."
     },
     {
-        "name": "A. Rosa Castillo",
-        "position": "Senior ML Engineer"
-    },
-    {
         "name": "Adamantios Zaras",
         "imageSrc": "adamantion.jpg",
         "position": "Senior Python Engineer"
@@ -81,11 +77,6 @@
         "name": "Dumitru",
         "imageSrc": "Dumitru.png",
         "position": "Senior QA Engineer"
-    },
-    {
-        "name": "Gaurav Lochab",
-        "imageSrc": "Gaurav.png",
-        "position": "Python Engineer"
     },
     {
         "name": "Haneefa",

@@ -33,17 +33,8 @@
         "position": "Senior Solidity Engineer"
     },
     {
-        "name": "Aram",
-        "imageSrc": "Aram.png",
-        "position": "Community Marketer"
-    },
-    {
         "name": "Aristotelis",
         "position": "Senior Software Engineer"
-    },
-    {
-        "name": "Artem",
-        "position": "Lead Systems Engineer"
     },
     {
         "name": "Ashish",
@@ -58,11 +49,6 @@
         "name": "Benny Johansson",
         "imageSrc": "benny.jpg",
         "position": "VP of Engineering"
-    },
-    {
-        "name": "David Vilela Freire",
-        "imageSrc": "david-v.jpg",
-        "position": "Senior Python Engineer"
     },
     {
         "name": "Dhairya",
@@ -123,6 +109,10 @@
     {
         "name": "Mohan Das",
         "position": "Senior Frontend Engineer"
+    },
+    {
+        "name": "Nadica",
+        "position": "Legal Operations Associate"
     },
     {
         "name": "Ojuswi Rastogi",

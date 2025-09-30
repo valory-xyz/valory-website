@@ -1,9 +1,11 @@
 import team from 'data/team.json';
 import Image from 'next/image';
 
+const SLICE_INDEX = 4;
+
 export const Team = () => {
-  const founders = team.slice(0, 4);
-  const teamMembers = [...team.slice(3)].sort((a, b) =>
+  const founders = team.slice(0, SLICE_INDEX);
+  const teamMembers = [...team.slice(SLICE_INDEX)].sort((a, b) =>
     a.name[0].toLowerCase().localeCompare(b.name[0].toLowerCase()),
   );
 

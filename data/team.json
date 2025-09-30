@@ -18,6 +18,12 @@
         "desc": "Gemma is a serial entrepreneur, selected for Jumpstart’s top 1% of UK early-careerists. She has been founding and consulting for innovative businesses and charities since 2015."
     },
     {
+        "name": "Ellie Hirschhorn",
+        "imageSrc": "ellie.jpg",
+        "position": "CGO",
+        "desc": "Ellie has worked at the intersection of tech and media for 20 years. Valory is her fifth startup. Most recently she was COO & President of Media at CoinDesk. She has a MBA from Harvard Business School and a BA in History from Yale."
+    },
+    {
         "name": "Adamantios Zaras",
         "imageSrc": "adamantion.jpg",
         "position": "Senior Python Engineer"

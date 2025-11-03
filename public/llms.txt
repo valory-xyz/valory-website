@@ -1,0 +1,39 @@
+# Valory
+
+> Valory is a Switzerland-based team building open-source frameworks for co-owned autonomous AI systems and marketplaces for autonomous agents. Primary focus areas: decentralized autonomous agents, the Olas ecosystem (Pearl, Mech Marketplace, Olas Stack), and research into multi-agent systems, cryptography, and decentralised protocols. Use these links to find concise, LLM-readable markdown or canonical pages for detailed context.
+
+Important notes:
+- Core products and docs are linked to canonical pages or external canonical deployments; prefer `.md` variants where available.  
+- External resources listed in Optional can be skipped if a short context is required.
+
+## Products
+- [Home / Mission](https://www.valory.xyz): Overview of mission and product pointers.  
+- [Pearl — AI agent app store (Olas)](https://olas.network/pearl): Desktop app for owning AI agents; entry point for consumers to access AI agents on Olas.  
+- [Mech Marketplace (Olas)](https://olas.network/mech-marketplace): Decentralised marketplace for agent to agent services.  
+- [Olas Stack (Olas)](https://olas.network/stack): Technical foundation, open-source protocols and developer resources.
+
+## Docs & Guides
+- [News / Blog (All posts)](https://www.valory.xyz/post): Collection of product announcements and explainers.  
+- [Selected post: Building Machine and Human Autonomy](https://www.valory.xyz/post/machine-and-human-autonomy): Overview of Valory's mission and how it shapes the way Valory team works.  
+- [Privacy & Legal](https://www.valory.xyz/privacy): Legal / corporate contact details and policies.
+
+## Research
+- [Research index on site — papers & abstracts](https://www.valory.xyz/#Research): Links to peer-reviewed papers and external archives (IEEE, ACM, IACR).  
+- Example linked papers:
+  - Peer-to-peer Autonomous Agent Communication Network — (link to paper on the site pointing to ifaamas).  
+  - Autonomous Economic Agents as a Second Layer Technology for Blockchains — (link to scitepress / IEEE).
+
+## Team & Governance
+- [Team directory](https://www.valory.xyz/#Team): Founders, leadership and engineering roster (names and roles).  
+- Headquarters & legal: Valory AG, Gubelstrasse 12, 6300 Zug, Switzerland (see Privacy page).
+
+## External Repos & Ecosystem (Optional)
+- [GitHub: valory-xyz organization](https://github.com/valory-xyz): Source code, projects and community repos.  
+- [Hugging Face profile / Spaces](https://huggingface.co/valory): Datasets and demo Spaces.
+
+## Contact & Press
+- [Press / Contact pointers and legal address](https://www.valory.xyz/privacy): Use the privacy/press kit links on the site for formal contact channels.
+
+## Optional
+- [LinkedIn / Socials](https://www.linkedin.com/company/valoryag/): Company social presence and public posts.  
+- [Third-party coverage & news archives] — Use news links for product launches (e.g., Propel Genie, Olas dev events).

@@ -43,10 +43,6 @@
         "position": "Senior Software Engineer"
     },
     {
-        "name": "Ashish",
-        "position": "Senior Security Engineer"
-    },
-    {
         "name": "Axat",
         "imageSrc": "Axat.jpg",
         "position": "Python Engineer"
@@ -69,11 +65,6 @@
         "name": "Dumitru",
         "imageSrc": "Dumitru.png",
         "position": "Senior QA Engineer"
-    },
-    {
-        "name": "Haneefa",
-        "imageSrc": "Haneefa.jpg",
-        "position": "Operations Associate"
     },
     {
         "name": "Iason Rovis",

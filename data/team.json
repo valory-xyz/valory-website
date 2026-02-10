@@ -39,15 +39,6 @@
         "position": "Senior Solidity Engineer"
     },
     {
-        "name": "Aristotelis",
-        "position": "Senior Software Engineer"
-    },
-    {
-        "name": "Axat",
-        "imageSrc": "Axat.jpg",
-        "position": "Python Engineer"
-    },
-    {
         "name": "Benny Johansson",
         "imageSrc": "benny.jpg",
         "position": "VP of Engineering"
@@ -89,10 +80,6 @@
         "name": "Mariapia Moscatiello",
         "imageSrc": "Pia.jpg",
         "position": "Research Scientist Coordinator"
-    },
-    {
-        "name": "Michael",
-        "position": "Product Manager - DeFi"
     },
     {
         "name": "Mohan Das",

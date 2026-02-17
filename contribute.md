@@ -15,8 +15,8 @@ Thank you for your interest in contributing! This document provides guidelines f
 Before contributing, please:
 
 1. Review the [README](README.md) for setup instructions
-2. Check the Issues page for open tasks
-3. Look for issues labeled `good first issue` or `help wanted` if you're new to the project
+2. Copy `env.example` to `.env` and set `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_API_KEY` (required for news/post pages and CMS images)
+3. Check the Issues page for open tasks
 
 ## Development Workflow
 
@@ -70,6 +70,7 @@ Ensure all checks pass before submitting.
 
 - Push your branch to GitHub
 - Create a pull request with a clear description
+- We use [conventional commits](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13#types) for titles
 - Reference any related issues
 - Ensure all CI checks pass
 
@@ -91,13 +92,14 @@ Ensure all checks pass before submitting.
 
 ### File Organization
 
-- `pages/` — Next.js pages
-- `components/` — React components
-- `utils/` — Shared utilities and API logic
-- `data/` — Static data files
+- `pages/` — Next.js pages (Pages Router)
+- `components/` — React components (Layout, Meta, HomePage sections, Content/News, Content/Post, etc.)
+- `utils/` — Shared utilities and CMS API client (`utils/api`)
 - `public/` — Static assets
 - `styles/` — Global styles
-- `types/` — TypeScript type definitions
+- `types/` — TypeScript type definitions (e.g. `Article`)
+
+Content (blog posts, images) is managed in the backend CMS; this repo is the frontend only.
 
 ## Pull Request Process
 

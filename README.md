@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Valory Website
 
-## Getting Started
+Marketing and company site for [Valory](https://valory.io): homepage, news/blog, legal pages. Built with Next.js and content from a backend CMS.
 
-First, run the development server:
+## Architecture
+
+- **Next.js 15** (Pages Router), React, TypeScript, Tailwind CSS.
+- **CMS**: Blog posts and images are served from a Strapi-compatible backend. The site fetches content via `utils/api` (`getPosts`, `getPost`) using `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_API_KEY`. Image domains for the CMS are configured in `next.config.ts`.
+- **Dynamic posts**: List at `/post`, single post at `/post/[id]` where `id` is the post’s `filename`. All post data is loaded client-side from the CMS.
+- **Middleware**: Redirects users from certain regions (by `x-vercel-ip-region`) to `/restricted`; static and API paths are excluded.
+
+For more detail (paths, types, conventions), see [CLAUDE.md](CLAUDE.md).
+
+## Getting started
 
 ```bash
-npm run dev
-# or
+# Install
+yarn install
+
+# Copy env and set CMS URL + API key
+cp env.example .env
+# Edit .env: NEXT_PUBLIC_API_URL, NEXT_PUBLIC_API_KEY
+
+# Run dev server
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command       | Description        |
+|---------------|--------------------|
+| `yarn dev`    | Development server |
+| `yarn build`  | Production build (includes next-sitemap) |
+| `yarn start`  | Run production server |
+| `yarn lint`   | Run ESLint         |
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+See [CONTRIBUTING.md](CONTRIBUTING.md) for workflow, branch naming, and PR process.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app is deployable to [Vercel](https://vercel.com). Set `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_API_KEY` in the project environment.

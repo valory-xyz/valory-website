@@ -122,10 +122,5 @@
         "name": "Victor Notaro",
         "imageSrc": "Victor.jpg",
         "position": "Accounting & Operations Associate"
-    },
-    {
-        "name": "Yuri Turchenkov",
-        "imageSrc": "Yuri.png",
-        "position": "Senior Python Engineer"
     }
 ]

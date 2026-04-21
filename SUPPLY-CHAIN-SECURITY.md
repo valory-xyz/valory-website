@@ -53,7 +53,7 @@ Run `yarn audit --level high --groups dependencies` on every PR (see the `audit`
 
 We also run [`lockfile-lint`](https://github.com/lirantal/lockfile-lint) on every PR to enforce that every `resolved` URL in `yarn.lock` points at `registry.yarnpkg.com` or `registry.npmjs.org`, uses HTTPS, and has an integrity hash — automating the registry-origin part of [§3](#3-lockfile-review-in-prs). The tool itself is pinned as a `devDependency` in [`package.json`](./package.json) (currently `5.0.0`) and invoked via the `yarn lint:lockfile` script, so the `lockfile-lint` binary used in CI is integrity-verified against `yarn.lock` rather than re-fetched on every run.
 
-**Known gap:** This repo uses Yarn `1.22.22`. Yarn 1.x `yarn audit` is deprecated and its exit codes are a bitmask that doesn't respect `--level` precisely (it exits non-zero on any finding, not just `high`+). Acceptable for now since red-on-any-finding is stricter than required; revisit on a future Yarn Berry migration, which ships `yarn npm audit` with cleaner severity gating.
+**Yarn 1.x audit quirk.** This repo uses Yarn `1.22.22`. Yarn 1.x `yarn audit` exits with a severity bitmask (`1`=info, `2`=low, `4`=moderate, `8`=high, `16`=critical) rather than a threshold comparison against `--level`, so `--level high` filters the *printed* output but does not affect the exit code. The workflow handles this by checking `exit_code & 24` (i.e. `high | critical`) and failing only when that bit is set — see the `audit` job in [.github/workflows/main.yml](./.github/workflows/main.yml). Revisit on a future Yarn Berry migration, which ships `yarn npm audit` with proper severity gating and makes the bitmask dance unnecessary.
 
 ### 6. Avoid postinstall-heavy dependencies
 

@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /restricted
 
 # Host
 Host: https://www.valory.xyz/

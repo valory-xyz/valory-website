@@ -70,3 +70,21 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Validate yarn.lock registry URLs and integrity
         run: yarn lint:lockfile
+
+  all-checks-passed:
+    # Single aggregate gate for branch protection. Keep this job's `needs`
+    # list in sync with every mandatory job above — branch protection requires
+    # only this context, so adding/removing a mandatory job is a workflow
+    # edit, not a branch-protection edit.
+    name: All checks passed
+    needs: [build, audit, lockfile-lint]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all dependencies succeeded
+        run: |
+          if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]] || \
+             [[ "${{ contains(needs.*.result, 'cancelled') }}" == "true" ]]; then
+            echo "::error::One or more required jobs did not succeed"
+            exit 1
+          fi

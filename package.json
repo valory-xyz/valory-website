@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\"",
-    "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --allowed-hosts yarn npm --validate-https --validate-integrity"
+    "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --allowed-hosts yarn npm --allowed-schemes https: --validate-integrity"
   },
   "dependencies": {
     "@fontsource/inter": "5.1.0",

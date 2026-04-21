@@ -49,7 +49,7 @@ Vulnerability discovery does not depend on this rule. Already-disclosed CVEs are
 
 ### 5. Audit in CI
 
-Run `yarn audit --level high --groups dependencies` on every PR (see the `audit` job in [.github/workflows/main.yml](./.github/workflows/main.yml)). A high/critical advisory against a production dependency should block merge unless explicitly acknowledged. `--groups dependencies` restricts the audit to the production tree — `devDependencies` (ESLint / TypeScript / Tailwind / types) generate substantial transitive-advisory noise and do not ship to users, so they are excluded by policy.
+Run `yarn audit --groups dependencies` on every PR, with high/critical gating enforced via exit-code bitmask rather than `--level` (see the "Yarn 1.x audit quirk" note below and the `audit` job in [.github/workflows/main.yml](./.github/workflows/main.yml)). A high/critical advisory against a production dependency blocks merge unless explicitly acknowledged. `--groups dependencies` restricts the audit to the production tree — `devDependencies` (ESLint / TypeScript / Tailwind / types) generate substantial transitive-advisory noise and do not ship to users, so they are excluded by policy.
 
 We also run [`lockfile-lint`](https://github.com/lirantal/lockfile-lint) on every PR to enforce that every `resolved` URL in `yarn.lock` points at `registry.yarnpkg.com` or `registry.npmjs.org`, uses HTTPS, and has an integrity hash — automating the registry-origin part of [§3](#3-lockfile-review-in-prs). The tool itself is pinned as a `devDependency` in [`package.json`](./package.json) (currently `5.0.0`) and invoked via the `yarn lint:lockfile` script, so the `lockfile-lint` binary used in CI is integrity-verified against `yarn.lock` rather than re-fetched on every run.
 

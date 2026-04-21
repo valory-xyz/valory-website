@@ -10,6 +10,10 @@
 !.yarn/releases
 !.yarn/versions
 
+# Non-canonical lockfiles — yarn.lock is the source of truth (see SUPPLY-CHAIN-SECURITY.md §2)
+package-lock.json
+pnpm-lock.yaml
+
 # testing
 /coverage
 

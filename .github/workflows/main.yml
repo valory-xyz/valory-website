@@ -42,9 +42,12 @@ jobs:
         # Yarn 1.x `yarn audit` exit code is a severity bitmask, not a --level
         # comparison: 1=info, 2=low, 4=moderate, 8=high, 16=critical. Mask
         # against 24 (8|16) to fail only on high or critical findings.
+        # `|| CODE=$?` captures the exit code without tripping `bash -e`, which
+        # is on by default in GitHub Actions (`bash --noprofile --norc -eo pipefail`).
         # See SUPPLY-CHAIN-SECURITY.md §5.
         run: |
-          yarn audit --groups dependencies; CODE=$?
+          CODE=0
+          yarn audit --groups dependencies || CODE=$?
           if [ $((CODE & 24)) -ne 0 ]; then
             echo "::error::High or critical advisory found (exit code $CODE)"
             exit 1

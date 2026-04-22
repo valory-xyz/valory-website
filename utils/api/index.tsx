@@ -1,7 +1,7 @@
 import qs from 'qs';
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/api`;
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const URL = `${process.env.NEXT_PUBLIC_CMS_URL}/api`;
+const API_KEY = process.env.NEXT_PUBLIC_CMS_API_KEY;
 
 const apiCall = async ({ params }: { params: Record<string, unknown> }) => {
   const stringifyParams = qs.stringify(params);

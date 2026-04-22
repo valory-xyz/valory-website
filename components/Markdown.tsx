@@ -14,7 +14,7 @@ export const Markdown = ({
     remarkPlugins={[remarkGfm]}
     rehypePlugins={[rehypeRaw]}
     urlTransform={(uri) =>
-      uri.startsWith('http') ? uri : `${process.env.NEXT_PUBLIC_API_URL}${uri}`
+      uri.startsWith('http') ? uri : `${process.env.NEXT_PUBLIC_CMS_URL}${uri}`
     }
     components={markdownComponents}
     className={className}

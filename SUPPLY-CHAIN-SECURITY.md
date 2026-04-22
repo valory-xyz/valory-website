@@ -71,8 +71,8 @@ The runtime and build environments for `valory-website` hold a deliberately smal
 
 | Name | Purpose | Scope | Where read |
 | --- | --- | --- | --- |
-| `NEXT_PUBLIC_API_URL` | CMS (Strapi) base URL | Build-time, inlined into client bundle | [`utils/api/index.tsx`](./utils/api/index.tsx), [`components/Content/Post.tsx`](./components/Content/Post.tsx), [`components/Markdown.tsx`](./components/Markdown.tsx) |
-| `NEXT_PUBLIC_API_KEY` | CMS API key | Build-time, inlined into client bundle | [`utils/api/index.tsx`](./utils/api/index.tsx) |
+| `NEXT_PUBLIC_CMS_URL` | CMS (Strapi) base URL | Build-time, inlined into client bundle | [`utils/api/index.tsx`](./utils/api/index.tsx), [`components/Content/Post.tsx`](./components/Content/Post.tsx), [`components/Markdown.tsx`](./components/Markdown.tsx) |
+| `NEXT_PUBLIC_CMS_API_KEY` | CMS API key | Build-time, inlined into client bundle | [`utils/api/index.tsx`](./utils/api/index.tsx) |
 
 Both values are prefixed `NEXT_PUBLIC_` and therefore bundled into client-side JavaScript by Next.js — they are visible to anyone who loads the site. Treat them as public configuration, not secrets; the CMS API key's strength depends on server-side scope and rate-limiting, not on secrecy. From a supply-chain-attack standpoint this also means a compromised postinstall script could read them at build time, but the exposure is not worse than what is already published in the production bundle.
 

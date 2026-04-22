@@ -19,7 +19,7 @@ export const Post = ({
     const backupUrl = imageData?.thumbnail?.url;
 
     return imageData
-      ? `${process.env.NEXT_PUBLIC_API_URL}${largeUrl || backupUrl}`
+      ? `${process.env.NEXT_PUBLIC_CMS_URL}${largeUrl || backupUrl}`
       : `/images/default.jpg`;
   }, [article]);
 

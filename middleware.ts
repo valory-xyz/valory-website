@@ -1,15 +1,14 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-const BLOCKED_REGIONS = ['UA-14', 'UA-09', 'UA-65', 'UA-23'];
+import { isBlockedRegion } from './utils/regionBlock';
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname === '/restricted') {
     return NextResponse.next();
   }
-  const region = request.headers.get('x-vercel-ip-region');
 
-  if (region && BLOCKED_REGIONS.includes(region)) {
+  if (isBlockedRegion(request.headers.get('x-vercel-ip-region'))) {
     return NextResponse.redirect(new URL('/restricted', request.url));
   }
 

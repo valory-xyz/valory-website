@@ -15,7 +15,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 Before contributing, please:
 
 1. Review the [README](README.md) for setup instructions
-2. Copy `env.example` to `.env` and set `NEXT_PUBLIC_API_URL` and `NEXT_PUBLIC_API_KEY` (required for news/post pages and CMS images)
+2. Copy `env.example` to `.env` and set `NEXT_PUBLIC_CMS_URL` and `CMS_API_KEY` (required for news/post pages and CMS images)
 3. Check the Issues page for open tasks
 
 ## Development Workflow

@@ -11,7 +11,7 @@ Context for AI assistants working in this repo.
 ## Architecture (root level)
 
 - **Router**: Next.js **Pages Router** only (`pages/`). No App Router.
-- **CMS**: Backend at `NEXT_PUBLIC_CMS_URL` (e.g. `valory-cms-backend.autonolas.tech`). Staging and prod image domains are in `next.config.ts` under `images.domains`. All post data is fetched client-side via `utils/api`: `getPosts()`, `getPost({ id })`. Posts are identified by `filename`; single post route is `pages/post/[id].tsx`.
+- **CMS**: Backend at `NEXT_PUBLIC_CMS_URL` (e.g. `valory-cms-backend.autonolas.tech`). Staging and prod image domains are in `next.config.ts` under `images.domains`. Post data is fetched client-side via `utils/api` (`getPosts()`, `getPost({ id })`), which calls the local proxy at `pages/api/posts/*` — the proxy attaches `CMS_API_KEY` (server-only) and forwards to the CMS. Posts are identified by `filename`; single post route is `pages/post/[id].tsx`.
 - **Middleware**: `middleware.ts` runs on every matching request. It reads `x-vercel-ip-region` and redirects users from specific regions (see `BLOCKED_REGIONS`) to `/restricted`. Static assets and API routes are excluded by the matcher.
 - **Config**: `next.config.ts` – i18n (en only), security headers, CSP, redirects (e.g. `/academy` → external), image domains for CMS.
 
@@ -21,7 +21,8 @@ Context for AI assistants working in this repo.
 |------|--------|
 | `pages/` | All routes: `index.tsx`, `post/index.tsx`, `post/[id].tsx`, `restricted.tsx`, `terms.tsx`, `privacy.tsx`, `_app.tsx` |
 | `components/` | Layout, Meta, HomePage sections, `Content/News.tsx`, `Content/Post.tsx`, Markdown, Spinner, etc. |
-| `utils/api/index.tsx` | CMS API: `getPosts({ limit })`, `getPost({ id })`. Uses `NEXT_PUBLIC_CMS_URL` and `NEXT_PUBLIC_CMS_API_KEY`. |
+| `utils/api/index.tsx` | Client-side wrapper for `getPosts({ limit })`, `getPost({ id })` — calls the local proxy at `/api/posts`. |
+| `pages/api/posts/index.ts`, `pages/api/posts/[id].ts` | Server-side proxy to the CMS. Holds `CMS_API_KEY` (never shipped to the client) and forwards requests to `NEXT_PUBLIC_CMS_URL`. |
 | `utils/formatDate.ts` | Date formatting for posts. |
 | `types/Article.tsx` | `Article` type (filename, date, readtime, title, description, content, images). |
 | `styles/globals.css` | Global styles; imported in `_app.tsx`. |
@@ -35,7 +36,7 @@ Context for AI assistants working in this repo.
 
 - Use existing patterns: client-side fetch in `useEffect` for posts, `Layout` + `Meta` on pages, `Article` type for post data.
 - New shared logic → `utils/`; new types → `types/`.
-- Env: `NEXT_PUBLIC_CMS_URL`, `NEXT_PUBLIC_CMS_API_KEY` (see `env.example`). Do not commit real keys.
+- Env: `NEXT_PUBLIC_CMS_URL` (public — used for client-side image URLs and server-side proxy), `CMS_API_KEY` (server-only — never expose with `NEXT_PUBLIC_`). See `env.example`. Do not commit real keys.
 
 ## Commands
 

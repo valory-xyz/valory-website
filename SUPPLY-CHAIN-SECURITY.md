@@ -71,10 +71,10 @@ The runtime and build environments for `valory-website` hold a deliberately smal
 
 | Name | Purpose | Scope | Where read |
 | --- | --- | --- | --- |
-| `NEXT_PUBLIC_CMS_URL` | CMS (Strapi) base URL | Build-time, inlined into client bundle | [`utils/api/index.tsx`](./utils/api/index.tsx), [`components/Content/Post.tsx`](./components/Content/Post.tsx), [`components/Markdown.tsx`](./components/Markdown.tsx) |
-| `NEXT_PUBLIC_CMS_API_KEY` | CMS API key | Build-time, inlined into client bundle | [`utils/api/index.tsx`](./utils/api/index.tsx) |
+| `NEXT_PUBLIC_CMS_URL` | CMS (Strapi) base URL | Inlined into client bundle (used for public image URLs) + read server-side by the proxy | [`pages/api/posts/index.ts`](./pages/api/posts/index.ts), [`pages/api/posts/[id].ts`](./pages/api/posts/[id].ts), [`components/Content/Post.tsx`](./components/Content/Post.tsx), [`components/Markdown.tsx`](./components/Markdown.tsx) |
+| `CMS_API_KEY` | CMS API key | Server-only (not prefixed `NEXT_PUBLIC_`, never inlined into the client bundle) | [`pages/api/posts/index.ts`](./pages/api/posts/index.ts), [`pages/api/posts/[id].ts`](./pages/api/posts/[id].ts) |
 
-Both values are prefixed `NEXT_PUBLIC_` and therefore bundled into client-side JavaScript by Next.js — they are visible to anyone who loads the site. Treat them as public configuration, not secrets; the CMS API key's strength depends on server-side scope and rate-limiting, not on secrecy. From a supply-chain-attack standpoint this also means a compromised postinstall script could read them at build time, but the exposure is not worse than what is already published in the production bundle.
+`NEXT_PUBLIC_CMS_URL` is bundled into client-side JavaScript by Next.js and is visible to anyone who loads the site — treat it as public configuration. `CMS_API_KEY` is intentionally not prefixed with `NEXT_PUBLIC_`: it is only read by the server-side proxy routes under `pages/api/posts/*`, so it is not shipped to the browser. From a supply-chain-attack standpoint a compromised postinstall script could still read both at build time, so rotate the key if an install-time compromise is ever suspected.
 
 #### General hygiene
 

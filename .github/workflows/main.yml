@@ -7,6 +7,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +19,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: '20.20.2'
+          node-version-file: '.nvmrc'
       - name: Activate pinned Yarn via Corepack
         run: |
           corepack enable
@@ -33,26 +36,20 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: '20.20.2'
+          node-version-file: '.nvmrc'
       - name: Activate pinned Yarn via Corepack
         run: |
           corepack enable
           corepack prepare yarn@1.22.22 --activate
-      - name: Run yarn audit (fail on high/critical, production deps only)
-        # Yarn 1.x `yarn audit` exit code is a severity bitmask, not a --level
-        # comparison: 1=info, 2=low, 4=moderate, 8=high, 16=critical. Mask
-        # against 24 (8|16) to fail only on high or critical findings.
-        # `|| CODE=$?` captures the exit code without tripping `bash -e`, which
-        # is on by default in GitHub Actions (`bash --noprofile --norc -eo pipefail`).
+      - name: Run audit gate
+        # scripts/audit.mjs runs `yarn audit --groups dependencies --json`,
+        # applies the same high|critical severity policy as the previous inline
+        # bitmask wrapper, and additionally supports per-advisory suppression
+        # with review-date expiry warnings via .supply-chain/audit-allowlist.json.
+        # No `yarn install` — yarn audit reads yarn.lock directly; the gate that
+        # detects compromised postinstalls must not run postinstalls itself.
         # See SUPPLY-CHAIN-SECURITY.md §5.
-        run: |
-          CODE=0
-          yarn audit --groups dependencies || CODE=$?
-          if [ $((CODE & 24)) -ne 0 ]; then
-            echo "::error::High or critical advisory found (exit code $CODE)"
-            exit 1
-          fi
-          echo "No high/critical advisories (exit code $CODE indicates low/moderate/info only, ignored by policy)"
+        run: yarn audit:prod
 
   lockfile-lint:
     name: Lockfile lint
@@ -61,7 +58,7 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: '20.20.2'
+          node-version-file: '.nvmrc'
       - name: Activate pinned Yarn via Corepack
         run: |
           corepack enable
@@ -71,13 +68,36 @@ jobs:
       - name: Validate yarn.lock registry URLs and integrity
         run: yarn lint:lockfile
 
+  install-hooks:
+    name: Install-hook diff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Activate pinned Yarn via Corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
+      - name: Install (ignore lifecycle scripts)
+        # --ignore-scripts here is for the diff step only: the install-hook gate
+        # must never execute the postinstall scripts it is auditing. This is
+        # independent of repo policy — we deliberately do NOT set a global
+        # ignore-scripts (see .yarnrc / SUPPLY-CHAIN-SECURITY.md §6).
+        run: yarn install --frozen-lockfile --ignore-scripts
+      - name: Diff install-hook surface against allowlist
+        run: yarn audit:install-hooks
+
   all-checks-passed:
     # Single aggregate gate for branch protection. Keep this job's `needs`
     # list in sync with every mandatory job above — branch protection requires
     # only this context, so adding/removing a mandatory job is a workflow
     # edit, not a branch-protection edit.
     name: All checks passed
-    needs: [build, audit, lockfile-lint]
+    # secret-scan (gitleaks) runs in its own workflow (.github/workflows/secret-scan.yml)
+    # and is a separate required status for branch protection — not aggregated here.
+    needs: [build, audit, lockfile-lint, install-hooks]
     if: always()
     runs-on: ubuntu-latest
     steps:

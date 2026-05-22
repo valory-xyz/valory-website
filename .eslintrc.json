@@ -30,5 +30,15 @@
     ],
     "react/jsx-no-useless-fragment": [2, { "allowExpressions": true }],
     "no-untyped-mock-factory": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["scripts/**/*.mjs"],
+      "env": { "node": true },
+      "rules": {
+        "no-console": "off",
+        "prettier/prettier": "off"
+      }
+    }
+  ]
 }

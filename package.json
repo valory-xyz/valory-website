@@ -9,7 +9,10 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\"",
-    "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --allowed-hosts yarn npm --allowed-schemes https: --validate-integrity"
+    "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --allowed-hosts yarn npm --allowed-schemes https: --validate-integrity",
+    "audit:prod": "node scripts/audit.mjs",
+    "audit:install-hooks": "node scripts/audit-install-hooks.mjs",
+    "audit:install-hooks:update": "node scripts/audit-install-hooks.mjs --update"
   },
   "dependencies": {
     "@fontsource/inter": "5.1.0",
@@ -44,8 +47,8 @@
     "tailwindcss": "3.4.17",
     "typescript": "5.7.2"
   },
-  "packageManager": "yarn@1.22.22",
   "resolutions": {
     "postcss": "8.5.14"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }

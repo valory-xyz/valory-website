@@ -96,10 +96,9 @@ The runtime and build environments for `valory-website` hold a deliberately smal
 
 | Name | Purpose | Scope | Where read |
 | --- | --- | --- | --- |
-| `NEXT_PUBLIC_CMS_URL` | CMS (Strapi) base URL | Inlined into client bundle (used for public image URLs) + read server-side by the proxy | [`pages/api/posts/index.ts`](./pages/api/posts/index.ts), [`pages/api/posts/[id].ts`](./pages/api/posts/[id].ts), [`components/Content/Post.tsx`](./components/Content/Post.tsx), [`components/Markdown.tsx`](./components/Markdown.tsx) |
-| `CMS_API_KEY` | CMS API key | Server-only (not prefixed `NEXT_PUBLIC_`, never inlined into the client bundle) | [`pages/api/posts/index.ts`](./pages/api/posts/index.ts), [`pages/api/posts/[id].ts`](./pages/api/posts/[id].ts) |
+| `NEXT_PUBLIC_CMS_URL` | CMS (Strapi) base URL | Inlined into client bundle (used for fetches and public image URLs) | [`utils/api/index.tsx`](./utils/api/index.tsx), [`components/Content/Post.tsx`](./components/Content/Post.tsx), [`components/Markdown.tsx`](./components/Markdown.tsx) |
 
-`NEXT_PUBLIC_CMS_URL` is bundled into client-side JavaScript by Next.js and is visible to anyone who loads the site — treat it as public configuration. `CMS_API_KEY` is intentionally not prefixed with `NEXT_PUBLIC_`: it is only read by the server-side proxy routes under `pages/api/posts/*`, so it is not shipped to the browser. From a supply-chain-attack standpoint a compromised postinstall script could still read both at build time, so rotate the key if an install-time compromise is ever suspected.
+`NEXT_PUBLIC_CMS_URL` is bundled into client-side JavaScript by Next.js and is visible to anyone who loads the site — treat it as public configuration. The CMS is read anonymously: `Post.find`/`findOne` and `Upload.find` are granted to Strapi's Public role, so no API key is shipped from this repo.
 
 #### General hygiene
 

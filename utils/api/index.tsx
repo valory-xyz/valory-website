@@ -1,6 +1,15 @@
+import qs from 'qs';
+
+const API_URL = `${process.env.NEXT_PUBLIC_CMS_URL}/api`;
+
 export const getPosts = async ({ limit }: { limit: number }) => {
   try {
-    const response = await fetch(`/api/posts?limit=${limit}`);
+    const params = qs.stringify({
+      sort: ['date:desc'],
+      populate: '*',
+      'pagination[limit]': limit,
+    });
+    const response = await fetch(`${API_URL}/posts?${params}`);
     const json = await response.json();
     return json?.data || [];
   } catch (error) {
@@ -11,7 +20,13 @@ export const getPosts = async ({ limit }: { limit: number }) => {
 
 export const getPost = async ({ id }: { id: string }) => {
   try {
-    const response = await fetch(`/api/posts/${encodeURIComponent(id)}`);
+    const params = qs.stringify({
+      populate: '*',
+      filters: {
+        filename: { $eq: id },
+      },
+    });
+    const response = await fetch(`${API_URL}/posts?${params}`);
     const json = await response.json();
     return json?.data?.[0] ?? null;
   } catch (error) {

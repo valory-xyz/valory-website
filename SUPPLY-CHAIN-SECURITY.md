@@ -37,6 +37,8 @@ Any PR that touches `yarn.lock` requires a reviewer to confirm:
 - No unexpected packages appear. Look for unfamiliar names, typos of known packages, or packages with very recent publish dates on high-traffic names.
 - Resolved URLs point to the official registry (`registry.yarnpkg.com` / `registry.npmjs.org`), not a fork or mirror.
 
+[`.github/CODEOWNERS`](./.github/CODEOWNERS) routes changes to the supply-chain surface (`yarn.lock`, `package.json`, `.yarnrc`, `.nvmrc`, `.supply-chain/`, the audit scripts, the workflows, this doc) to the security owners (`@Tanya-atatakai`, `@atepem`). **This only enforces review if branch protection on `main` has "Require review from Code Owners" enabled** — otherwise it merely suggests reviewers.
+
 ### 4. Cooldown window on updates
 
 Prefer dependency versions that are **at least 7 days old**. Most malicious publishes are caught and unpublished within hours to days.
@@ -49,11 +51,13 @@ Vulnerability discovery does not depend on this rule. Already-disclosed CVEs are
 
 ### 5. Audit in CI
 
-Run `yarn audit --groups dependencies` on every PR, with high/critical gating enforced via exit-code bitmask rather than `--level` (see the "Yarn 1.x audit quirk" note below and the `audit` job in [.github/workflows/main.yml](./.github/workflows/main.yml)). A high/critical advisory against a production dependency blocks merge unless explicitly acknowledged. `--groups dependencies` restricts the audit to the production tree — `devDependencies` (ESLint / TypeScript / Tailwind / types) generate substantial transitive-advisory noise and do not ship to users, so they are excluded by policy.
+Every PR runs the `audit` job in [.github/workflows/main.yml](./.github/workflows/main.yml) via `yarn audit:prod`, a thin wrapper at [`scripts/audit.mjs`](./scripts/audit.mjs). The wrapper runs `yarn audit --groups dependencies --json`, parses the JSON, and **fails the build on any high/critical advisory in the production tree that is not allowlisted**. `--groups dependencies` restricts the audit to the production tree — `devDependencies` (ESLint / TypeScript / Tailwind / types) generate substantial transitive-advisory noise and do not ship to users, so they are excluded by policy.
+
+Unfixable or not-yet-fixable high/critical advisories can be suppressed by adding an entry to [`.supply-chain/audit-allowlist.json`](./.supply-chain/audit-allowlist.json). Each entry requires `id` (numeric advisory id from `yarn audit --json`), `package`, `reason`, `added`, and `review` (both `YYYY-MM-DD`); the wrapper validates these and refuses to run on a malformed entry. A past `review` date emits a `::warning::` (it does not fail the build) so suppressions get re-evaluated rather than living forever. Keep the file even when `entries` is empty — the empty file is the running assertion that the gate exists and there is zero current debt.
 
 We also run [`lockfile-lint`](https://github.com/lirantal/lockfile-lint) on every PR to enforce that every `resolved` URL in `yarn.lock` points at `registry.yarnpkg.com` or `registry.npmjs.org`, uses HTTPS, and has an integrity hash — automating the registry-origin part of [§3](#3-lockfile-review-in-prs). The tool itself is pinned as a `devDependency` in [`package.json`](./package.json) (currently `5.0.0`) and invoked via the `yarn lint:lockfile` script, so the `lockfile-lint` binary used in CI is integrity-verified against `yarn.lock` rather than re-fetched on every run.
 
-**Yarn 1.x audit quirk.** This repo uses Yarn `1.22.22`. Yarn 1.x `yarn audit` exits with a severity bitmask (`1`=info, `2`=low, `4`=moderate, `8`=high, `16`=critical) rather than a threshold comparison against `--level`, so `--level high` filters the *printed* output but does not affect the exit code. The workflow handles this by checking `exit_code & 24` (i.e. `high | critical`) and failing only when that bit is set — see the `audit` job in [.github/workflows/main.yml](./.github/workflows/main.yml). Revisit on a future Yarn Berry migration, which ships `yarn npm audit` with proper severity gating and makes the bitmask dance unnecessary.
+**Yarn 1.x audit quirk (handled by the wrapper).** This repo uses Yarn `1.22.22`, whose `yarn audit` exits with a severity *bitmask* (`1`=info, `2`=low, `4`=moderate, `8`=high, `16`=critical) rather than a threshold comparison against `--level`, so `--level high` filters the *printed* output but not the exit code. `scripts/audit.mjs` sidesteps this entirely: it ignores the exit code and applies its own `high | critical` policy against the parsed `--json` output (which also lets it deduplicate per-advisory and apply the allowlist). The earlier inline workflow step did the equivalent with an `exit_code & 24` bitmask check; the wrapper supersedes it. Revisit on a future Yarn Berry migration, which ships `yarn npm audit` with native severity gating.
 
 ### 6. Avoid postinstall-heavy dependencies
 
@@ -62,6 +66,27 @@ When adding a new dependency, check:
 - Does it have a `postinstall` / `preinstall` / `install` script? (`yarn why <pkg>` + inspect its `package.json`)
 - If yes, is the script necessary, and is the package well-known?
 - Prefer alternatives with no install scripts for new additions.
+
+#### Install-hook diff gate (CI)
+
+The `install-hooks` job in [.github/workflows/main.yml](./.github/workflows/main.yml) runs [`scripts/audit-install-hooks.mjs`](./scripts/audit-install-hooks.mjs) (`yarn audit:install-hooks`). It enumerates every package in `node_modules` that declares a non-trivial `preinstall`/`install`/`postinstall` script and diffs the set — names **and** the hook commands themselves — against the checked-in [`.supply-chain/install-hooks.allowlist`](./.supply-chain/install-hooks.allowlist). A new hook, a removed hook (drift), or a *changed* command on an already-listed package fails CI. This catches the case `yarn audit` cannot: a package quietly adding or mutating a postinstall script in a new version (the classic supply-chain compromise shape) before it is ever a published CVE.
+
+It is a **review/diff gate — it does not execute or block scripts.** When a dependency change legitimately alters the hook surface, regenerate and review:
+
+```bash
+yarn install
+yarn audit:install-hooks:update   # rewrites .supply-chain/install-hooks.allowlist
+git add .supply-chain/install-hooks.allowlist   # review the diff before committing
+```
+
+Currently allowlisted (both legitimate native-binary builds):
+
+- `sharp` — `install: node install/check.js || npm run build`. Pulled by `next` for `next/image` optimization.
+- `unrs-resolver` — `postinstall: napi-postinstall …`. Pulled transitively by `eslint-config-next` (`eslint-import-resolver-typescript`); dev-only tooling.
+
+#### Why we do **not** set a global `ignore-scripts`
+
+A blanket `ignore-scripts=true` would be a stronger install-time defense, but this repo has native dependencies whose postinstall builds a platform binary — `sharp` (image optimization) and `pdfjs-dist` (PDF viewer). Globally ignoring scripts would break image optimization / PDF rendering, and there is no in-repo rebuild path. So [`.yarnrc`](./.yarnrc) deliberately sets only `--save-exact true` and leaves scripts enabled. Postinstall-abuse (threat #3) is instead defended in depth by: the install-hook diff gate above + the 7-day cooldown ([§4](#4-cooldown-window-on-updates)) + the frozen lockfile ([§2](#2-single-lockfile-treated-as-source-of-truth)). The CI `install-hooks` and `audit` jobs *do* use `--ignore-scripts` / skip `yarn install` for their own steps, where it is safe — that is the diff/audit tooling not running the scripts it inspects, not a repo-wide policy. **Do not flip `ignore-scripts` on without first adding a documented native-dep rebuild path**, or `sharp` will silently stop fetching its binary.
 
 ### 7. Secrets hygiene in the build environment
 
@@ -83,6 +108,12 @@ The runtime and build environments for `valory-website` hold a deliberately smal
 - Vercel deploy tokens, GitHub tokens, and cloud-provider credentials must never be available to the build environment.
 - `.npmrc` / `.yarnrc` auth tokens: never committed.
 
+### 8. Secret scanning (gitleaks)
+
+[.github/workflows/secret-scan.yml](./.github/workflows/secret-scan.yml) runs [gitleaks](https://github.com/gitleaks/gitleaks) on every push to `main` and every PR (`gitleaks detect --redact`, full history via `fetch-depth: 0`). It fails the build if a committed secret is detected, catching accidentally-committed API keys/tokens before they reach the default branch — complementing [§7](#7-secrets-hygiene-in-the-build-environment), which is about *runtime* secret hygiene.
+
+The workflow installs the **OSS gitleaks CLI as a checksum-verified binary** rather than using `gitleaks/gitleaks-action`, because that action requires a paid license for organisation-owned repos. Bump the `VERSION` and `SHA256` env vars together (the checksum is version-specific). If a legitimate high-entropy string ever trips a false positive (e.g. an example token in a fixture), add a `.gitleaks.toml` allowlist at the repo root to suppress it by regex.
+
 ## Response playbook: "a dependency we use was just disclosed as compromised"
 
 1. **Identify exposure.** `yarn why <pkg>` — direct or transitive? Which version is in our lockfile?
@@ -101,6 +132,13 @@ The runtime and build environments for `valory-website` hold a deliberately smal
 - [x] Add `yarn audit --level high --groups dependencies` and `lockfile-lint` to CI — see [.github/workflows/main.yml](./.github/workflows/main.yml).
 - [x] Enforce the 7-day cooldown via PR review + `yarn audit` in CI ([.github/workflows/main.yml](./.github/workflows/main.yml)). No Renovate/Dependabot bot; vulnerability discovery relies on the CI audit job plus GitHub's passive Dependabot alerts in the Security tab.
 - [x] Declare Vercel install command as `yarn install --frozen-lockfile` in [`vercel.json`](./vercel.json) (overrides any dashboard setting).
+- [x] Replace the inline audit step with the `yarn audit:prod` wrapper ([`scripts/audit.mjs`](./scripts/audit.mjs)) + allowlist ([`.supply-chain/audit-allowlist.json`](./.supply-chain/audit-allowlist.json)).
+- [x] Add the install-hook diff gate ([`scripts/audit-install-hooks.mjs`](./scripts/audit-install-hooks.mjs) + [`.supply-chain/install-hooks.allowlist`](./.supply-chain/install-hooks.allowlist)), wired into `all-checks-passed`.
+- [x] Add [`.nvmrc`](./.nvmrc) (Node `20.20.2`, consumed by CI via `node-version-file`) and [`.yarnrc`](./.yarnrc) (`--save-exact true`; no global `ignore-scripts`).
+- [x] Add the gitleaks secret-scanning workflow ([.github/workflows/secret-scan.yml](./.github/workflows/secret-scan.yml)).
+- [x] Add [`.github/CODEOWNERS`](./.github/CODEOWNERS) routing supply-chain paths to the security owners (`@Tanya-atatakai`, `@atepem`).
+- [ ] Enable "Require review from Code Owners" in `main` branch protection so CODEOWNERS enforces (it only suggests reviewers otherwise).
+- [ ] Add the gitleaks check and `all-checks-passed` as required status checks in `main` branch protection.
 
 ## References
 

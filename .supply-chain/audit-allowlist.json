@@ -1,0 +1,5 @@
+{
+  "$schema_note": "Allowlist for `yarn audit` high/critical advisories in the production tree that cannot be fixed on the current branch. Each entry requires: id (number, from `yarn audit --json` advisory.id), package, reason, added (YYYY-MM-DD), review (YYYY-MM-DD). Optional: ghsa, severity. A past `review` date emits a ::warning:: (does not fail) — sweep periodically per SUPPLY-CHAIN-SECURITY.md §5. Validated by scripts/audit.mjs.",
+  "_keep_when_empty": "Do NOT delete this file when entries[] is empty. The empty file is the running assertion of 'audit gate exists AND zero current debt' — it pre-paves the schema for the next suppression, preserves the git history of past suppressions, keeps the CODEOWNERS-routed surface, and lets tooling distinguish 'clean gate' (count=0) from 'pattern not adopted' (no file). Burn down ENTRIES; keep the FILE.",
+  "entries": []
+}

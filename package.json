@@ -12,7 +12,9 @@
     "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --allowed-hosts yarn npm --allowed-schemes https: --validate-integrity",
     "audit:prod": "node scripts/audit.mjs",
     "audit:install-hooks": "node scripts/audit-install-hooks.mjs",
-    "audit:install-hooks:update": "node scripts/audit-install-hooks.mjs --update"
+    "audit:install-hooks:update": "node scripts/audit-install-hooks.mjs --update",
+    "license-check": "node scripts/license-check.mjs",
+    "license-check:test": "node --test scripts/license-check.test.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "5.1.0",
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "20.17.10",
+    "license-checker-rseidelsohn": "4.4.2",
     "@types/qs": "6.9.17",
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",

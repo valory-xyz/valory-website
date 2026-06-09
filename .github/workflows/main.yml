@@ -96,7 +96,7 @@ jobs:
     # .supply-chain/license-allowlist.json, or be a reasoned exemption.
     # NON-BLOCKING PILOT: deliberately NOT in `all-checks-passed.needs` below, so
     # it reports without gating merges. Promote to required by adding it to that
-    # `needs:` array (+ branch protection). See .plans/license-check-gate.md.
+    # `needs:` array (+ branch protection). See SUPPLY-CHAIN-SECURITY.md §9.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
@@ -109,6 +109,10 @@ jobs:
           corepack prepare yarn@1.22.22 --activate
       - name: Install modules
         run: yarn install --frozen-lockfile
+      - name: Run evaluator unit tests
+        # Guards the hand-rolled SPDX OR/AND precedence + alias normalization in
+        # license-check.lib.mjs against silent regressions. Pure node:test, no deps.
+        run: yarn license-check:test
       - name: Check production dependency licenses
         run: yarn license-check
 

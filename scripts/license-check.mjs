@@ -20,7 +20,7 @@
  * .supply-chain/license-allowlist.json (resolved against process.cwd()),
  * and add `license-checker-rseidelsohn` as a devDependency. For a multi-tree
  * repo, run it once per tree from each tree's working directory (each reads
- * its own .supply-chain/license-allowlist.json). See README.md.
+ * its own .supply-chain/license-allowlist.json). See SUPPLY-CHAIN-SECURITY.md §9.
  */
 
 /* eslint-disable no-undef, no-console -- standalone Node CLI: uses Node/JS globals and reports on stdout/stderr (works across legacy + flat eslint configs) */

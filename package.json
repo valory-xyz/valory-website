@@ -35,7 +35,6 @@
   },
   "devDependencies": {
     "@types/node": "20.17.10",
-    "license-checker-rseidelsohn": "4.4.2",
     "@types/qs": "6.9.17",
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",
@@ -44,6 +43,7 @@
     "eslint-config-next": "15.5.18",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
+    "license-checker-rseidelsohn": "4.4.2",
     "lockfile-lint": "5.0.0",
     "postcss": "8.5.14",
     "prettier": "3.4.2",

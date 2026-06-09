@@ -89,6 +89,33 @@ jobs:
       - name: Diff install-hook surface against allowlist
         run: yarn audit:install-hooks
 
+  license-check:
+    name: License allowlist gate
+    # License allowlist gate (PARANOID):
+    # every production dependency's license must be on the allowlist in
+    # .supply-chain/license-allowlist.json, or be a reasoned exemption.
+    # NON-BLOCKING PILOT: deliberately NOT in `all-checks-passed.needs` below, so
+    # it reports without gating merges. Promote to required by adding it to that
+    # `needs:` array (+ branch protection). See SUPPLY-CHAIN-SECURITY.md §9.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Activate pinned Yarn via Corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
+      - name: Install modules
+        run: yarn install --frozen-lockfile
+      - name: Run evaluator unit tests
+        # Guards the hand-rolled SPDX OR/AND precedence + alias normalization in
+        # license-check.lib.mjs against silent regressions. Pure node:test, no deps.
+        run: yarn license-check:test
+      - name: Check production dependency licenses
+        run: yarn license-check
+
   all-checks-passed:
     # Single aggregate gate for branch protection. Keep this job's `needs`
     # list in sync with every mandatory job above — branch protection requires

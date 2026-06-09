@@ -113,6 +113,16 @@ The runtime and build environments for `valory-website` hold a deliberately smal
 
 The workflow installs the **OSS gitleaks CLI as a checksum-verified binary** rather than using `gitleaks/gitleaks-action`, because that action requires a paid license for organisation-owned repos. Bump the `VERSION` and `SHA256` env vars together (the checksum is version-specific). If a legitimate high-entropy string ever trips a false positive (e.g. an example token in a fixture), add a `.gitleaks.toml` allowlist at the repo root to suppress it by regex.
 
+### 9. License allowlist gate
+
+The `license-check` job in [.github/workflows/main.yml](./.github/workflows/main.yml) runs `yarn license-check`, a gate at [`scripts/license-check.mjs`](./scripts/license-check.mjs) (SPDX evaluator in [`scripts/license-check.lib.mjs`](./scripts/license-check.lib.mjs)). It enforces a **PARANOID** policy over the production dependency tree: every production dependency's license must be on the allowlist in [`.supply-chain/license-allowlist.json`](./.supply-chain/license-allowlist.json), be corrected by a `licenseOverrides` entry, or be an explicitly-reasoned exemption. `UNKNOWN` or unlisted licenses **fail** — they are resolved, not silenced. Like the `audit` gate ([§5](#5-audit-in-ci)), `scope` is `production`: `devDependencies` do not ship and generate substantial transitive-license noise, so they are excluded by policy.
+
+The engine is [`license-checker-rseidelsohn`](https://www.npmjs.com/package/license-checker-rseidelsohn) (pinned to the 4.x line in [`package.json`](./package.json); 5.x requires Node 24). The original `license-checker` reports any package with no SPDX string in its `package.json` as `UNKNOWN`; the rseidelsohn fork reads the actual `LICENSE` file in those cases, giving a real classification surface instead of false `UNKNOWN`s. The SPDX `OR`/`AND` precedence logic is hand-rolled and **unit-tested** in [`scripts/license-check.test.mjs`](./scripts/license-check.test.mjs) (pure `node:test`, run in the same CI job via `yarn license-check:test`), so precedence/alias regressions cannot ship silently.
+
+Exemptions come in two shapes, both requiring the same `reason` + `review`-date discipline as [`audit-allowlist.json`](./.supply-chain/audit-allowlist.json): by **exact package name** (version-agnostic) for individual packages, and by a **narrow publisher-controlled prefix** only for platform-binary families. The one current exemption is the `@img/sharp-libvips-` prefix (LGPL-3.0 dynamically-loaded `libvips` native binary, pulled via `next > sharp`).
+
+**Non-blocking pilot.** This job is deliberately **not** in `all-checks-passed.needs`, so it reports on every PR but cannot fail a merge yet. Promote it to required by adding `license-check` to that `needs:` array and the corresponding branch-protection check — do this once the `@img/sharp-libvips-` exemption is signed off.
+
 ## Response playbook: "a dependency we use was just disclosed as compromised"
 
 1. **Identify exposure.** `yarn why <pkg>` — direct or transitive? Which version is in our lockfile?
@@ -135,6 +145,8 @@ The workflow installs the **OSS gitleaks CLI as a checksum-verified binary** rat
 - [x] Add the install-hook diff gate ([`scripts/audit-install-hooks.mjs`](./scripts/audit-install-hooks.mjs) + [`.supply-chain/install-hooks.allowlist`](./.supply-chain/install-hooks.allowlist)), wired into `all-checks-passed`.
 - [x] Add [`.nvmrc`](./.nvmrc) (Node `20.20.2`, consumed by CI via `node-version-file`) and [`.yarnrc`](./.yarnrc) (`--save-exact true`; no global `ignore-scripts`).
 - [x] Add the gitleaks secret-scanning workflow ([.github/workflows/secret-scan.yml](./.github/workflows/secret-scan.yml)).
+- [x] Add the license allowlist gate ([`scripts/license-check.mjs`](./scripts/license-check.mjs) + [`.supply-chain/license-allowlist.json`](./.supply-chain/license-allowlist.json)) as a non-blocking pilot — see [§9](#9-license-allowlist-gate).
+- [ ] Promote `license-check` to required (add to `all-checks-passed.needs` + branch protection) once the `@img/sharp-libvips-` exemption is signed off.
 - [x] Add [`.github/CODEOWNERS`](./.github/CODEOWNERS) routing supply-chain paths to the security owners (`@Tanya-atatakai`, `@atepem`).
 - [ ] Enable "Require review from Code Owners" in `main` branch protection so CODEOWNERS enforces (it only suggests reviewers otherwise).
 - [ ] Add the gitleaks check and `all-checks-passed` as required status checks in `main` branch protection.

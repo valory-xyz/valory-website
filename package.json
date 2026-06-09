@@ -12,7 +12,9 @@
     "lint:lockfile": "lockfile-lint --path yarn.lock --type yarn --allowed-hosts yarn npm --allowed-schemes https: --validate-integrity",
     "audit:prod": "node scripts/audit.mjs",
     "audit:install-hooks": "node scripts/audit-install-hooks.mjs",
-    "audit:install-hooks:update": "node scripts/audit-install-hooks.mjs --update"
+    "audit:install-hooks:update": "node scripts/audit-install-hooks.mjs --update",
+    "license-check": "node scripts/license-check.mjs",
+    "license-check:test": "node --test scripts/license-check.test.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "5.1.0",
@@ -41,6 +43,7 @@
     "eslint-config-next": "15.5.18",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
+    "license-checker-rseidelsohn": "4.4.2",
     "lockfile-lint": "5.0.0",
     "postcss": "8.5.14",
     "prettier": "3.4.2",

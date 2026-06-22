@@ -38,18 +38,9 @@
         "position": "VP of Engineering"
     },
     {
-        "name": "Dhairya",
-        "position": "Python Engineer"
-    },
-    {
         "name": "Divya Nautiyal",
         "imageSrc": "Divya.png",
         "position": "Python Engineer"
-    },
-    {
-        "name": "Dumitru",
-        "imageSrc": "Dumitru.png",
-        "position": "Senior QA Engineer"
     },
     {
         "name": "Iason Rovis",
@@ -57,31 +48,13 @@
         "position": "Senior Product Manager - Apps"
     },
     {
-        "name": "Jenslee Dsouza",
-        "imageSrc": "Jenslee.png",
-        "position": "Python Engineer"
-    },
-    {
         "name": "José Moreira-Sánchez",
         "position": "Senior Cryptography Engineer"
-    },
-    {
-        "name": "Kim",
-        "imageSrc": "Kim.png",
-        "position": "Executive & Personal Assistant"
     },
     {
         "name": "Mariapia Moscatiello",
         "imageSrc": "Pia.jpg",
         "position": "Research Scientist Coordinator"
-    },
-    {
-        "name": "Mohan Das",
-        "position": "Senior Frontend Engineer"
-    },
-    {
-        "name": "Nadica",
-        "position": "Legal Operations Associate"
     },
     {
         "name": "Ojuswi Rastogi",
@@ -91,11 +64,6 @@
     {
         "name": "Precious Joveres",
         "position": "Junior Frontend Engineer"
-    },
-    {
-        "name": "Rajat",
-        "imageSrc": "Rajat.png",
-        "position": "Senior Frontend Engineer"
     },
     {
         "name": "Roman Semenchenko",

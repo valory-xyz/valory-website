@@ -38,12 +38,12 @@
 
   "exemptionPrefixes": [
     {
-      "prefix": "@img/sharp-libvips-",
-      "spdx": "LGPL-3.0-or-later",
-      "reason": "Next.js image-optimizer native lib (libvips), pulled via next > sharp. Dynamically-loaded native binary, not statically combined with our JS. Package name varies by OS/arch (@img/sharp-libvips-darwin-arm64 locally, @img/sharp-libvips-linux-x64 on CI), so a narrow publisher-controlled prefix is used rather than a non-deterministic exact name.",
+      "prefix": "@img/sharp-",
+      "spdx": "Apache-2.0 AND LGPL-3.0-or-later",
+      "reason": "Next.js image-optimizer native lib (libvips), pulled via next > sharp. Dynamically-loaded native binary, not statically combined with our JS. Package name varies by OS/arch (@img/sharp-win32-x64 locally, @img/sharp-linux-x64 on CI), so a narrow publisher-controlled prefix is used rather than a non-deterministic exact name. Supersedes the earlier @img/sharp-libvips- prefix: sharp 0.35 stopped shipping libvips as separate @img/sharp-libvips-* packages and folded it into the per-platform @img/sharp-* binaries, which now declare the compound 'Apache-2.0 AND LGPL-3.0-or-later'. Same LGPL component and same dynamic-linking rationale as the 2026-06-05 entry; only the packaging changed.",
       "parents": ["sharp"],
-      "added": "2026-06-05",
-      "review": "2027-06-05"
+      "added": "2026-08-07",
+      "review": "2027-08-07"
     }
   ]
 }

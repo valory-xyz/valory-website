@@ -10,5 +10,4 @@
 # changing a script in an already-listed package fails CI until
 # the allowlist is regenerated and the diff reviewed.
 
-sharp  # install: node install/check.js || npm run build
 unrs-resolver  # postinstall: napi-postinstall unrs-resolver 1.11.1 check

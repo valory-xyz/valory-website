@@ -1,5 +1,6 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript", "plugin:prettier/recommended"],
+  "ignorePatterns": ["next-env.d.ts"],
   "rules": {
     "linebreak-style": "off",
     "react/react-in-jsx-scope": "off",

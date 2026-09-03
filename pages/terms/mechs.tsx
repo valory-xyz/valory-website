@@ -1,15 +1,17 @@
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 
-const MechPage = () => (
+const MechsPage = () => (
   <Layout>
     <Meta
-      pageTitle="Mech Page"
+      pageTitle="Mechs"
       pageDesc="Learn more about our available mechs and how they work."
-      pageUrl="mech"
+      pageUrl="terms/mechs"
     />
-    <section className="max-w-screen-lg mx-auto mb-10 pt-32">Mech page</section>
+    <section className="max-w-screen-lg mx-auto mb-10 pt-32">
+      Mechs page
+    </section>
   </Layout>
 );
 
-export default MechPage;
+export default MechsPage;

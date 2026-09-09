@@ -143,7 +143,7 @@ Exemptions come in two shapes, both requiring the same `reason` + `review`-date 
 - [x] Declare Vercel install command as `yarn install --frozen-lockfile` in [`vercel.json`](./vercel.json) (overrides any dashboard setting).
 - [x] Replace the inline audit step with the `yarn audit:prod` wrapper ([`scripts/audit.mjs`](./scripts/audit.mjs)) + allowlist ([`.supply-chain/audit-allowlist.json`](./.supply-chain/audit-allowlist.json)).
 - [x] Add the install-hook diff gate ([`scripts/audit-install-hooks.mjs`](./scripts/audit-install-hooks.mjs) + [`.supply-chain/install-hooks.allowlist`](./.supply-chain/install-hooks.allowlist)), wired into `all-checks-passed`.
-- [x] Add [`.nvmrc`](./.nvmrc) (Node `20.20.2`, consumed by CI via `node-version-file`) and [`.yarnrc`](./.yarnrc) (`--save-exact true`; no global `ignore-scripts`).
+- [x] Add [`.nvmrc`](./.nvmrc) (Node `24.21.0`, consumed by CI via `node-version-file`) and [`.yarnrc`](./.yarnrc) (`--save-exact true`; no global `ignore-scripts`).
 - [x] Add the gitleaks secret-scanning workflow ([.github/workflows/secret-scan.yml](./.github/workflows/secret-scan.yml)).
 - [x] Add the license allowlist gate ([`scripts/license-check.mjs`](./scripts/license-check.mjs) + [`.supply-chain/license-allowlist.json`](./.supply-chain/license-allowlist.json)) as a non-blocking pilot — see [§9](#9-license-allowlist-gate).
 - [ ] Promote `license-check` to required (add to `all-checks-passed.needs` + branch protection) once the `@img/sharp-libvips-` exemption is signed off.

@@ -2,6 +2,9 @@
   "name": "valory-website",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -34,7 +37,7 @@
     "swr": "2.3.0"
   },
   "devDependencies": {
-    "@types/node": "20.17.10",
+    "@types/node": "24.13.3",
     "@types/qs": "6.9.17",
     "@types/react": "18.3.18",
     "@types/react-dom": "18.3.5",

@@ -1,43 +1,52 @@
+import type { GetServerSideProps } from 'next';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { getPost } from 'utils/api';
 import { formatDate } from 'utils/formatDate';
+import { buildArticle, serializeJsonLd } from 'utils/structured-data';
 import { News } from 'components/Content/News';
-import { Spinner } from 'components/Spinner';
 import { Layout } from 'components/Layout';
 import { Meta } from 'components/Meta';
 import { Markdown } from 'components/Markdown';
 import { Article } from 'types/Article';
 
-const Post = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const [post, setPost] = useState<Article>();
-  const [loading, setLoading] = useState<boolean>(true);
+type PostProps = { post: Article };
 
-  useEffect(() => {
-    if (!id || typeof id !== 'string') return;
+/**
+ * Server-rendered. The post used to load in a `useEffect`, so the served HTML was a
+ * spinner: no title, no description, no body — a crawler saw an empty page for every
+ * post, and the Article record below would have been injected after the fact for nobody.
+ * Same pattern as the blog on olas.network.
+ */
+export const getServerSideProps: GetServerSideProps<PostProps> = async ({
+  params,
+}) => {
+  const id = params?.id;
+  if (typeof id !== 'string') return { notFound: true };
 
-    const fetchPost = async () => {
-      try {
-        const data = await getPost({ id });
-        setPost(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchPost();
-  }, [id]);
+  const post = await getPost({ id });
+  if (!post) return { notFound: true };
 
-  if (loading) return <Spinner />;
+  return { props: { post } };
+};
 
-  if (!post)
-    return <div className="mx-auto text-center">Post does not exist</div>;
+const Post = ({ post }: PostProps) => {
+  // Same resolution the post card uses, so the record carries the image the page shows.
+  const imageFormats = post.images?.[0]?.formats;
+  const imagePath = imageFormats?.large?.url || imageFormats?.thumbnail?.url;
+  const imageUrl = imagePath
+    ? `${process.env.NEXT_PUBLIC_CMS_URL}${imagePath}`
+    : undefined;
+
+  const article = buildArticle({
+    filename: post.filename,
+    title: post.title,
+    description: post.description,
+    date: post.date,
+    imageUrl,
+  });
 
   return (
     <Layout>
@@ -45,6 +54,10 @@ const Post = () => {
         pageTitle={post.title}
         pageDesc={post.description}
         pageUrl={`post/${post.filename}`}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(article) }}
       />
       <section className="pt-32 max-w-screen-lg mx-auto">
         <article className="md:py-12 sm:px-8 lg:px-20 md:border mb-12">

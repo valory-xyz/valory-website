@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { ORGANIZATION, serializeJsonLd } from 'utils/structured-data';
 
 const SITE_TITLE = 'Architecting Autonomy';
 const SITE_DESCRIPTION =
@@ -27,6 +28,15 @@ export const Meta = ({
 
       <meta name="title" content={title} />
       <meta name="description" content={pageDesc || SITE_DESCRIPTION} />
+
+      {/* The apex 308s to www, so www is the only host a page should claim. Without a
+          canonical, search engines chose between the two for us. */}
+      <link rel="canonical" href={url} />
+      {/* Once per page, from here, so a page cannot get its meta tags without it. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(ORGANIZATION) }}
+      />
 
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />

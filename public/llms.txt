@@ -1,5 +1,7 @@
 # Valory
 
+last-updated: 2026-09-16
+
 > Valory is a Switzerland-based team building open-source frameworks for co-owned autonomous AI systems and marketplaces for autonomous agents. Primary focus areas: decentralized autonomous agents, the Olas ecosystem (Pearl, Mech Marketplace, Olas Stack), and research into multi-agent systems, cryptography, and decentralised protocols. Use these links to find concise, LLM-readable markdown or canonical pages for detailed context.
 
 Important notes:

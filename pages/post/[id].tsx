@@ -19,6 +19,9 @@ type PostProps = { post: Article };
  * spinner: no title, no description, no body — a crawler saw an empty page for every
  * post, and the Article record below would have been injected after the fact for nobody.
  * Same pattern as the blog on olas.network.
+ *
+ * `getPost` throws on a CMS failure, which Next renders as a 500. Only a genuine miss
+ * is a 404: that is the status a crawler remembers, so an outage must not produce it.
  */
 export const getServerSideProps: GetServerSideProps<PostProps> = async ({
   params,

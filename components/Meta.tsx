@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { ORGANIZATION, serializeJsonLd } from 'utils/structured-data';
+import { ORGANIZATION, SITE_URL, serializeJsonLd } from 'utils/structured-data';
 
 const SITE_TITLE = 'Architecting Autonomy';
 const SITE_DESCRIPTION =
   'A world-class team leading cutting-edge research & development at the intersection of multi-agent systems and distributed ledger technology.';
-const SITE_URL = 'https://www.valory.xyz';
 const SITE_DEFAULT_IMAGE_URL = `${SITE_URL}/images/meta-tag.jpg`;
 
 export const Meta = ({

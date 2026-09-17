@@ -8,8 +8,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "next-sitemap && node scripts/check-llms.mjs --host www.valory.xyz --host valory.xyz",
-    "llms:check": "node scripts/check-llms.mjs --host www.valory.xyz --host valory.xyz",
+    "postbuild": "next-sitemap && node scripts/check-llms.mjs --host www.valory.xyz --ignore /restricted --ignore /terms/mechs",
+    "llms:check": "node scripts/check-llms.mjs --host www.valory.xyz --ignore /restricted --ignore /terms/mechs",
+    "llms:test": "node --test scripts/check-llms.test.mjs",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\"",

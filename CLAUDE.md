@@ -42,3 +42,7 @@ Context for AI assistants working in this repo.
 - `yarn dev` – dev server
 - `yarn build` – build (runs `next-sitemap` postbuild)
 - `yarn lint` – lint
+
+## `public/llms.txt`
+
+Hand-written prose for AI assistants. The build fails (`postbuild`) if a link in it points at a page the site does not serve, if a page the site serves has no line in it, or if its `last-updated:` line is older than its last commit — bump the line whenever you change the file, and add a line for any new route in the same PR that ships it. `yarn llms:check` runs it after a build; `yarn llms:test` runs its tests.

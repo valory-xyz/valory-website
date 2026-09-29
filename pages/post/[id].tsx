@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import React from 'react';
 
-import { getPost } from 'utils/api';
+import { getPost, getPosts } from 'utils/api';
 import { formatDate } from 'utils/formatDate';
 import { buildArticle, serializeJsonLd } from 'utils/structured-data';
 import { News } from 'components/Content/News';
@@ -12,7 +12,10 @@ import { Meta } from 'components/Meta';
 import { Markdown } from 'components/Markdown';
 import { Article } from 'types/Article';
 
-type PostProps = { post: Article };
+type PostProps = { post: Article; recent: Article[] };
+
+/** Three to show, plus one in case the newest of them is the post being read. */
+const RECENT_POSTS = 4;
 
 /**
  * Server-rendered. The post used to load in a `useEffect`, so the served HTML was a
@@ -32,10 +35,17 @@ export const getServerSideProps: GetServerSideProps<PostProps> = async ({
   const post = await getPost({ id });
   if (!post) return { notFound: true };
 
-  return { props: { post } };
+  // Fetched here rather than in the component so the "Recent Posts" links are in the
+  // served HTML. `getPosts` swallows its own failures, so a CMS blip costs the three
+  // links, not the post.
+  const recent = (await getPosts({ limit: RECENT_POSTS }))
+    .filter((article: Article) => article.filename !== post.filename)
+    .slice(0, 3);
+
+  return { props: { post, recent } };
 };
 
-const Post = ({ post }: PostProps) => {
+const Post = ({ post, recent }: PostProps) => {
   // Same resolution the post card uses, so the record carries the image the page shows.
   const imageFormats = post.images?.[0]?.formats;
   const imagePath = imageFormats?.large?.url || imageFormats?.thumbnail?.url;
@@ -76,7 +86,7 @@ const Post = ({ post }: PostProps) => {
             <span>Recent Posts</span>
             <Link href="/post">See all</Link>
           </div>
-          <News limit={3} showDescriptions={false} />
+          <News posts={recent} columns={3} showDescriptions={false} />
         </div>
       </section>
     </Layout>

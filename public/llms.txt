@@ -1,6 +1,6 @@
 # Valory
 
-last-updated: 2026-09-25
+last-updated: 2026-10-16
 
 > Valory is a Switzerland-based team building open-source frameworks for co-owned autonomous AI systems and marketplaces for autonomous agents. Primary focus areas: decentralized autonomous agents, the Olas ecosystem (Pearl, Mech Marketplace, Olas Stack), and research into multi-agent systems, cryptography, and decentralised protocols. Use these links to find concise, LLM-readable markdown or canonical pages for detailed context.
 
@@ -36,7 +36,9 @@ Important notes:
 - [Hugging Face profile / Spaces](https://huggingface.co/valory): Datasets and demo Spaces.
 
 ## Contact & Press
-- [Press / Contact pointers and legal address](https://www.valory.xyz/privacy): Use the privacy/press kit links on the site for formal contact channels.
+- Press enquiries (Valory and Olas): press@valory.xyz
+- [Press kit](https://github.com/valory-xyz/press-kit-valory): Brand guidelines, logos, key information and team bios.
+- [Legal address](https://www.valory.xyz/privacy): See the Privacy page for formal contact channels.
 
 ## Optional
 - [LinkedIn / Socials](https://www.linkedin.com/company/valoryag/): Company social presence and public posts.  

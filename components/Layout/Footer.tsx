@@ -102,6 +102,10 @@ export const Footer = () => (
             target="_blank"
           >
             Press Kit
+          </a>{' '}
+          ·{' '}
+          <a className={`link ${hoverClass}`} href="mailto:press@valory.xyz">
+            Press: press@valory.xyz
           </a>
         </div>
       </div>

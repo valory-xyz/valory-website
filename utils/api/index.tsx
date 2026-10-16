@@ -2,18 +2,31 @@ import qs from 'qs';
 
 const API_URL = `${process.env.NEXT_PUBLIC_CMS_URL}/api`;
 
+/**
+ * Posts for a listing, newest first.
+ *
+ * Only the fields a card renders — `populate: '*'` also returned every post's full
+ * markdown, and now that the listings render on the server that body would ship inside
+ * the HTML: 340 kB of `__NEXT_DATA__` on /post for text no card shows.
+ *
+ * Failures are swallowed and logged, unlike `getPost` below: an empty news grid is a
+ * worse page, but a missing list should not take down the page that carries it.
+ */
 export const getPosts = async ({ limit }: { limit: number }) => {
   try {
     const params = qs.stringify({
       sort: ['date:desc'],
-      populate: '*',
+      fields: ['filename', 'title', 'description', 'date', 'readtime'],
+      // `formats` is one JSON column, so this is as narrow as the image gets.
+      populate: { images: { fields: ['formats'] } },
       'pagination[limit]': limit,
     });
     const response = await fetch(`${API_URL}/posts?${params}`);
+    if (!response.ok) throw new Error(`CMS responded ${response.status}`);
     const json = await response.json();
     return json?.data || [];
   } catch (error) {
-    console.error(error);
+    console.error('could not list posts:', error);
     return [];
   }
 };

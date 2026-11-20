@@ -1,6 +1,6 @@
 # Valory
 
-last-updated: 2026-10-15
+last-updated: 2026-11-20
 
 > Valory is a Switzerland-based team building open-source frameworks for co-owned autonomous AI systems and marketplaces for autonomous agents. Primary focus areas: decentralized autonomous agents, the Olas ecosystem (Pearl, Mech Marketplace, Olas Stack), and research into multi-agent systems, cryptography, and decentralised protocols. Use these links to find concise, LLM-readable markdown or canonical pages for detailed context.
 
@@ -13,6 +13,7 @@ Important notes:
 - [Pearl — AI agent app store (Olas)](https://olas.network/pearl): Desktop app for owning AI agents; entry point for consumers to access AI agents on Olas.  
 - [Mech Marketplace (Olas)](https://olas.network/mech-marketplace): Decentralised marketplace for agent to agent services.  
 - [Olas Stack (Olas)](https://olas.network/stack): Technical foundation, open-source protocols and developer resources.
+- [OnchainBench: the benchmark for agents in crypto](https://onchainbench.ai): Decide how far you can trust an AI agent with your keys: how often it finishes the job, what tasks cost, and how easily it falls prey to an attack.
 
 ## Docs & Guides
 - [News / Blog (All posts)](https://www.valory.xyz/post): Collection of product announcements and explainers.  

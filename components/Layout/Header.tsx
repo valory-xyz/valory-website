@@ -67,7 +67,7 @@ export const Header = () => {
               <SiteLink
                 text="Get involved"
                 customClass="xl:py-3 xl:px-12 font-medium text-sm"
-                href="#get-involved"
+                href="#products"
                 isExternal={false}
                 type="secondary"
               />
@@ -112,7 +112,7 @@ export const Header = () => {
           ))}
 
           <li>
-            <Link href="#get-involved" className={`md:hidden ${hoverClass}`}>
+            <Link href="#products" className={`md:hidden ${hoverClass}`}>
               Get involved
             </Link>
           </li>

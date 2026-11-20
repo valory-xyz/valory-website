@@ -11,7 +11,7 @@ export const Hero = () => (
       </span>
       <SiteLink
         text="Get involved"
-        href="#get-involved"
+        href="#products"
         customClass="max-w-[280px] px-20 py-5 mt-16 mx-auto"
         isExternal={false}
         type="primary"

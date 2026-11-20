@@ -4,7 +4,7 @@ import { SiteLink } from '../SiteLink';
 export const GetInvolved = () => (
   <section
     id="get-involved"
-    className="flex min-h-[558px] items-center justify-center bg-[radial-gradient(circle_at_50%,#014212,black)] text-center text-white max-sm:min-h-[590px]"
+    className="flex min-h-[558px] scroll-mt-24 items-center justify-center bg-[radial-gradient(circle_at_50%,#014212,black)] text-center text-white max-sm:min-h-[590px]"
   >
     <div className="flex flex-col gap-4 max-w-[900px] mx-auto my-16 place-items-center max-sm:mx-8">
       <Image

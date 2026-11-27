@@ -8,23 +8,23 @@
 # A PR matching multiple rules uses the LAST matching rule.
 
 # Default owner — every change
-*                                  @Tanya-atatakai @atepem
+*                                  @atepem
 
 # Supply-chain config — security owners must approve any change
-/.yarnrc                           @Tanya-atatakai @atepem
-/.nvmrc                            @Tanya-atatakai @atepem
-/.supply-chain/                    @Tanya-atatakai @atepem
-/scripts/audit.mjs                 @Tanya-atatakai @atepem
-/scripts/audit-install-hooks.mjs   @Tanya-atatakai @atepem
-/.github/workflows/                @Tanya-atatakai @atepem
-/.github/CODEOWNERS                @Tanya-atatakai @atepem
-/SECURITY.md                       @Tanya-atatakai @atepem
-/SUPPLY-CHAIN-SECURITY.md          @Tanya-atatakai @atepem
-/package.json                      @Tanya-atatakai @atepem
-/yarn.lock                         @Tanya-atatakai @atepem
-/vercel.json                       @Tanya-atatakai @atepem
+/.yarnrc                           @atepem
+/.nvmrc                            @atepem
+/.supply-chain/                    @atepem
+/scripts/audit.mjs                 @atepem
+/scripts/audit-install-hooks.mjs   @atepem
+/.github/workflows/                @atepem
+/.github/CODEOWNERS                @atepem
+/SECURITY.md                       @atepem
+/SUPPLY-CHAIN-SECURITY.md          @atepem
+/package.json                      @atepem
+/yarn.lock                         @atepem
+/vercel.json                       @atepem
 # Region-block compliance control — security-relevant
-/middleware.ts                     @Tanya-atatakai @atepem
-/utils/regionBlock.ts              @Tanya-atatakai @atepem
+/middleware.ts                     @atepem
+/utils/regionBlock.ts              @atepem
 # CSP / security headers + CMS image domains
-/next.config.ts                    @Tanya-atatakai @atepem
+/next.config.ts                    @atepem
